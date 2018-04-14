@@ -367,6 +367,59 @@ help elmat
 </table>
 <p>无穷大是通过非零数除以零或者良定义运算溢出（如：超过realmax）产生的;NaN不定数通常由0/0运算、Inf/Inf等良定义的运算得出。</p>
 <p>函数名赋予任意新的变量，将会覆盖掉这些函数。原函数可以用下面的语句恢复：clear eps</p>
+<hr>
+<h2 id="创建图像"><a href="#创建图像" class="headerlink" title="创建图像"></a>创建图像</h2><p>plot(x,y)x是向量，y是x的函数<br>    x = 0:pi/100:2*pi;<br>    y = sin(x);<br>    plot(x,y)</p>
+<h3 id="添加标签和标题"><a href="#添加标签和标题" class="headerlink" title="添加标签和标题"></a>添加标签和标题</h3><p>xlabel(‘’)<br>title(‘<strong>‘,’</strong>‘,size)</p>
+<h3 id="多个函数关系"><a href="#多个函数关系" class="headerlink" title="多个函数关系"></a>多个函数关系</h3><p>一个函数作图命令plot使不同的(x-y)变元函数生成不同的函数图象</p>
+<h3 id="自定义颜色，线型和标记"><a href="#自定义颜色，线型和标记" class="headerlink" title="自定义颜色，线型和标记"></a>自定义颜色，线型和标记</h3><p>plot(x,y,’color_style_marker’)</p>
+<ul>
+<li>颜色字符串有’c’, ‘m’, ‘y’, ‘r’, ‘g’, ‘b’, ‘w’,和’k’。分别表示青，红紫，黄，红，绿，白和黑。</li>
+<li>线型字符串有：’-‘ 为实线, ‘–’ 为虚线, ‘:’ 为点线, ‘-.’ 为点虚线, 及’none’ 表示不用线型。</li>
+<li>标记形式有’+’, ‘o’, ‘*’,和’x’ ，填入’s’ 代表正方形, ‘d’ 代表菱形, ‘^’ 为上三角形, ‘v’ 为下三角形, ‘&gt;’ 为右三角形, ‘&lt;’ 为左三角形, ‘p’ 为五角星形, ‘h’ 为六角星形, none 为不用标记。</li>
+<li>只画出标记型plot(x,y,’ks’) </li>
+<li>每个数值上都有标记，并且连线plot(x,y,’r:+’)</li>
+<li>在更少的点上标记plot(x1,sin(x1),’r:’,x2,sin(x2),’r+’)</li>
+<li><p>冒号算子无法对复数使用，对复数的作图：</p>
+<p>  t = 0:pi/10:2<em>pi;<br>  plot(exp(i</em>t),’-o’)</p>
+</li>
+<li><p>使x，y轴单位长度等长</p>
+<p>  axis equal</p>
+</li>
+</ul>
+<h3 id="在现有图中添加图"><a href="#在现有图中添加图" class="headerlink" title="在现有图中添加图"></a>在现有图中添加图</h3><pre><code>hold on
+</code></pre><h3 id="要使已有的窗口成为当前窗口"><a href="#要使已有的窗口成为当前窗口" class="headerlink" title="要使已有的窗口成为当前窗口"></a>要使已有的窗口成为当前窗口</h3><pre><code>figure(n)
+</code></pre><h3 id="要打开一个新窗口并使它成为当前窗口"><a href="#要打开一个新窗口并使它成为当前窗口" class="headerlink" title="要打开一个新窗口并使它成为当前窗口"></a>要打开一个新窗口并使它成为当前窗口</h3><pre><code>figure
+</code></pre><h3 id="在同一窗口中作多幅图"><a href="#在同一窗口中作多幅图" class="headerlink" title="在同一窗口中作多幅图"></a>在同一窗口中作多幅图</h3><pre><code>subplot(m,n,p)
+</code></pre><p>把figure窗口分成m*n个子区域及选择第p个区域为当前图</p>
+<h3 id="设置轴的范围"><a href="#设置轴的范围" class="headerlink" title="设置轴的范围"></a>设置轴的范围</h3><ul>
+<li><p>二维中</p>
+<p>  axis([xmin xmax ymin ymax])</p>
+</li>
+<li><p>三维中</p>
+<p>  axis([xmin xmax ymin ymax zmin zmax])</p>
+</li>
+<li><p>MATLAB重新自动选择范围</p>
+<p>  axis auto</p>
+</li>
+</ul>
+<h3 id="设定纵横比"><a href="#设定纵横比" class="headerlink" title="设定纵横比"></a>设定纵横比</h3><ul>
+<li><p>xy轴等长</p>
+<p>  axis square</p>
+</li>
+<li><p>xy轴单位长度相等</p>
+<p>  axis equal</p>
+</li>
+<li><p>返回默认模式中定义的缩放比例</p>
+<p>  axis auto normal</p>
+</li>
+</ul>
+<h3 id="设定轴和网格显示或隐藏"><a href="#设定轴和网格显示或隐藏" class="headerlink" title="设定轴和网格显示或隐藏"></a>设定轴和网格显示或隐藏</h3><pre><code>axis on/off
+grid on/off
+</code></pre><h3 id="标签标题及文本设置"><a href="#标签标题及文本设置" class="headerlink" title="标签标题及文本设置"></a>标签标题及文本设置</h3><ul>
+<li>用xlabel, ylabel, 及zlabel 命令添加x-,y-,z-等标签。</li>
+<li>用title 命令在图象顶部加标题，</li>
+<li>用text 函数在图象中任何部位添加文本<br><img src="https://www.electronicshub.org/wp-content/uploads/2014/10/MATLAB-Logo.png" alt=""></li>
+</ul>
 <p>　</p>
 
           
@@ -1020,7 +1073,7 @@ help elmat
 <h1 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h1><p><em>一个星号在左右</em>即可</p>
 <p>markpad太。。。我的手速太低端</p>
 <h1 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h1><p>！【】（链接）注意是英文符</p>
-<p><img src="https://2-im.guokr.com/YtavWcYpNiA3PDc9nI3VlKABHBwMwev-sVT_rHUQJAjEAQAA_wAAAEpQ.jpg" alt="Markdown"></p>
+<p><img src="https://maxcdn.icons8.com/Share/icon/Programming/markdown1600.png" alt="Markdown"></p>
 <h1 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h1><ul>
 <li><p>+可以</p>
 </li>
