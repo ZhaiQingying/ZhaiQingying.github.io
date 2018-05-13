@@ -87,7 +87,7 @@
 <meta property="og:description" content="输入矩阵有以下几种不同方法： 直接输入组成矩阵的元素。  从外部文件引入矩阵。  利用自带的函数构成矩阵。  利用在*.M文件内自定义的函数来构成矩阵。 直接输入 用空格或者逗号来区分一行里不同的元素。   用分号’；’来区分不同的行。  用方括号来括住全体元素。  矩阵行或列求和 sum(A):相应列的元素的和 矩阵的转置 A’求对角线元素 diag(A)求左右调转的矩阵 fliplr(A)矩">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.electronicshub.org/wp-content/uploads/2014/10/MATLAB-Logo.png">
-<meta property="og:updated_time" content="2018-04-16T14:01:30.221Z">
+<meta property="og:updated_time" content="2018-04-19T14:36:49.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MATLAB小笔记">
 <meta name="twitter:description" content="输入矩阵有以下几种不同方法： 直接输入组成矩阵的元素。  从外部文件引入矩阵。  利用自带的函数构成矩阵。  利用在*.M文件内自定义的函数来构成矩阵。 直接输入 用空格或者逗号来区分一行里不同的元素。   用分号’；’来区分不同的行。  用方括号来括住全体元素。  矩阵行或列求和 sum(A):相应列的元素的和 矩阵的转置 A’求对角线元素 diag(A)求左右调转的矩阵 fliplr(A)矩">
@@ -377,6 +377,9 @@ help elmat
 <li>颜色字符串有’c’, ‘m’, ‘y’, ‘r’, ‘g’, ‘b’, ‘w’,和’k’。分别表示青，红紫，黄，红，绿，白和黑。</li>
 <li>线型字符串有：’-‘ 为实线, ‘–’ 为虚线, ‘:’ 为点线, ‘-.’ 为点虚线, 及’none’ 表示不用线型。</li>
 <li>标记形式有’+’, ‘o’, ‘*’,和’x’ ，填入’s’ 代表正方形, ‘d’ 代表菱形, ‘^’ 为上三角形, ‘v’ 为下三角形, ‘&gt;’ 为右三角形, ‘&lt;’ 为左三角形, ‘p’ 为五角星形, ‘h’ 为六角星形, none 为不用标记。</li>
+</ul>
+<p><em>操作跟着它前面的一组因变量自变量，即plot(xfit,yfit,x，y’y</em>‘)是对x，y加标记*</p>
+<ul>
 <li>只画出标记型plot(x,y,’ks’) </li>
 <li>每个数值上都有标记，并且连线plot(x,y,’r:+’)</li>
 <li>在更少的点上标记plot(x1,sin(x1),’r:’,x2,sin(x2),’r+’)</li>
@@ -387,8 +390,13 @@ help elmat
 <p>  axis equal</p>
 </li>
 </ul>
-<h3 id="在现有图中添加图"><a href="#在现有图中添加图" class="headerlink" title="在现有图中添加图"></a>在现有图中添加图</h3><pre><code>hold on
-</code></pre><h3 id="要使已有的窗口成为当前窗口"><a href="#要使已有的窗口成为当前窗口" class="headerlink" title="要使已有的窗口成为当前窗口"></a>要使已有的窗口成为当前窗口</h3><pre><code>figure(n)
+<h3 id="在现有图中添加图"><a href="#在现有图中添加图" class="headerlink" title="在现有图中添加图"></a>在现有图中添加图</h3><ul>
+<li><p>原图还在</p>
+<p>  hold on</p>
+</li>
+<li>原图覆盖<br>  hold off</li>
+</ul>
+<h3 id="要使已有的窗口成为当前窗口"><a href="#要使已有的窗口成为当前窗口" class="headerlink" title="要使已有的窗口成为当前窗口"></a>要使已有的窗口成为当前窗口</h3><pre><code>figure(n)
 </code></pre><h3 id="要打开一个新窗口并使它成为当前窗口"><a href="#要打开一个新窗口并使它成为当前窗口" class="headerlink" title="要打开一个新窗口并使它成为当前窗口"></a>要打开一个新窗口并使它成为当前窗口</h3><pre><code>figure
 </code></pre><h3 id="在同一窗口中作多幅图"><a href="#在同一窗口中作多幅图" class="headerlink" title="在同一窗口中作多幅图"></a>在同一窗口中作多幅图</h3><pre><code>subplot(m,n,p)
 </code></pre><p>把figure窗口分成m*n个子区域及选择第p个区域为当前图</p>
@@ -542,7 +550,7 @@ grid on/off
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
