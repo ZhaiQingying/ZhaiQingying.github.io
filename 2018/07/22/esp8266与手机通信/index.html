@@ -88,7 +88,10 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/xOEgyhvXU4b40eKQxtjWLbP3*nJIcK0TZ7j8pvLB3Lk!/c/dIQBAAAAAAAA&ek=1&kp=1&pt=0&bo=oAU4BAAAAAARKIY!&tl=1&vuin=3033668267&tm=1532235600&sce=60-2-2&rf=0-0">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/lJnu17r60dpuGuJBdQBTi252j9W6UB0KRLKe8hn2BTA!/c/dGwBAAAAAAAA&ek=1&kp=1&pt=0&bo=0wGsAAAAAAARF14!&tl=1&vuin=3033668267&tm=1532235600&sce=60-2-2&rf=0-0">
-<meta property="og:updated_time" content="2018-07-22T05:17:10.229Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/22/esp8266与手机通信/img%20style=%22height:275px;width:560px;%22%20src=%22http://a3.qpic.cn/psb?/V11V3soz2JNi4c/hrQHWGuHtul4dtRCLYlnMQmNRZcAJZnwlAFPx36Nvd4!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=WAInAQAAAAARF1w!&tl=1&vuin=3033668267&tm=1532242800&sce=60-2-2&rf=0-0">
+<meta property="og:image" content="http://yoursite.com/2018/07/22/esp8266与手机通信/img%20style=%22height:280px;width:560px;%22%20src=%22http://a2.qpic.cn/psb?/V11V3soz2JNi4c/5SXgciFn2Z*W6SdeUKwGfNOvdiSHUURFYAuKTDOiXGQ!/c/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=WAIsAQAAAAARF1c!&tl=1&vuin=3033668267&tm=1532242800&sce=60-2-2&rf=0-0">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/c9aI9hNZ2MW8QrUfHHIu1hnQF.MKDSOMxZ2uWh2hY5o!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=yQLHAAAAAAARFyw!&tl=1&vuin=3033668267&tm=1532242800&sce=60-2-2&rf=0-0">
+<meta property="og:updated_time" content="2018-07-23T11:18:54.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ESP8266与手机通信">
 <meta name="twitter:description" content="此问题为项目报错系统的一部分  利用网络调试助手，将错误信息传送手机里 首先是利用串口和AT指令配置ESP8266模块  因为usb转串口还没到货，只好用精英板板载的，连接如图所示（vcc连3.3v或5v都可以） 打开xcom串口调试助手，波特率设置为115200。要记得发完AT指令要换行 （ps一些教程里写的是/r/n，但我们不能傻乎乎把/r/n打上去，要按enter pps有的时候不换行好像">
@@ -313,7 +316,21 @@
 <p>（ps一些教程里写的是/r/n，但我们不能傻乎乎把/r/n打上去，要按enter</p>
 <p>pps有的时候不换行好像也行，但有时候会报错，比如加入WiFi的时候）</p>
 <p><img src="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/lJnu17r60dpuGuJBdQBTi252j9W6UB0KRLKe8hn2BTA!/c/dGwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=0wGsAAAAAAARF14!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532235600&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<h2 id="接下来了解一下一些ESP8266工作模式"><a href="#接下来了解一下一些ESP8266工作模式" class="headerlink" title="接下来了解一下一些ESP8266工作模式"></a>接下来了解一下一些ESP8266工作模式</h2>
+<h2 id="接下来了解一下一些ESP8266工作模式"><a href="#接下来了解一下一些ESP8266工作模式" class="headerlink" title="接下来了解一下一些ESP8266工作模式"></a>接下来了解一下一些ESP8266工作模式</h2><ul>
+<li>Wifi模块为串口或TTL电平转WIFI通信的一种传输转换模块，内置无线网络协议IEEE802.11协议栈以及TCP/IP协议栈，能够实现用户串口或TTL电平数据到无线网络之间的转换。 </li>
+<li>AP模式和STA模式的区别<br>1.AP模式: Access Point，提供无线接入服务，允许其它无线设备接入，提供数据访问，一般的无线路由/网桥工作在该模式下。AP和AP之间允许相互连接<br><img src="img style=&quot;height:275px;width:560px;&quot; src=&quot;http://a3.qpic.cn/psb?/V11V3soz2JNi4c/hrQHWGuHtul4dtRCLYlnMQmNRZcAJZnwlAFPx36Nvd4!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=WAInAQAAAAARF1w!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532242800&amp;sce=60-2-2&amp;rf=0-0" alt=""></li>
+</ul>
+<ol>
+<li>Sta模式: Station, 类似于无线终端，sta本身并不接受无线的接入，它可以连接到AP，一般无线网卡即工作在该模式<br><img src="img style=&quot;height:280px;width:560px;&quot; src=&quot;http://a2.qpic.cn/psb?/V11V3soz2JNi4c/5SXgciFn2Z*W6SdeUKwGfNOvdiSHUURFYAuKTDOiXGQ!/c/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=WAIsAQAAAAARF1c!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532242800&amp;sce=60-2-2&amp;rf=0-0" alt=""></li>
+</ol>
+<ul>
+<li>基于AP组建的基础无线网络（ Infra） ： Infra： 也称为基础网， 是由AP创建， 众多STA<br>加入所组成的无线网络， 这种类型的网络的特点是AP是整个网络的中心， 网络中所有的通<br>信都通过AP来转发完成。<br>基于自组网的无线网络（Adhoc）：Adhoc：也称为自组网，是仅由两个及以上STA自己组成，网络中不存在AP，这种类型的网络是一种松散的结构，网络中所有的STA都可以直接通信。</li>
+<li>AP+STA组网模式是一种非常实用的组网模式：当模块作为AP时，它同时又可以作为一个STA模式存在，例如：WIFI模块作为AP，可以让客户的手机或者计算机接入，同时该模块又可以作为一个STA接入到路由器或者上位服务器进行数据上传</li>
+<li>TCP客户端 TCP服务器与 UDP<br><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/c9aI9hNZ2MW8QrUfHHIu1hnQF.MKDSOMxZ2uWh2hY5o!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=yQLHAAAAAAARFyw!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532242800&amp;sce=60-2-2&amp;rf=0-0" alt=""><br>客户端服务器：又叫主从式架构，简称C/S结构，是一种网络架构。</li>
+</ul>
+<p>服务器：被动的角色（从）。 </p>
+<p>等待来自客户端的要求。 处理要求并传回结果。客户端：主动的角色（主）。 发送要求。 等待直到收到回应。</p>
+<h2 id="接下来实现与手机的信息传输"><a href="#接下来实现与手机的信息传输" class="headerlink" title="接下来实现与手机的信息传输"></a>接下来实现与手机的信息传输</h2>
       
     </div>
     
@@ -346,6 +363,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/23/计算机网络笔记/" rel="prev" title="计算机网络笔记">
+                计算机网络笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -422,7 +443,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -459,7 +480,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先是利用串口和AT指令配置ESP8266模块"><span class="nav-number">1.</span> <span class="nav-text">首先是利用串口和AT指令配置ESP8266模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来了解一下一些ESP8266工作模式"><span class="nav-number">2.</span> <span class="nav-text">接下来了解一下一些ESP8266工作模式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先是利用串口和AT指令配置ESP8266模块"><span class="nav-number">1.</span> <span class="nav-text">首先是利用串口和AT指令配置ESP8266模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来了解一下一些ESP8266工作模式"><span class="nav-number">2.</span> <span class="nav-text">接下来了解一下一些ESP8266工作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来实现与手机的信息传输"><span class="nav-number">3.</span> <span class="nav-text">接下来实现与手机的信息传输</span></a></li></ol></div>
             
 
           </div>

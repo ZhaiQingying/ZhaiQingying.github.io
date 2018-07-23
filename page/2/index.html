@@ -229,6 +229,392 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/13/MATLAB小笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrellacode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/13/MATLAB小笔记/" itemprop="url">MATLAB小笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-13T21:29:42+08:00">
+                2018-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="输入矩阵有以下几种不同方法："><a href="#输入矩阵有以下几种不同方法：" class="headerlink" title="输入矩阵有以下几种不同方法："></a>输入矩阵有以下几种不同方法：</h2><ul>
+<li>直接输入组成矩阵的元素。 </li>
+<li>从外部文件引入矩阵。 </li>
+<li>利用自带的函数构成矩阵。 </li>
+<li><p>利用在*.M文件内自定义的函数来构成矩阵。</p>
+<h3 id="直接输入"><a href="#直接输入" class="headerlink" title="直接输入"></a>直接输入</h3></li>
+<li><p>用空格或者逗号来区分一行里不同的元素。 </p>
+</li>
+<li>用分号’；’来区分不同的行。 </li>
+<li><p>用方括号来括住全体元素。 </p>
+<h2 id="矩阵行或列求和"><a href="#矩阵行或列求和" class="headerlink" title="矩阵行或列求和"></a>矩阵行或列求和</h2></li>
+<li><p>sum(A):相应列的元素的和</p>
+<h2 id="矩阵的转置"><a href="#矩阵的转置" class="headerlink" title="矩阵的转置"></a>矩阵的转置</h2></li>
+<li>A’<h2 id="求对角线元素"><a href="#求对角线元素" class="headerlink" title="求对角线元素"></a>求对角线元素</h2></li>
+<li>diag(A)<h2 id="求左右调转的矩阵"><a href="#求左右调转的矩阵" class="headerlink" title="求左右调转的矩阵"></a>求左右调转的矩阵</h2></li>
+<li>fliplr(A)<h2 id="矩阵的元素的表达"><a href="#矩阵的元素的表达" class="headerlink" title="矩阵的元素的表达"></a>矩阵的元素的表达</h2></li>
+<li>A(i,j)</li>
+<li>A(k)</li>
+<li>输入一个数值到矩阵以外的位置，矩阵的大小就会变化来容纳新的数据<em>其余的为零</em><h1 id="冒号算子"><a href="#冒号算子" class="headerlink" title="冒号算子"></a>冒号算子</h1></li>
+<li>i:j<strong>表示整数</strong></li>
+<li>i:j:k<strong>表示间隔为j的一组数</strong></li>
+<li><em>用来表示矩阵的一部分</em>egA(i:j)  A(i:j,k)</li>
+<li>：行列的全体元素,end来表示最后一行或者最后一列的全体元素</li>
+<li>A = B(:,[1 3 2 4])表示对于矩阵B的每一行，将其列的顺序按照‘1，3，2，4’重新编排</li>
+</ul>
+<h2 id="魔方矩阵-magic-n"><a href="#魔方矩阵-magic-n" class="headerlink" title="魔方矩阵  magic(n)"></a>魔方矩阵  magic(n)</h2><p>生成一个n*n的矩阵，矩阵元素是由整数1到n^2组成的并且任何行任何列的和都相等，阶数n必须是大于等于3的标量。</p>
+<hr>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="查询初等函数列表-高等函数列表-，矩阵函数列表"><a href="#查询初等函数列表-高等函数列表-，矩阵函数列表" class="headerlink" title="查询初等函数列表,高等函数列表 ，矩阵函数列表"></a>查询初等函数列表,高等函数列表 ，矩阵函数列表</h2><pre><code>help elfun
+help specfun
+help elmat
+</code></pre><h2 id="内置常数"><a href="#内置常数" class="headerlink" title="内置常数"></a>内置常数</h2><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pi</td>
+<td>3.14159265…</td>
+</tr>
+<tr>
+<td>i</td>
+<td>虚数单位, 根号-1</td>
+</tr>
+<tr>
+<td>realmin</td>
+<td>最小浮点数，2-1022</td>
+</tr>
+<tr>
+<td>realmax</td>
+<td>最大浮点数，(2-)21023</td>
+</tr>
+<tr>
+<td>Inf</td>
+<td>无穷大</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>不定数</td>
+</tr>
+</tbody>
+</table>
+<p>无穷大是通过非零数除以零或者良定义运算溢出（如：超过realmax）产生的;NaN不定数通常由0/0运算、Inf/Inf等良定义的运算得出。</p>
+<p>函数名赋予任意新的变量，将会覆盖掉这些函数。原函数可以用下面的语句恢复：clear eps</p>
+<hr>
+<h2 id="创建图像"><a href="#创建图像" class="headerlink" title="创建图像"></a>创建图像</h2><p>plot(x,y)x是向量，y是x的函数<br>    x = 0:pi/100:2*pi;<br>    y = sin(x);<br>    plot(x,y)</p>
+<h3 id="添加标签和标题"><a href="#添加标签和标题" class="headerlink" title="添加标签和标题"></a>添加标签和标题</h3><p>xlabel(‘’)<br>title(‘<strong>‘,’</strong>‘,size)</p>
+<h3 id="多个函数关系"><a href="#多个函数关系" class="headerlink" title="多个函数关系"></a>多个函数关系</h3><p>一个函数作图命令plot使不同的(x-y)变元函数生成不同的函数图象</p>
+<h3 id="自定义颜色，线型和标记"><a href="#自定义颜色，线型和标记" class="headerlink" title="自定义颜色，线型和标记"></a>自定义颜色，线型和标记</h3><p>plot(x,y,’color_style_marker’)</p>
+<ul>
+<li>颜色字符串有’c’, ‘m’, ‘y’, ‘r’, ‘g’, ‘b’, ‘w’,和’k’。分别表示青，红紫，黄，红，绿，白和黑。</li>
+<li>线型字符串有：’-‘ 为实线, ‘–’ 为虚线, ‘:’ 为点线, ‘-.’ 为点虚线, 及’none’ 表示不用线型。</li>
+<li>标记形式有’+’, ‘o’, ‘*’,和’x’ ，填入’s’ 代表正方形, ‘d’ 代表菱形, ‘^’ 为上三角形, ‘v’ 为下三角形, ‘&gt;’ 为右三角形, ‘&lt;’ 为左三角形, ‘p’ 为五角星形, ‘h’ 为六角星形, none 为不用标记。</li>
+</ul>
+<p><em>操作跟着它前面的一组因变量自变量，即plot(xfit,yfit,x，y’y</em>‘)是对x，y加标记*</p>
+<ul>
+<li>只画出标记型plot(x,y,’ks’) </li>
+<li>每个数值上都有标记，并且连线plot(x,y,’r:+’)</li>
+<li>在更少的点上标记plot(x1,sin(x1),’r:’,x2,sin(x2),’r+’)</li>
+<li><p>冒号算子无法对复数使用，对复数的作图：</p>
+<p>  t = 0:pi/10:2<em>pi;<br>  plot(exp(i</em>t),’-o’)</p>
+</li>
+<li><p>使x，y轴单位长度等长</p>
+<p>  axis equal</p>
+</li>
+</ul>
+<h3 id="在现有图中添加图"><a href="#在现有图中添加图" class="headerlink" title="在现有图中添加图"></a>在现有图中添加图</h3><ul>
+<li><p>原图还在</p>
+<p>  hold on</p>
+</li>
+<li>原图覆盖<br>  hold off</li>
+</ul>
+<h3 id="要使已有的窗口成为当前窗口"><a href="#要使已有的窗口成为当前窗口" class="headerlink" title="要使已有的窗口成为当前窗口"></a>要使已有的窗口成为当前窗口</h3><pre><code>figure(n)
+</code></pre><h3 id="要打开一个新窗口并使它成为当前窗口"><a href="#要打开一个新窗口并使它成为当前窗口" class="headerlink" title="要打开一个新窗口并使它成为当前窗口"></a>要打开一个新窗口并使它成为当前窗口</h3><pre><code>figure
+</code></pre><h3 id="在同一窗口中作多幅图"><a href="#在同一窗口中作多幅图" class="headerlink" title="在同一窗口中作多幅图"></a>在同一窗口中作多幅图</h3><pre><code>subplot(m,n,p)
+</code></pre><p>把figure窗口分成m*n个子区域及选择第p个区域为当前图</p>
+<h3 id="设置轴的范围"><a href="#设置轴的范围" class="headerlink" title="设置轴的范围"></a>设置轴的范围</h3><ul>
+<li><p>二维中</p>
+<p>  axis([xmin xmax ymin ymax])</p>
+</li>
+<li><p>三维中</p>
+<p>  axis([xmin xmax ymin ymax zmin zmax])</p>
+</li>
+<li><p>MATLAB重新自动选择范围</p>
+<p>  axis auto</p>
+</li>
+</ul>
+<h3 id="设定纵横比"><a href="#设定纵横比" class="headerlink" title="设定纵横比"></a>设定纵横比</h3><ul>
+<li><p>xy轴等长</p>
+<p>  axis square</p>
+</li>
+<li><p>xy轴单位长度相等</p>
+<p>  axis equal</p>
+</li>
+<li><p>返回默认模式中定义的缩放比例</p>
+<p>  axis auto normal</p>
+</li>
+</ul>
+<h3 id="设定轴和网格显示或隐藏"><a href="#设定轴和网格显示或隐藏" class="headerlink" title="设定轴和网格显示或隐藏"></a>设定轴和网格显示或隐藏</h3><pre><code>axis on/off
+grid on/off
+</code></pre><h3 id="标签标题及文本设置"><a href="#标签标题及文本设置" class="headerlink" title="标签标题及文本设置"></a>标签标题及文本设置</h3><ul>
+<li>用xlabel, ylabel, 及zlabel 命令添加x-,y-,z-等标签。</li>
+<li>用title 命令在图象顶部加标题，</li>
+<li>用text 函数在图象中任何部位添加文本<br><img src="https://www.electronicshub.org/wp-content/uploads/2014/10/MATLAB-Logo.png" alt=""></li>
+</ul>
+<hr>
+<h2 id="脚本与函数"><a href="#脚本与函数" class="headerlink" title="脚本与函数"></a>脚本与函数</h2><ul>
+<li>在MATLAB中有两种M-文件:</li>
+</ul>
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><p>不需要在其中输入参数或返回输出结果。可以在工作空间运行数据。 </p>
+<h3 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h3><p>需要给定输入参数和返回输出结果。函数文件内定义的变量仅在函数文件内部起作用。</p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>一个函数共用一个简单的变量，简单的处理方法就是把这个变量在所有函数中定义为global全局变量。</p>
+<p>　</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/07/用putty快捷方式免密远程访问树莓派/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrellacode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/07/用putty快捷方式免密远程访问树莓派/" itemprop="url">用putty快捷方式免密远程访问树莓派</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T00:01:46+08:00">
+                2018-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="创建公钥私钥"><a href="#创建公钥私钥" class="headerlink" title="创建公钥私钥"></a>创建公钥私钥</h1><p><strong>命令</strong></p>
+<pre><code>ssh-keygen -t rsa -p&quot;&quot;
+</code></pre><h1 id="公钥放在树莓派"><a href="#公钥放在树莓派" class="headerlink" title="公钥放在树莓派"></a>公钥放在树莓派</h1><p><strong>命令</strong></p>
+<pre><code>cat /home/pi/.ssh/id_rsa.pub&gt;&gt;/home/pi/.ssh/authorized_keys
+</code></pre><h1 id="私钥放在主机"><a href="#私钥放在主机" class="headerlink" title="私钥放在主机"></a>私钥放在主机</h1><p>windows上下载winscp去把私钥拷贝到电脑上</p>
+<h1 id="转换私钥"><a href="#转换私钥" class="headerlink" title="转换私钥"></a>转换私钥</h1><p>用puttygen转换保存为pi.ppk</p>
+<h1 id="创建快捷方式"><a href="#创建快捷方式" class="headerlink" title="创建快捷方式"></a>创建快捷方式</h1><p>键入位置为“putty.exe 的位置” -i “pi.ppk的位置”pi@ip地址</p>
+<h1 id="更改图标"><a href="#更改图标" class="headerlink" title="更改图标"></a>更改图标</h1><p>我用的ico在线转换网站<a href="https://www.jinaconvert.com/cn/convert-to-ico.php" target="_blank" rel="noopener">https://www.jinaconvert.com/cn/convert-to-ico.php</a></p>
+<h2 id="可能会有这种情况"><a href="#可能会有这种情况" class="headerlink" title="可能会有这种情况"></a>可能会有这种情况</h2><p><img src="http://a2.qpic.cn/psb?/V11V3soz2JNi4c/35WuS8wJoxEHKOAQfDbsiahozQh*LJO0Ks*VCyJjIDA!/c/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAHwAAAAAAARFxE!&amp;vuin=3033668267&amp;tm=1523030400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+<p>树莓派终端输入命令sudo service ssh restart</p>
+<p>效果如下<br><img src="http://a2.qpic.cn/psb?/V11V3soz2JNi4c/.AN0s8D1Li409C6*FecmQDSV71LgAjxnAbCTKYGM1HM!/c/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=VACAAAAAAAARF*Q!&amp;vuin=3033668267&amp;tm=1523030400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+<p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/vplnFHXrHmAx4n8VkNYfgbRM6elwSVKh6P2hLNCLZeM!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=OQMJAgAAAAARFxE!&amp;vuin=3033668267&amp;tm=1523030400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/获取图片外链/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -801,7 +1187,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
