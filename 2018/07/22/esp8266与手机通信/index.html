@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/07/22/esp8266与手机通信/img%20style=%22height:275px;width:560px;%22%20src=%22http://a3.qpic.cn/psb?/V11V3soz2JNi4c/hrQHWGuHtul4dtRCLYlnMQmNRZcAJZnwlAFPx36Nvd4!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=WAInAQAAAAARF1w!&tl=1&vuin=3033668267&tm=1532242800&sce=60-2-2&rf=0-0">
 <meta property="og:image" content="http://yoursite.com/2018/07/22/esp8266与手机通信/img%20style=%22height:280px;width:560px;%22%20src=%22http://a2.qpic.cn/psb?/V11V3soz2JNi4c/5SXgciFn2Z*W6SdeUKwGfNOvdiSHUURFYAuKTDOiXGQ!/c/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=WAIsAQAAAAARF1c!&tl=1&vuin=3033668267&tm=1532242800&sce=60-2-2&rf=0-0">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/c9aI9hNZ2MW8QrUfHHIu1hnQF.MKDSOMxZ2uWh2hY5o!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=yQLHAAAAAAARFyw!&tl=1&vuin=3033668267&tm=1532242800&sce=60-2-2&rf=0-0">
-<meta property="og:updated_time" content="2018-07-23T11:18:54.881Z">
+<meta property="og:updated_time" content="2018-07-26T13:07:09.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ESP8266与手机通信">
 <meta name="twitter:description" content="此问题为项目报错系统的一部分  利用网络调试助手，将错误信息传送手机里 首先是利用串口和AT指令配置ESP8266模块  因为usb转串口还没到货，只好用精英板板载的，连接如图所示（vcc连3.3v或5v都可以） 打开xcom串口调试助手，波特率设置为115200。要记得发完AT指令要换行 （ps一些教程里写的是/r/n，但我们不能傻乎乎把/r/n打上去，要按enter pps有的时候不换行好像">
@@ -330,7 +330,27 @@
 </ul>
 <p>服务器：被动的角色（从）。 </p>
 <p>等待来自客户端的要求。 处理要求并传回结果。客户端：主动的角色（主）。 发送要求。 等待直到收到回应。</p>
-<h2 id="接下来实现与手机的信息传输"><a href="#接下来实现与手机的信息传输" class="headerlink" title="接下来实现与手机的信息传输"></a>接下来实现与手机的信息传输</h2>
+<p>  透传即是透明传送，是指传送网络无论传输业务如何，只负责将需要传送的业务传送到目的节点，同时保证传输的质量即可，而不对传输的业务进行处理。<br>在数据的传输过程中，这组数据不发生任何形式的改变，即不截断，不分组，不编码，不加密，不混淆等等，仿佛传输过程是透明的一样，原封不动地到了最终接收者手里。</p>
+<h2 id="接下来实现与电脑的一个模式的信息传输"><a href="#接下来实现与电脑的一个模式的信息传输" class="headerlink" title="接下来实现与电脑的一个模式的信息传输"></a>接下来实现与电脑的一个模式的信息传输</h2><ul>
+<li>查询电脑IP的命令行<br>  ipconfig/all</li>
+<li>需要注意的问题1.电脑和esp8266必须同时连接一个WiFi2.有的时候不知道对端口做了什么，tcp client和udp都能连接可是tcp sever不行，anyway只能换个端口3.网络调试助手突然闪退后那个端口就用不了了。。。</li>
+<li>手机一个道理，就是界面简单点，都是通过网络调试助手来安排端口。<h3 id="简单整理一下与电脑单连接TCP-client的流程"><a href="#简单整理一下与电脑单连接TCP-client的流程" class="headerlink" title="简单整理一下与电脑单连接TCP client的流程"></a>简单整理一下与电脑单连接TCP client的流程</h3></li>
+</ul>
+<ol>
+<li><p>电脑和esp8266连接同一个WiFi<br> AT+CWMODE=3      // softAP+station mode<br> Response:OK</p>
+<p> AT+CWJAP=”SSID”,”password”       // SSID and password of router<br> Response :OK  </p>
+<p> AT+CIFSR<br> Response:192.168.x.xxx   // Device got an IP from router. </p>
+<p> AT+CIPSTART=”TCP”,”192.168.x.xxx”,8080  //protocol̵server IP &amp; port<br> Response:OK </p>
+<p> AT+CIPSEND=4 // set date length which will be sent,  such as 4 bytes  </p>
+<blockquote>
+<p>DGFY         // enter the data,  no CR<br> Response :SEND OK </p>
+</blockquote>
+<h1 id="最后！终于到了我们用神tm32来控制发送AT指令的时候了！"><a href="#最后！终于到了我们用神tm32来控制发送AT指令的时候了！" class="headerlink" title="最后！终于到了我们用神tm32来控制发送AT指令的时候了！"></a>最后！终于到了我们用神tm32来控制发送AT指令的时候了！</h1></li>
+</ol>
+<ul>
+<li>原理：通过串口发送AT指令</li>
+</ul>
+
       
     </div>
     
@@ -443,7 +463,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -480,7 +500,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先是利用串口和AT指令配置ESP8266模块"><span class="nav-number">1.</span> <span class="nav-text">首先是利用串口和AT指令配置ESP8266模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来了解一下一些ESP8266工作模式"><span class="nav-number">2.</span> <span class="nav-text">接下来了解一下一些ESP8266工作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来实现与手机的信息传输"><span class="nav-number">3.</span> <span class="nav-text">接下来实现与手机的信息传输</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先是利用串口和AT指令配置ESP8266模块"><span class="nav-number">1.</span> <span class="nav-text">首先是利用串口和AT指令配置ESP8266模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来了解一下一些ESP8266工作模式"><span class="nav-number">2.</span> <span class="nav-text">接下来了解一下一些ESP8266工作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来实现与电脑的一个模式的信息传输"><span class="nav-number">3.</span> <span class="nav-text">接下来实现与电脑的一个模式的信息传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单整理一下与电脑单连接TCP-client的流程"><span class="nav-number">3.1.</span> <span class="nav-text">简单整理一下与电脑单连接TCP client的流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后！终于到了我们用神tm32来控制发送AT指令的时候了！"><span class="nav-number"></span> <span class="nav-text">最后！终于到了我们用神tm32来控制发送AT指令的时候了！</span></a></div>
             
 
           </div>
