@@ -79,21 +79,17 @@
 
 
 
-<meta name="description" content="盗版stlink接线  盗版stlink设置options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw 注意事项必须在编译过才能下载，否则会出现">
+<meta name="description" content="配置开发环境 遇到问题，xtime composer说需要jre1.6以上，但是还是不行。冷静分析后发现它要的是32位的Java。  那只好重新下载一个32位的专门给它用。需要解决这个同存32位和64位jre的问题  去oracle官网上下载，只要括号里没标64bit，就是32位的 然后它会让你更改路径，这个路径要记好，一会初始化要用 32位jre下载好之后我们打开xtimecomposer_bi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="盗版stlink下载笔记">
-<meta property="og:url" content="http://yoursite.com/2018/05/29/盗版STLINK下载笔记/index.html">
+<meta property="og:title" content="xcom开发学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/07/31/XCOM学习笔记/index.html">
 <meta property="og:site_name" content="estrellacode">
-<meta property="og:description" content="盗版stlink接线  盗版stlink设置options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw 注意事项必须在编译过才能下载，否则会出现">
+<meta property="og:description" content="配置开发环境 遇到问题，xtime composer说需要jre1.6以上，但是还是不行。冷静分析后发现它要的是32位的Java。  那只好重新下载一个32位的专门给它用。需要解决这个同存32位和64位jre的问题  去oracle官网上下载，只要括号里没标64bit，就是32位的 然后它会让你更改路径，这个路径要记好，一会初始化要用 32位jre下载好之后我们打开xtimecomposer_bi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/NippI*6LXaVOgsc4qtKiWRKVaO0dmsmYJd*DmIiJAm8!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=OASgBQAAAAARGLY!&tl=1&vuin=3033668267&tm=1527656400&sce=60-2-2&rf=0-0">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/mXK.qc1RdPa81bK.kaclv0ww0YO2GdVGHkmnJvg17gA!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=oAU4BAAAAAARGLY!&tl=1&vuin=3033668267&tm=1527656400&sce=60-2-2&rf=0-0">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/eW4DHvjSgf2SwypJDlQOLqlB9g9m.7iqxnDLmC3f5qg!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=PQLQAAAAAAARF88!&tl=1&vuin=3033668267&tm=1527656400&sce=60-2-2&rf=0-0">
-<meta property="og:updated_time" content="2018-05-30T07:31:10.895Z">
+<meta property="og:updated_time" content="2018-07-31T13:35:52.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="盗版stlink下载笔记">
-<meta name="twitter:description" content="盗版stlink接线  盗版stlink设置options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw 注意事项必须在编译过才能下载，否则会出现">
-<meta name="twitter:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/NippI*6LXaVOgsc4qtKiWRKVaO0dmsmYJd*DmIiJAm8!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=OASgBQAAAAARGLY!&tl=1&vuin=3033668267&tm=1527656400&sce=60-2-2&rf=0-0">
+<meta name="twitter:title" content="xcom开发学习笔记">
+<meta name="twitter:description" content="配置开发环境 遇到问题，xtime composer说需要jre1.6以上，但是还是不行。冷静分析后发现它要的是32位的Java。  那只好重新下载一个32位的专门给它用。需要解决这个同存32位和64位jre的问题  去oracle官网上下载，只要括号里没标64bit，就是32位的 然后它会让你更改路径，这个路径要记好，一会初始化要用 32位jre下载好之后我们打开xtimecomposer_bi">
 
 
 
@@ -123,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/29/盗版STLINK下载笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/31/XCOM学习笔记/"/>
 
 
 
 
 
-  <title>盗版stlink下载笔记 | estrellacode</title>
+  <title>xcom开发学习笔记 | estrellacode</title>
   
 
 
@@ -236,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/盗版STLINK下载笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/XCOM学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="estrella">
@@ -253,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">盗版stlink下载笔记</h1>
+          <h1 class="post-title" itemprop="name headline">xcom开发学习笔记</h1>
         
 
         <div class="post-meta">
@@ -265,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T21:35:48+08:00">
-                2018-05-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-31T14:31:29+08:00">
+                2018-07-31
               </time>
             
 
@@ -303,10 +299,18 @@
       
 
       
-        <h1 id="盗版stlink接线"><a href="#盗版stlink接线" class="headerlink" title="盗版stlink接线"></a>盗版stlink接线</h1><p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/NippI*6LXaVOgsc4qtKiWRKVaO0dmsmYJd*DmIiJAm8!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=OASgBQAAAAARGLY!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/mXK.qc1RdPa81bK.kaclv0ww0YO2GdVGHkmnJvg17gA!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=oAU4BAAAAAARGLY!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<h1 id="盗版stlink设置"><a href="#盗版stlink设置" class="headerlink" title="盗版stlink设置"></a>盗版stlink设置</h1><p>options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>必须在编译过才能下载，否则会出现<br><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/eW4DHvjSgf2SwypJDlQOLqlB9g9m.7iqxnDLmC3f5qg!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=PQLQAAAAAAARF88!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+        <h2 id="配置开发环境"><a href="#配置开发环境" class="headerlink" title="配置开发环境"></a>配置开发环境</h2><ul>
+<li>遇到问题，xtime composer说需要jre1.6以上，但是还是不行。冷静分析后发现它要的是32位的Java。</li>
+</ul>
+<p>那只好重新下载一个32位的专门给它用。需要解决这个同存32位和64位jre的问题</p>
+<ol>
+<li>去oracle官网上下载，只要括号里没标64bit，就是32位的</li>
+<li>然后它会让你更改路径，这个路径要记好，一会初始化要用</li>
+<li>32位jre下载好之后我们打开xtimecomposer_bin里面的xtimecomposer.ini，在第一行加上<br> -vm<br> path/bin<br>4.再点击桌面上快捷方式中的xTIME Composer Studio (Community_14.3.3)就好<h3 id="总结：xmos并不是一个新软件，它好像使用eclipse加了些配置成了一个开发环境，这还不错。"><a href="#总结：xmos并不是一个新软件，它好像使用eclipse加了些配置成了一个开发环境，这还不错。" class="headerlink" title="总结：xmos并不是一个新软件，它好像使用eclipse加了些配置成了一个开发环境，这还不错。"></a>总结：xmos并不是一个新软件，它好像使用eclipse加了些配置成了一个开发环境，这还不错。</h3><h2 id="startkit入门"><a href="#startkit入门" class="headerlink" title="startkit入门"></a>startkit入门</h2></li>
+</ol>
+<ul>
+<li>首先了解到这款开发板和之前我们常学的51、32、430等不同的是，它的mcu是多核的。这涉及到微机原理方面的内容，简单预习一下吧<br>多核比单核的优势是速度快：因为单核速度太快频率高，散热问题得不到解决，电的传输速率也限制了一点点，所以为了继续提高速率就提出多核。多内核(multicore chips)是指在一枚处理器(CPU)中集成两个或多个完整的计算引擎(内核)。<br>这款开发板查到的资料比较少。。。我查了相关的多核mcu，有个例子蛮不错，就是流水灯和中断开蜂鸣器的流水灯，流水速度不一样。。假如非要控制速度一样呢？？多核就能避免这种。更何况，现在物联网使得我们对mcu的要求高了很多。</li>
+</ul>
 
       
     </div>
@@ -331,8 +335,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/29/STM32工程模板建立笔记/" rel="next" title="STM32工程模板建立笔记">
-                <i class="fa fa-chevron-left"></i> STM32工程模板建立笔记
+              <a href="/2018/07/31/关于使用32tim3Chanel1遇到的问题/" rel="next" title="关于使用tim3channel1的问题">
+                <i class="fa fa-chevron-left"></i> 关于使用tim3channel1的问题
               </a>
             
           </div>
@@ -341,8 +345,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/22/esp8266与手机通信/" rel="prev" title="ESP8266与手机通信">
-                ESP8266与手机通信 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/02/陀螺仪模块学习/" rel="prev" title="陀螺仪模块学习笔记">
+                陀螺仪模块学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -457,7 +461,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#盗版stlink接线"><span class="nav-number">1.</span> <span class="nav-text">盗版stlink接线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#盗版stlink设置"><span class="nav-number">2.</span> <span class="nav-text">盗版stlink设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置开发环境"><span class="nav-number">1.</span> <span class="nav-text">配置开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结：xmos并不是一个新软件，它好像使用eclipse加了些配置成了一个开发环境，这还不错。"><span class="nav-number">1.1.</span> <span class="nav-text">总结：xmos并不是一个新软件，它好像使用eclipse加了些配置成了一个开发环境，这还不错。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#startkit入门"><span class="nav-number">2.</span> <span class="nav-text">startkit入门</span></a></li></ol></div>
             
 
           </div>

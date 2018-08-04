@@ -79,21 +79,17 @@
 
 
 
-<meta name="description" content="盗版stlink接线  盗版stlink设置options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw 注意事项必须在编译过才能下载，否则会出现">
+<meta name="description" content="Esp8266有三种开发方式1.AT指令开发，这个最简单，我们已经很熟了。2.SDK开发，这个我们正准备学。3.LUA语言开发，这个还不太明白怎么做的。 SDK开发装SDK开发的IDE 遇到一个有趣的问题：要求路径里不能有空格（can’t have space 我还以为是空间不够） 装SDK开发的IDE用安信可的一套集成开发软件就好，基于eclipseLUA开发LUA开发环境为ESPlorerLU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="盗版stlink下载笔记">
-<meta property="og:url" content="http://yoursite.com/2018/05/29/盗版STLINK下载笔记/index.html">
+<meta property="og:title" content="esp8266高级开发">
+<meta property="og:url" content="http://yoursite.com/2018/08/03/esp8266高级开发/index.html">
 <meta property="og:site_name" content="estrellacode">
-<meta property="og:description" content="盗版stlink接线  盗版stlink设置options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw 注意事项必须在编译过才能下载，否则会出现">
+<meta property="og:description" content="Esp8266有三种开发方式1.AT指令开发，这个最简单，我们已经很熟了。2.SDK开发，这个我们正准备学。3.LUA语言开发，这个还不太明白怎么做的。 SDK开发装SDK开发的IDE 遇到一个有趣的问题：要求路径里不能有空格（can’t have space 我还以为是空间不够） 装SDK开发的IDE用安信可的一套集成开发软件就好，基于eclipseLUA开发LUA开发环境为ESPlorerLU">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/NippI*6LXaVOgsc4qtKiWRKVaO0dmsmYJd*DmIiJAm8!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=OASgBQAAAAARGLY!&tl=1&vuin=3033668267&tm=1527656400&sce=60-2-2&rf=0-0">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/mXK.qc1RdPa81bK.kaclv0ww0YO2GdVGHkmnJvg17gA!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=oAU4BAAAAAARGLY!&tl=1&vuin=3033668267&tm=1527656400&sce=60-2-2&rf=0-0">
-<meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/eW4DHvjSgf2SwypJDlQOLqlB9g9m.7iqxnDLmC3f5qg!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=PQLQAAAAAAARF88!&tl=1&vuin=3033668267&tm=1527656400&sce=60-2-2&rf=0-0">
-<meta property="og:updated_time" content="2018-05-30T07:31:10.895Z">
+<meta property="og:updated_time" content="2018-08-04T08:52:14.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="盗版stlink下载笔记">
-<meta name="twitter:description" content="盗版stlink接线  盗版stlink设置options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw 注意事项必须在编译过才能下载，否则会出现">
-<meta name="twitter:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/NippI*6LXaVOgsc4qtKiWRKVaO0dmsmYJd*DmIiJAm8!/c/dCIBAAAAAAAA&ek=1&kp=1&pt=0&bo=OASgBQAAAAARGLY!&tl=1&vuin=3033668267&tm=1527656400&sce=60-2-2&rf=0-0">
+<meta name="twitter:title" content="esp8266高级开发">
+<meta name="twitter:description" content="Esp8266有三种开发方式1.AT指令开发，这个最简单，我们已经很熟了。2.SDK开发，这个我们正准备学。3.LUA语言开发，这个还不太明白怎么做的。 SDK开发装SDK开发的IDE 遇到一个有趣的问题：要求路径里不能有空格（can’t have space 我还以为是空间不够） 装SDK开发的IDE用安信可的一套集成开发软件就好，基于eclipseLUA开发LUA开发环境为ESPlorerLU">
 
 
 
@@ -123,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/29/盗版STLINK下载笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/03/esp8266高级开发/"/>
 
 
 
 
 
-  <title>盗版stlink下载笔记 | estrellacode</title>
+  <title>esp8266高级开发 | estrellacode</title>
   
 
 
@@ -236,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/盗版STLINK下载笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/03/esp8266高级开发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="estrella">
@@ -253,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">盗版stlink下载笔记</h1>
+          <h1 class="post-title" itemprop="name headline">esp8266高级开发</h1>
         
 
         <div class="post-meta">
@@ -265,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T21:35:48+08:00">
-                2018-05-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T09:32:07+08:00">
+                2018-08-03
               </time>
             
 
@@ -303,10 +299,11 @@
       
 
       
-        <h1 id="盗版stlink接线"><a href="#盗版stlink接线" class="headerlink" title="盗版stlink接线"></a>盗版stlink接线</h1><p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/NippI*6LXaVOgsc4qtKiWRKVaO0dmsmYJd*DmIiJAm8!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=OASgBQAAAAARGLY!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/mXK.qc1RdPa81bK.kaclv0ww0YO2GdVGHkmnJvg17gA!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=oAU4BAAAAAARGLY!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<h1 id="盗版stlink设置"><a href="#盗版stlink设置" class="headerlink" title="盗版stlink设置"></a>盗版stlink设置</h1><p>options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>必须在编译过才能下载，否则会出现<br><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/eW4DHvjSgf2SwypJDlQOLqlB9g9m.7iqxnDLmC3f5qg!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=PQLQAAAAAAARF88!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+        <h2 id="Esp8266有三种开发方式"><a href="#Esp8266有三种开发方式" class="headerlink" title="Esp8266有三种开发方式"></a>Esp8266有三种开发方式</h2><p>1.AT指令开发，这个最简单，我们已经很熟了。<br>2.SDK开发，这个我们正准备学。<br>3.LUA语言开发，这个还不太明白怎么做的。</p>
+<h1 id="SDK开发"><a href="#SDK开发" class="headerlink" title="SDK开发"></a>SDK开发</h1><h2 id="装SDK开发的IDE"><a href="#装SDK开发的IDE" class="headerlink" title="装SDK开发的IDE"></a>装SDK开发的IDE</h2><ul>
+<li>遇到一个有趣的问题：要求路径里不能有空格（can’t have space 我还以为是空间不够）</li>
+<li>装SDK开发的IDE用安信可的一套集成开发软件就好，基于eclipse<h1 id="LUA开发"><a href="#LUA开发" class="headerlink" title="LUA开发"></a>LUA开发</h1><h2 id="LUA开发环境为ESPlorer"><a href="#LUA开发环境为ESPlorer" class="headerlink" title="LUA开发环境为ESPlorer"></a>LUA开发环境为ESPlorer</h2><h2 id="LUA烧录软件为LuaLoader"><a href="#LUA烧录软件为LuaLoader" class="headerlink" title="LUA烧录软件为LuaLoader"></a>LUA烧录软件为LuaLoader</h2></li>
+</ul>
 
       
     </div>
@@ -331,8 +328,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/29/STM32工程模板建立笔记/" rel="next" title="STM32工程模板建立笔记">
-                <i class="fa fa-chevron-left"></i> STM32工程模板建立笔记
+              <a href="/2018/08/02/WiFi测距/" rel="next" title="模板">
+                <i class="fa fa-chevron-left"></i> 模板
               </a>
             
           </div>
@@ -340,10 +337,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/22/esp8266与手机通信/" rel="prev" title="ESP8266与手机通信">
-                ESP8266与手机通信 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,7 +450,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#盗版stlink接线"><span class="nav-number">1.</span> <span class="nav-text">盗版stlink接线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#盗版stlink设置"><span class="nav-number">2.</span> <span class="nav-text">盗版stlink设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Esp8266有三种开发方式"><span class="nav-number">1.</span> <span class="nav-text">Esp8266有三种开发方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SDK开发"><span class="nav-number"></span> <span class="nav-text">SDK开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#装SDK开发的IDE"><span class="nav-number">1.</span> <span class="nav-text">装SDK开发的IDE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LUA开发"><span class="nav-number"></span> <span class="nav-text">LUA开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LUA开发环境为ESPlorer"><span class="nav-number">1.</span> <span class="nav-text">LUA开发环境为ESPlorer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LUA烧录软件为LuaLoader"><span class="nav-number">2.</span> <span class="nav-text">LUA烧录软件为LuaLoader</span></a></li></ol></div>
             
 
           </div>
