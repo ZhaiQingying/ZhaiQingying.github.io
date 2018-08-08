@@ -229,6 +229,293 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/22/esp8266与手机通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrellacode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/22/esp8266与手机通信/" itemprop="url">ESP8266与手机通信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T09:22:30+08:00">
+                2018-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>此问题为项目报错系统的一部分</p>
+</li>
+<li><p>利用网络调试助手，将错误信息传送手机里</p>
+<h2 id="首先是利用串口和AT指令配置ESP8266模块"><a href="#首先是利用串口和AT指令配置ESP8266模块" class="headerlink" title="首先是利用串口和AT指令配置ESP8266模块"></a>首先是利用串口和AT指令配置ESP8266模块</h2></li>
+</ul>
+<p>因为usb转串口还没到货，只好用精英板板载的，连接如图所示（vcc连3.3v或5v都可以）<br><img src="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/xOEgyhvXU4b40eKQxtjWLbP3*nJIcK0TZ7j8pvLB3Lk!/c/dIQBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=oAU4BAAAAAARKIY!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532235600&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+<p>打开xcom串口调试助手，波特率设置为115200。要记得发完AT指令要换行</p>
+<p>（ps一些教程里写的是/r/n，但我们不能傻乎乎把/r/n打上去，要按enter</p>
+<p>pps有的时候不换行好像也行，但有时候会报错，比如加入WiFi的时候）</p>
+<p><img src="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/lJnu17r60dpuGuJBdQBTi252j9W6UB0KRLKe8hn2BTA!/c/dGwBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=0wGsAAAAAAARF14!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532235600&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+<h2 id="接下来了解一下一些ESP8266工作模式"><a href="#接下来了解一下一些ESP8266工作模式" class="headerlink" title="接下来了解一下一些ESP8266工作模式"></a>接下来了解一下一些ESP8266工作模式</h2><ul>
+<li>Wifi模块为串口或TTL电平转WIFI通信的一种传输转换模块，内置无线网络协议IEEE802.11协议栈以及TCP/IP协议栈，能够实现用户串口或TTL电平数据到无线网络之间的转换。 </li>
+<li>AP模式和STA模式的区别<br>1.AP模式: Access Point，提供无线接入服务，允许其它无线设备接入，提供数据访问，一般的无线路由/网桥工作在该模式下。AP和AP之间允许相互连接<br><img src="img style=&quot;height:275px;width:560px;&quot; src=&quot;http://a3.qpic.cn/psb?/V11V3soz2JNi4c/hrQHWGuHtul4dtRCLYlnMQmNRZcAJZnwlAFPx36Nvd4!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=WAInAQAAAAARF1w!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532242800&amp;sce=60-2-2&amp;rf=0-0" alt=""></li>
+</ul>
+<ol>
+<li>Sta模式: Station, 类似于无线终端，sta本身并不接受无线的接入，它可以连接到AP，一般无线网卡即工作在该模式<br><img src="img style=&quot;height:280px;width:560px;&quot; src=&quot;http://a2.qpic.cn/psb?/V11V3soz2JNi4c/5SXgciFn2Z*W6SdeUKwGfNOvdiSHUURFYAuKTDOiXGQ!/c/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=WAIsAQAAAAARF1c!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532242800&amp;sce=60-2-2&amp;rf=0-0" alt=""></li>
+</ol>
+<ul>
+<li>基于AP组建的基础无线网络（ Infra） ： Infra： 也称为基础网， 是由AP创建， 众多STA<br>加入所组成的无线网络， 这种类型的网络的特点是AP是整个网络的中心， 网络中所有的通<br>信都通过AP来转发完成。<br>基于自组网的无线网络（Adhoc）：Adhoc：也称为自组网，是仅由两个及以上STA自己组成，网络中不存在AP，这种类型的网络是一种松散的结构，网络中所有的STA都可以直接通信。</li>
+<li>AP+STA组网模式是一种非常实用的组网模式：当模块作为AP时，它同时又可以作为一个STA模式存在，例如：WIFI模块作为AP，可以让客户的手机或者计算机接入，同时该模块又可以作为一个STA接入到路由器或者上位服务器进行数据上传</li>
+<li>TCP客户端 TCP服务器与 UDP<br><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/c9aI9hNZ2MW8QrUfHHIu1hnQF.MKDSOMxZ2uWh2hY5o!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=yQLHAAAAAAARFyw!&amp;tl=1&amp;vuin=3033668267&amp;tm=1532242800&amp;sce=60-2-2&amp;rf=0-0" alt=""><br>客户端服务器：又叫主从式架构，简称C/S结构，是一种网络架构。</li>
+</ul>
+<p>服务器：被动的角色（从）。 </p>
+<p>等待来自客户端的要求。 处理要求并传回结果。客户端：主动的角色（主）。 发送要求。 等待直到收到回应。</p>
+<p>  透传即是透明传送，是指传送网络无论传输业务如何，只负责将需要传送的业务传送到目的节点，同时保证传输的质量即可，而不对传输的业务进行处理。<br>在数据的传输过程中，这组数据不发生任何形式的改变，即不截断，不分组，不编码，不加密，不混淆等等，仿佛传输过程是透明的一样，原封不动地到了最终接收者手里。</p>
+<h2 id="接下来实现与电脑的一个模式的信息传输"><a href="#接下来实现与电脑的一个模式的信息传输" class="headerlink" title="接下来实现与电脑的一个模式的信息传输"></a>接下来实现与电脑的一个模式的信息传输</h2><ul>
+<li>查询电脑IP的命令行<br>  ipconfig/all</li>
+<li>需要注意的问题1.电脑和esp8266必须同时连接一个WiFi2.有的时候不知道对端口做了什么，tcp client和udp都能连接可是tcp sever不行，anyway只能换个端口3.网络调试助手突然闪退后那个端口就用不了了。。。</li>
+<li>手机一个道理，就是界面简单点，都是通过网络调试助手来安排端口。<h3 id="简单整理一下与电脑单连接TCP-client的流程"><a href="#简单整理一下与电脑单连接TCP-client的流程" class="headerlink" title="简单整理一下与电脑单连接TCP client的流程"></a>简单整理一下与电脑单连接TCP client的流程</h3></li>
+</ul>
+<ol>
+<li><p>电脑和esp8266连接同一个WiFi<br> AT+CWMODE=3      // softAP+station mode<br> Response:OK</p>
+<p> AT+CWJAP=”SSID”,”password”       // SSID and password of router<br> Response :OK  </p>
+<p> AT+CIFSR<br> Response:192.168.x.xxx   // Device got an IP from router. </p>
+<p> AT+CIPSTART=”TCP”,”192.168.x.xxx”,8080  //protocol̵server IP &amp; port<br> Response:OK </p>
+<p> AT+CIPSEND=4 // set date length which will be sent,  such as 4 bytes  </p>
+<blockquote>
+<p>DGFY         // enter the data,  no CR<br> Response :SEND OK<br>AT+CWSAP=”ap4”,”11111111”,1,4</p>
+</blockquote>
+<h1 id="最后！终于到了我们用神tm32来控制发送AT指令的时候了！"><a href="#最后！终于到了我们用神tm32来控制发送AT指令的时候了！" class="headerlink" title="最后！终于到了我们用神tm32来控制发送AT指令的时候了！"></a>最后！终于到了我们用神tm32来控制发送AT指令的时候了！</h1></li>
+</ol>
+<ul>
+<li>原理：通过串口发送AT指令</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/盗版STLINK下载笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrellacode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/29/盗版STLINK下载笔记/" itemprop="url">盗版stlink下载笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T21:35:48+08:00">
+                2018-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="盗版stlink接线"><a href="#盗版stlink接线" class="headerlink" title="盗版stlink接线"></a>盗版stlink接线</h1><p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/NippI*6LXaVOgsc4qtKiWRKVaO0dmsmYJd*DmIiJAm8!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=OASgBQAAAAARGLY!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+<p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/mXK.qc1RdPa81bK.kaclv0ww0YO2GdVGHkmnJvg17gA!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=oAU4BAAAAAARGLY!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+<h1 id="盗版stlink设置"><a href="#盗版stlink设置" class="headerlink" title="盗版stlink设置"></a>盗版stlink设置</h1><p>options for target中debug和utilities中能改成stlink的都改成stlink，其中port类型为sw</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>必须在编译过才能下载，否则会出现<br><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/eW4DHvjSgf2SwypJDlQOLqlB9g9m.7iqxnDLmC3f5qg!/c/dCIBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=PQLQAAAAAAARF88!&amp;tl=1&amp;vuin=3033668267&amp;tm=1527656400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/STM32工程模板建立笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1387,271 +1674,6 @@ grid on/off
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/获取图片外链/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrellacode">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/06/获取图片外链/" itemprop="url">获取图片外链</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T15:41:47+08:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="利用查看元素的方式获取图片外链"><a href="#利用查看元素的方式获取图片外链" class="headerlink" title="利用查看元素的方式获取图片外链"></a>利用查看元素的方式获取图片外链</h2><p>有的贴图站图片有<strong> 时限 </strong>，有的要<strong> 付费 </strong>，其实没必要利用贴图站去获取图片外链</p>
-<ul>
-<li>win10 Microsoft Edge中右击检查元素</li>
-</ul>
-<p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/LSTN60rLWHhZNSfNoWesjTVAxRnfEzbZtCTRAlf7hCU!/c/dB4BAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=ewDqAAAAAAARF7E!&amp;vuin=3033668267&amp;tm=1522998000&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<ul>
-<li><p>再点击选择元素，或快捷键ctrl+b</p>
-</li>
-<li><p>将鼠标移到图片上</p>
-</li>
-<li><p>复制下面标记里看起来像图片外链的东西</p>
-</li>
-</ul>
-<p><img src="http://a2.qpic.cn/psb?/V11V3soz2JNi4c/cYeQWhUDGXc7YpNT5LYiRaziLN2SPR2Nh3NzAqWNZvA!/c/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=kgGDAAAAAAARFzA!&amp;vuin=3033668267&amp;tm=1523001600&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<p><strong> 如果是本地图片 </strong>上传到小号的qq空间再如上操作</p>
-<p>刚刚发现好像太大的图会出现下面的情况。。^_~</p>
-<p><img src="http://a2.qpic.cn/psb?/V11V3soz2JNi4c/j8udyIa0wq1cg7NqteXj.*gL4FFenqnKWBbkq37wU08!/c/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=JgHyAAAAAAARF*U!&amp;vuin=3033668267&amp;tm=1523001600&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<p>有空我会找更适合的免费贴图网</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/06/树莓派简单指令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrellacode">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/06/树莓派简单指令/" itemprop="url">树莓派简单指令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T10:37:16+08:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="关机："><a href="#关机：" class="headerlink" title="关机："></a>关机：</h1><pre><code>sudo poweroff
-</code></pre><h1 id="强制关机："><a href="#强制关机：" class="headerlink" title="强制关机："></a>强制关机：</h1><pre><code>sudo poweroff -f 
-</code></pre><h1 id="显示ip："><a href="#显示ip：" class="headerlink" title="显示ip："></a>显示ip：</h1><pre><code>sudo /etc/rc.local
-</code></pre><h1 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h1><pre><code>sudo reboot
-</code></pre><h1 id="更改密码"><a href="#更改密码" class="headerlink" title="更改密码"></a>更改密码</h1><pre><code>passwd
-</code></pre><h1 id="更新安装卸载软件"><a href="#更新安装卸载软件" class="headerlink" title="更新安装卸载软件"></a>更新安装卸载软件</h1><h2 id="更新软件"><a href="#更新软件" class="headerlink" title="更新软件"></a>更新软件</h2><pre><code>sudo apt-get update
-</code></pre><h2 id="安装新软件包"><a href="#安装新软件包" class="headerlink" title="安装新软件包"></a>安装新软件包</h2><pre><code>sudo apt-get install 软件包名
-</code></pre><h2 id="卸载软件包"><a href="#卸载软件包" class="headerlink" title="卸载软件包"></a>卸载软件包</h2><h3 id="不删配置文件"><a href="#不删配置文件" class="headerlink" title="不删配置文件"></a>不删配置文件</h3><pre><code>sudo apt-get remove 软件包名
-</code></pre><h3 id="删配置文件"><a href="#删配置文件" class="headerlink" title="删配置文件"></a>删配置文件</h3><pre><code>sudo apt-get --purge remove 软件包名
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1702,7 +1724,7 @@ grid on/off
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
