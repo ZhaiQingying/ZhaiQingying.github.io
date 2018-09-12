@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="学习HC-05蓝牙模块 与WiFi模块的比对 都是通过串口和模块连接，通过AT指令配置操作 蓝牙模块有两种进入AT指令的模式   按住按键接入串口，慢闪，波特率是38400 原始模式原始模式下一直处于AT命令模式状态。 接入串口红灯快闪，按住按键或EN拉高，波特率是9600；此模式我们叫正常模式。正常模式下只有按住按键或拉高EN才处于AT命令模式状态。   遇到了点小问题：蓝牙测试软件只有一次，好">
+<meta name="description" content="半主机： 半主机是用于 ARM 目标的一种机制，可将来自应用程序代码的输入/输出请求传送至运行调试器的主机。  例如，使用此机制可以启用 C 库中的函数，如 printf() 和 scanf()，来使用主机的屏幕和键盘，而不是在目标系统上配备屏幕和键盘。（开发时使用的硬件通常没有最终系统的所有输入和输出设备。 半主机可让主机来提供这些设备。）简单的来说，半主机模式就是通过仿真器实现开发板在电脑上的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="蓝牙模块通信">
-<meta property="og:url" content="http://yoursite.com/2018/07/25/蓝牙模块通信/index.html">
+<meta property="og:title" content="printf和stm32的半主机模式">
+<meta property="og:url" content="http://yoursite.com/2018/09/12/stm32的半主机模式/index.html">
 <meta property="og:site_name" content="estrellacode">
-<meta property="og:description" content="学习HC-05蓝牙模块 与WiFi模块的比对 都是通过串口和模块连接，通过AT指令配置操作 蓝牙模块有两种进入AT指令的模式   按住按键接入串口，慢闪，波特率是38400 原始模式原始模式下一直处于AT命令模式状态。 接入串口红灯快闪，按住按键或EN拉高，波特率是9600；此模式我们叫正常模式。正常模式下只有按住按键或拉高EN才处于AT命令模式状态。   遇到了点小问题：蓝牙测试软件只有一次，好">
+<meta property="og:description" content="半主机： 半主机是用于 ARM 目标的一种机制，可将来自应用程序代码的输入/输出请求传送至运行调试器的主机。  例如，使用此机制可以启用 C 库中的函数，如 printf() 和 scanf()，来使用主机的屏幕和键盘，而不是在目标系统上配备屏幕和键盘。（开发时使用的硬件通常没有最终系统的所有输入和输出设备。 半主机可让主机来提供这些设备。）简单的来说，半主机模式就是通过仿真器实现开发板在电脑上的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-31T11:50:22.707Z">
+<meta property="og:updated_time" content="2018-09-12T13:09:29.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蓝牙模块通信">
-<meta name="twitter:description" content="学习HC-05蓝牙模块 与WiFi模块的比对 都是通过串口和模块连接，通过AT指令配置操作 蓝牙模块有两种进入AT指令的模式   按住按键接入串口，慢闪，波特率是38400 原始模式原始模式下一直处于AT命令模式状态。 接入串口红灯快闪，按住按键或EN拉高，波特率是9600；此模式我们叫正常模式。正常模式下只有按住按键或拉高EN才处于AT命令模式状态。   遇到了点小问题：蓝牙测试软件只有一次，好">
+<meta name="twitter:title" content="printf和stm32的半主机模式">
+<meta name="twitter:description" content="半主机： 半主机是用于 ARM 目标的一种机制，可将来自应用程序代码的输入/输出请求传送至运行调试器的主机。  例如，使用此机制可以启用 C 库中的函数，如 printf() 和 scanf()，来使用主机的屏幕和键盘，而不是在目标系统上配备屏幕和键盘。（开发时使用的硬件通常没有最终系统的所有输入和输出设备。 半主机可让主机来提供这些设备。）简单的来说，半主机模式就是通过仿真器实现开发板在电脑上的">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/25/蓝牙模块通信/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/12/stm32的半主机模式/"/>
 
 
 
 
 
-  <title>蓝牙模块通信 | estrellacode</title>
+  <title>printf和stm32的半主机模式 | estrellacode</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/25/蓝牙模块通信/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/stm32的半主机模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="estrella">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">蓝牙模块通信</h1>
+          <h1 class="post-title" itemprop="name headline">printf和stm32的半主机模式</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-25T21:21:41+08:00">
-                2018-07-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-12T19:50:19+08:00">
+                2018-09-12
               </time>
             
 
@@ -299,17 +299,44 @@
       
 
       
-        <p><em>学习HC-05蓝牙模块</em></p>
-<h2 id="与WiFi模块的比对"><a href="#与WiFi模块的比对" class="headerlink" title="与WiFi模块的比对"></a>与WiFi模块的比对</h2><ul>
-<li>都是通过串口和模块连接，通过AT指令配置操作</li>
-<li>蓝牙模块有两种进入AT指令的模式</li>
+        <h2 id="半主机："><a href="#半主机：" class="headerlink" title="半主机："></a>半主机：</h2><ul>
+<li>半主机是用于 ARM 目标的一种机制，可将来自应用程序代码的输入/输出请求传送至运行调试器的主机。 </li>
+<li>例如，使用此机制可以启用 C 库中的函数，如 printf() 和 scanf()，来使用主机的屏幕和键盘，而不是在目标系统上配备屏幕和键盘。（开发时使用的硬件通常没有最终系统的所有输入和输出设备。 半主机可让主机来提供这些设备。）<br><strong>简单的来说，半主机模式就是通过仿真器实现开发板在电脑上的输入和输出。和半主机模式功能相同的是ITM调试机制。</strong></li>
+<li>所谓重定向是指修改printf的底层函数，使printf打印到单片机的外设中</li>
+<li>和半主机模式功能相同的是ITM调试机制。它们都是调试机制，开发板均借助仿真器与电脑连接，实现单片机利用主机的屏幕键盘的输入输出。<em>这两种机制的运行均需要仿真器，否则无法运行。</em></li>
+<li>semihost（半主机） 仅仅是一种调试手段，它的机理就是利用MULTI_IDE等工具捕捉目标环境运行过程中产生的值为0x123456的SWI中断，然后向上位机的ADS 软件发送对应的调试信息。</li>
+<li>对于我们最后的应用代码来说，<em>都是nonsemihost类型的</em>。如果我们在调试中使用semihost，那么只要在最后重定义 ADS中的一些使用到的库函数（比如fputc），代码就可以从semihost向nonsemihost的类型转变。<h2 id="开发式一般单片机需要独立运行，开发者应去掉仿真器，把printf函数通过单片机的外设来实现，例如通过开发板的串口，lcd或者sd卡。（正点原子的例程中就是通过开发板串口实现，哪怕可以接stlink调试）"><a href="#开发式一般单片机需要独立运行，开发者应去掉仿真器，把printf函数通过单片机的外设来实现，例如通过开发板的串口，lcd或者sd卡。（正点原子的例程中就是通过开发板串口实现，哪怕可以接stlink调试）" class="headerlink" title="开发式一般单片机需要独立运行，开发者应去掉仿真器，把printf函数通过单片机的外设来实现，例如通过开发板的串口，lcd或者sd卡。（正点原子的例程中就是通过开发板串口实现，哪怕可以接stlink调试）"></a>开发式一般单片机需要独立运行，开发者应去掉仿真器，把printf函数通过单片机的外设来实现，例如通过开发板的串口，lcd或者sd卡。（正点原子的例程中就是通过开发板串口实现，哪怕可以接stlink调试）</h2></li>
 </ul>
-<ol>
-<li>按住按键接入串口，慢闪，波特率是38400 原始模式原始模式下一直处于AT命令模式状态。</li>
-<li>接入串口红灯快闪，按住按键或EN拉高，波特率是9600；此模式我们叫正常模式。正常模式下只有按住按键或拉高EN才处于AT命令模式状态。   <h6 id="遇到了点小问题：蓝牙测试软件只有一次，好像是38400波特率下收到了一次乱码，再也没用了；用xcom串口调试助手，我的电脑以及某李姓同学电脑慢闪模式收到了一次error，快闪只有换一次串口才能收到一个ok。"><a href="#遇到了点小问题：蓝牙测试软件只有一次，好像是38400波特率下收到了一次乱码，再也没用了；用xcom串口调试助手，我的电脑以及某李姓同学电脑慢闪模式收到了一次error，快闪只有换一次串口才能收到一个ok。" class="headerlink" title="遇到了点小问题：蓝牙测试软件只有一次，好像是38400波特率下收到了一次乱码，再也没用了；用xcom串口调试助手，我的电脑以及某李姓同学电脑慢闪模式收到了一次error，快闪只有换一次串口才能收到一个ok。"></a>遇到了点小问题：蓝牙测试软件只有一次，好像是38400波特率下收到了一次乱码，再也没用了；用xcom串口调试助手，我的电脑以及某李姓同学电脑慢闪模式收到了一次error，快闪只有换一次串口才能收到一个ok。</h6>而某王姓同学两个模式都能流畅收到。<br>情况出现了转折，我吃顿饭回来又能用了</li>
-</ol>
-<p>ps：蓝牙连接成功后灯也是慢闪</p>
-<h2 id="蓝牙模块相关概念学习"><a href="#蓝牙模块相关概念学习" class="headerlink" title="蓝牙模块相关概念学习"></a>蓝牙模块相关概念学习</h2>
+<h2 id="printf到串口实现方式"><a href="#printf到串口实现方式" class="headerlink" title="printf到串口实现方式"></a>printf到串口实现方式</h2><h3 id="使用微库："><a href="#使用微库：" class="headerlink" title="使用微库："></a>使用微库：</h3><ul>
+<li>不用强调关掉半主机模式，使用微库的话,不会使用半主机模式</li>
+<li>C库中实现的是printf函数，不是fputc，fputc是printf调用的硬件接口函数<br>1.使用微库(平台式keil-MDK），点击“魔术棒” Target标签下有个Use MicroLIB,勾选。<br>2.包含头文件:#include “stdio.h”<br>3.printf重定向，修改fputc()函数的内容<br>  int fputc(int ch, FILE *f)<br>  {<pre><code>USART_SendData(DEBUG_USART, (unsigned char) ch);
+while (!(DEBUG_USART-&gt;SR &amp; USART_FLAG_TXE));
+return (ch);
+</code></pre>  }</li>
+</ul>
+<h3 id="不使用微库"><a href="#不使用微库" class="headerlink" title="不使用微库"></a>不使用微库</h3><ul>
+<li><p>要强调不使用半主机（no semihosting）模式）<br>1、包含头文件#include “stdio.h”<br>2、重写fputc，但需要先加点东西：<br>  #pragma import(__use_no_semihosting)//强调不使用半主机<br>  _sys_exit(int x)<br>  {</p>
+<pre><code>x = x;
+</code></pre><p>  }<br>  struct __FILE<br>  {</p>
+<pre><code>int handle;
+</code></pre><p>   };</p>
+<p>  FILE __stdout;<br>  int fputc(int ch, FILE *f)<br>  {</p>
+<pre><code>USART_SendData(DEBUG_USART, (unsigned char) ch);
+while (!(DEBUG_USART-&gt;SR &amp; USART_FLAG_TXE));
+return (ch);
+</code></pre><p>  }</p>
+</li>
+</ul>
+<h2 id="微库"><a href="#微库" class="headerlink" title="微库"></a>微库</h2><ul>
+<li>microlib 是缺省（默认的意思） C 库的备选库。 </li>
+<li>它用于必须在极少量内存环境下运行的深层嵌入式应用程序。 </li>
+<li>这些应用程序不在操作系统中运行。</li>
+<li>microlib 不会尝试成为符合标准的 ISO C 库。</li>
+<li>microlib 进行了高度优化以使代码变得很小。 </li>
+<li>它的功能比缺省 C 库少，并且根本不具备某些ISO C特性。</li>
+<li>某些库函数的运行速度也比较慢，例如，memcpy()。</li>
+</ul>
+
       
     </div>
     
@@ -333,8 +360,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/23/生产线参观感想/" rel="next" title="生产线参观感想">
-                <i class="fa fa-chevron-left"></i> 生产线参观感想
+              <a href="/2018/08/08/关于USE_STDPERIPH_DRIVER/" rel="next" title="关于USE_STDPERIPH_DRIVER">
+                <i class="fa fa-chevron-left"></i> 关于USE_STDPERIPH_DRIVER
               </a>
             
           </div>
@@ -342,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/29/ADC测电压原理/" rel="prev" title="ADC测电压原理">
-                ADC测电压原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -459,7 +482,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#与WiFi模块的比对"><span class="nav-number">1.</span> <span class="nav-text">与WiFi模块的比对</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#遇到了点小问题：蓝牙测试软件只有一次，好像是38400波特率下收到了一次乱码，再也没用了；用xcom串口调试助手，我的电脑以及某李姓同学电脑慢闪模式收到了一次error，快闪只有换一次串口才能收到一个ok。"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">遇到了点小问题：蓝牙测试软件只有一次，好像是38400波特率下收到了一次乱码，再也没用了；用xcom串口调试助手，我的电脑以及某李姓同学电脑慢闪模式收到了一次error，快闪只有换一次串口才能收到一个ok。</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蓝牙模块相关概念学习"><span class="nav-number">2.</span> <span class="nav-text">蓝牙模块相关概念学习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#半主机："><span class="nav-number">1.</span> <span class="nav-text">半主机：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发式一般单片机需要独立运行，开发者应去掉仿真器，把printf函数通过单片机的外设来实现，例如通过开发板的串口，lcd或者sd卡。（正点原子的例程中就是通过开发板串口实现，哪怕可以接stlink调试）"><span class="nav-number">2.</span> <span class="nav-text">开发式一般单片机需要独立运行，开发者应去掉仿真器，把printf函数通过单片机的外设来实现，例如通过开发板的串口，lcd或者sd卡。（正点原子的例程中就是通过开发板串口实现，哪怕可以接stlink调试）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#printf到串口实现方式"><span class="nav-number">3.</span> <span class="nav-text">printf到串口实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用微库："><span class="nav-number">3.1.</span> <span class="nav-text">使用微库：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不使用微库"><span class="nav-number">3.2.</span> <span class="nav-text">不使用微库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微库"><span class="nav-number">4.</span> <span class="nav-text">微库</span></a></li></ol></div>
             
 
           </div>
