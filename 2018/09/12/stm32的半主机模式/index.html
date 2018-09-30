@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="stm32,调试,串口," />
 
 
 
@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="半主机： 半主机是用于 ARM 目标的一种机制，可将来自应用程序代码的输入/输出请求传送至运行调试器的主机。  例如，使用此机制可以启用 C 库中的函数，如 printf() 和 scanf()，来使用主机的屏幕和键盘，而不是在目标系统上配备屏幕和键盘。（开发时使用的硬件通常没有最终系统的所有输入和输出设备。 半主机可让主机来提供这些设备。）简单的来说，半主机模式就是通过仿真器实现开发板在电脑上的">
+<meta name="keywords" content="stm32,调试,串口">
 <meta property="og:type" content="article">
 <meta property="og:title" content="printf和stm32的半主机模式">
 <meta property="og:url" content="http://yoursite.com/2018/09/12/stm32的半主机模式/index.html">
 <meta property="og:site_name" content="estrellacode">
 <meta property="og:description" content="半主机： 半主机是用于 ARM 目标的一种机制，可将来自应用程序代码的输入/输出请求传送至运行调试器的主机。  例如，使用此机制可以启用 C 库中的函数，如 printf() 和 scanf()，来使用主机的屏幕和键盘，而不是在目标系统上配备屏幕和键盘。（开发时使用的硬件通常没有最终系统的所有输入和输出设备。 半主机可让主机来提供这些设备。）简单的来说，半主机模式就是通过仿真器实现开发板在电脑上的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-12T13:09:29.981Z">
+<meta property="og:updated_time" content="2018-09-30T07:57:01.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="printf和stm32的半主机模式">
 <meta name="twitter:description" content="半主机： 半主机是用于 ARM 目标的一种机制，可将来自应用程序代码的输入/输出请求传送至运行调试器的主机。  例如，使用此机制可以启用 C 库中的函数，如 printf() 和 scanf()，来使用主机的屏幕和键盘，而不是在目标系统上配备屏幕和键盘。（开发时使用的硬件通常没有最终系统的所有输入和输出设备。 半主机可让主机来提供这些设备。）简单的来说，半主机模式就是通过仿真器实现开发板在电脑上的">
@@ -292,6 +293,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/单片机/" itemprop="url" rel="index">
+                    <span itemprop="name">单片机</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -371,6 +394,16 @@ return (ch);
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/stm32/" rel="tag"># stm32</a>
+          
+            <a href="/tags/调试/" rel="tag"># 调试</a>
+          
+            <a href="/tags/串口/" rel="tag"># 串口</a>
+          
+        </div>
+      
 
       
       
@@ -390,8 +423,8 @@ return (ch);
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/14/关于USARTx_RX_EN/" rel="prev" title="关于USART_RX_EN">
-                关于USART_RX_EN <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/15/关于USART_RX_STA&0X8000与USART_RX_EN/" rel="prev" title="关于USART2_RX_STA&0X8000与USART_RX_EN">
+                关于USART2_RX_STA&0X8000与USART_RX_EN <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -469,7 +502,7 @@ return (ch);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -480,7 +513,7 @@ return (ch);
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -491,7 +524,7 @@ return (ch);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

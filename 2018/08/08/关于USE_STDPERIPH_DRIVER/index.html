@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="stm32,预处理," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="基于库函数的例程里面预定义都有USE_STDPERIPH_DRIVER，而基于">
+<meta name="description" content="基于库函数的例程里面预定义都有USE_STDPERIPH_DRIVER，而基于寄存器开发的例程里没有这个预定义 作用：USE_STDPERIPH_DRIVER ： to use or not the peripheral’s drivers in application code (i.e. code will be based on direct access to peripheral’s">
+<meta name="keywords" content="stm32,预处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于USE_STDPERIPH_DRIVER">
 <meta property="og:url" content="http://yoursite.com/2018/08/08/关于USE_STDPERIPH_DRIVER/index.html">
 <meta property="og:site_name" content="estrellacode">
-<meta property="og:description" content="基于库函数的例程里面预定义都有USE_STDPERIPH_DRIVER，而基于">
+<meta property="og:description" content="基于库函数的例程里面预定义都有USE_STDPERIPH_DRIVER，而基于寄存器开发的例程里没有这个预定义 作用：USE_STDPERIPH_DRIVER ： to use or not the peripheral’s drivers in application code (i.e. code will be based on direct access to peripheral’s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-08T09:24:07.132Z">
+<meta property="og:updated_time" content="2018-09-30T08:04:16.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于USE_STDPERIPH_DRIVER">
-<meta name="twitter:description" content="基于库函数的例程里面预定义都有USE_STDPERIPH_DRIVER，而基于">
+<meta name="twitter:description" content="基于库函数的例程里面预定义都有USE_STDPERIPH_DRIVER，而基于寄存器开发的例程里没有这个预定义 作用：USE_STDPERIPH_DRIVER ： to use or not the peripheral’s drivers in application code (i.e. code will be based on direct access to peripheral’s">
 
 
 
@@ -292,6 +293,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/单片机/" itemprop="url" rel="index">
+                    <span itemprop="name">单片机</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -319,7 +342,13 @@
       
 
       
-        <p>基于库函数的例程里面预定义都有USE_STDPERIPH_DRIVER，而基于</p>
+        <ul>
+<li>基于库函数的例程里面预定义都有USE_STDPERIPH_DRIVER，而基于寄存器开发的例程里没有这个预定义</li>
+<li>作用：USE_STDPERIPH_DRIVER ： to use or not the peripheral’s drivers in application code (i.e. code will be based on direct access to peripheral’s registers rather than drivers API) , this option is controlled by the #define USE_STDPERIPH_DRIVER<br>  即这个定义控制了是否在应用中启用外设驱动。我们使用标准外设库本来就为了方便控制外设，所以要添加这个定义，以启用外设驱动。</li>
+<li>程序：程序的执行是从“main.c”文件开始的，其中必须包含有头文件“stm32f10x.h”。我们打开“stm32f10x.h”，按下“Ctrl+F”键，查找USE_STDPERIPH_DRIVER，在“Find What”栏中输入“USE_STDPERIPH_DRIVER”。如图-3所示。点击“Find<br>Next”,出现“USE_STDPERIPH_DRIVER”对应的代码行。只有用预编译指令预定义了“USE_STDPERIPH_DRIVER”，才会将”stm32f10x_conf.h”包含进“stm32f10x.h”中，从而被”main.c”用到。<em>这就解释了，为什么我们没有在“main.c”中包含”stm32f10x_conf.h”，而在编译之后却被包含进了”main.c”中。</em><h3 id="stm32f10x-conf-h"><a href="#stm32f10x-conf-h" class="headerlink" title="stm32f10x_conf.h"></a>stm32f10x_conf.h</h3></li>
+<li>新版的固件库V3.0以上 main等源文件中不再直接包含stm32f10x_conf.h，而是stm32f10x.h，stm32f10x.h则定义了启动设置，以及所有寄存器宏定义</li>
+<li>stm32f10x_conf.h中包含了所有外设的头文件，因此任意源文件只要包含了stm32f10x.h，就可以在源文件调用任意外设的函数。<br>若有外设为使用到，在stm32f10x_conf.h注释相应部分，项目编译时就不会在编译去掉的外设</li>
+</ul>
 
       
     </div>
@@ -334,6 +363,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/stm32/" rel="tag"># stm32</a>
+          
+            <a href="/tags/预处理/" rel="tag"># 预处理</a>
+          
+        </div>
       
 
       
@@ -408,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -424,7 +470,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -435,7 +481,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -446,7 +492,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -469,6 +515,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#stm32f10x-conf-h"><span class="nav-number">1.</span> <span class="nav-text">stm32f10x_conf.h</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
