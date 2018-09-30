@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="主要会议一Congestion Monitoring and Control监控网络拥挤1.1Inferring Persistent Interdomain Congestion 推断网络拥挤网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵No data was available for third-part">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sigcomm2018阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2018/09/18/sigcomm2018阅读笔记/index.html">
+<meta property="og:site_name" content="estrellacode">
+<meta property="og:description" content="主要会议一Congestion Monitoring and Control监控网络拥挤1.1Inferring Persistent Interdomain Congestion 推断网络拥挤网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵No data was available for third-part">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-21T14:39:51.169Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sigcomm2018阅读笔记">
+<meta name="twitter:description" content="主要会议一Congestion Monitoring and Control监控网络拥挤1.1Inferring Persistent Interdomain Congestion 推断网络拥挤网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵No data was available for third-part">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/18/sigcomm2018阅读笔记/"/>
+
+
+
+
+
+  <title>sigcomm2018阅读笔记 | estrellacode</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">estrellacode</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hello World</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/sigcomm2018阅读笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrellacode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sigcomm2018阅读笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T13:55:51+08:00">
+                2018-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="主要会议一Congestion-Monitoring-and-Control监控网络拥挤"><a href="#主要会议一Congestion-Monitoring-and-Control监控网络拥挤" class="headerlink" title="主要会议一Congestion Monitoring and Control监控网络拥挤"></a>主要会议一Congestion Monitoring and Control监控网络拥挤</h2><h3 id="1-1Inferring-Persistent-Interdomain-Congestion-推断网络拥挤"><a href="#1-1Inferring-Persistent-Interdomain-Congestion-推断网络拥挤" class="headerlink" title="1.1Inferring Persistent Interdomain Congestion 推断网络拥挤"></a>1.1Inferring Persistent Interdomain Congestion 推断网络拥挤</h3><h4 id="网络拥挤的原因：Interconnection-disputes-resulted-in-congestion：内部连接的矛盾造成拥堵"><a href="#网络拥挤的原因：Interconnection-disputes-resulted-in-congestion：内部连接的矛盾造成拥堵" class="headerlink" title="网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵"></a>网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵</h4><p>No data was available for third-party to study these links：但第三方没有数据了解这些连接（以调控）</p>
+<h4 id="上面这个原因造成的后果："><a href="#上面这个原因造成的后果：" class="headerlink" title="上面这个原因造成的后果："></a>上面这个原因造成的后果：</h4><p>Congestion on transit links affects parties other than those involved in the dispute 拥堵的传输连接除了内部连接矛盾的直接参与者还影响了其他(没有内部连接矛盾)的人<br>Limited data available to regulators and researchers to increase transparency and empirical grounding of debate数据有限所以管理员和调研人员只能力所能及的做出经验性的推理<br>Our goal: third-party inference of congestion at interdomain interconnections我们的目标是让网络拥挤时提供第三方接口<br>Scientiﬁc approach to achieving this goal involves challenges in network inference, system development and data mining科学界试图从网络接口，系统升级，数据挖掘方面解决这个问题</p>
+<h4 id="“我”方贡献："><a href="#“我”方贡献：" class="headerlink" title="“我”方贡献："></a>“我”方贡献：</h4><p>Methodology: Operationalized a lightweight method for third-party inference of interdomain congestion, conducted thorough validation理论系统：通过确认实施第三方接口的轻量理论<br>System: Built data collection and analysis platform to support the entire scientiﬁc workﬂow, and enable others to access and further study the data (ongoing) 系统：为了实现整个理论进行收集平台数据分析<br>Observations: Studied 8 large U.S. broadband providers from March 2016 to Dec 2017 (data collection ongoing)观察：研究美国March 2016 to Dec 2017的宽带情况</p>
+<h4 id="Method-Time-Series-Latency-Probes拥挤潜伏时间调查"><a href="#Method-Time-Series-Latency-Probes拥挤潜伏时间调查" class="headerlink" title="Method: Time Series Latency Probes拥挤潜伏时间调查"></a>Method: Time Series Latency Probes拥挤潜伏时间调查</h4><p>Peak-hour congestion ﬁlls up router buffers, resulting in elevated latency across an interdomain link  顶峰时间路径缓存全满，导致潜伏时间提高How do we measure latency across an interdomain link?我们如何测量拥堵潜伏？</p>
+<h4 id="Time-Series-Latency-Probes-TSLP-时间序列潜伏探针"><a href="#Time-Series-Latency-Probes-TSLP-时间序列潜伏探针" class="headerlink" title="Time Series Latency Probes (TSLP)时间序列潜伏探针"></a>Time Series Latency Probes (TSLP)时间序列潜伏探针</h4><p>repeat to obtain a time series重复以获得时间序列<br><em>RTT(Round-Trip Time): 往返时延。在计算机网络中它是一个重要的性能指标，表示从发送端发送数据开始，到发送端收到来自接收端的确认（接收端收到数据后便立即发送确认），总共经历的时延。<br>往返延时(RTT)由三个部分决定：即链路的传播时间、末端系统的处理时间以及路由器的缓存中的排队和处理时间。其中，前面两个部分的值作为一个TCP连接相对固定，路由器的缓存中的排队和处理时间会随着整个网络拥塞程度的变化而变化。所以RTT的变化在一定程度上反映了网络拥塞程度的变化。简单来说就是发送方从发送数据开始，到收到来自接受方的确认信息所经历的时间。</em></p>
+<h4 id="Pieces-of-the-Puzzle难点"><a href="#Pieces-of-the-Puzzle难点" class="headerlink" title="Pieces of the Puzzle难点"></a>Pieces of the Puzzle难点</h4><p> Interdomain link Identiﬁcation: Need to identify interdomain links to be able to probe them识别拥挤的内部连接<br>Adaptive Probing: Need to be adaptive to changes in the underlying topology and routing<br>需要适应潜在的拓扑和路径变化<br>Identifying Congested Links: Need time-series analysis techniques to ﬁnd patterns in (noisy) data that indicate congestion识别拥挤连接（和第一个什么区别？）<br>Validation: Need to validate inferences. Most peering agreements are covered by NDAs需要确认接口，大多数没有认证的协议要被保密协议覆盖</p>
+<h4 id="总结：这是一篇检测网络拥挤情况的方法的论文。后面实验结果就没看了。。"><a href="#总结：这是一篇检测网络拥挤情况的方法的论文。后面实验结果就没看了。。" class="headerlink" title="总结：这是一篇检测网络拥挤情况的方法的论文。后面实验结果就没看了。。"></a>总结：这是一篇检测网络拥挤情况的方法的论文。后面实验结果就没看了。。</h4><h2 id="主要会议二Routing路由"><a href="#主要会议二Routing路由" class="headerlink" title="主要会议二Routing路由"></a>主要会议二Routing路由</h2><h3 id="1-Internet-Anycast-Performance-Problems-and-Potential"><a href="#1-Internet-Anycast-Performance-Problems-and-Potential" class="headerlink" title="1.Internet Anycast: Performance, Problems and Potential"></a>1.Internet Anycast: Performance, Problems and Potential</h3><p>Anycast 指IPV6协议中一个发送方同最近的一组接收方之间的通信。（路由系统选择“最近”的结点为源结点提供服务，从而在一定程度上为源结点提供了更好的服务也减轻了网络负载）<br>网络路由就近算法：表现 问题和发展趋势</p>
+<h4 id="问题：Anycast-often-chooses-poorly就近算法经常选择路径非常愚蠢"><a href="#问题：Anycast-often-chooses-poorly就近算法经常选择路径非常愚蠢" class="headerlink" title="问题：Anycast often chooses poorly就近算法经常选择路径非常愚蠢"></a>问题：Anycast often chooses poorly就近算法经常选择路径非常愚蠢</h4><p> Actual distribution: Many queries go to distant sites实际的情况是，许多查询请求去了很远的站点<br>Video below used queries from D-root on Dec. 1st 2016域名根2016年的视频请求？？？？什么意思</p>
+<h4 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h4><p>表现：Do queries go to nearby anycast sites? Does adding anycast sites help？请求会去最近的站点吗？如果增加站点能改善吗?<br>问题：并不，可为什么呢？<br>潜能：我们怎么修复？</p>
+<h4 id="Do-queries-go-to-nearby-sites-Does-adding-anycast-global-sites-help"><a href="#Do-queries-go-to-nearby-sites-Does-adding-anycast-global-sites-help" class="headerlink" title="Do queries go to nearby sites?Does adding anycast (global) sites help?"></a>Do queries go to nearby sites?Does adding anycast (global) sites help?</h4><p> We compute the extra distance each query travelled over their geographically closest site 我们估算了每一个请求去地理上离它最近的站点所走的额外路程<br> But most queries should have short extra distance 结果是蛮多请求本来可以走更短的路程的<br>Over 1/3 queries traveled more than 1000km extra distance<br> We analyze longitudinal RIPE Atlas measurements 我们分析了维度方向上的RIPE组织的测量值<br>RIPE是一个独立的非盈利性的会员组织，是五个提供互联网资源分配的地区之一，支持全世界范围内互联网的注册和协调活动最突出的活动，RIPE是作为区域互联网注册提供全球互联网资源和相关服务（的IPv4 ， IPv6和数目 资源）的成员在网络协调中心服务区。其成员主要由 互联网服务提供商（ ISP ） ，电信机构和大型企业组成 主要设在欧洲，以及中东和中亚部分地区。<br> Evaluate performance of 9 DNS roots in 2017 评价17年九个域名管理系统根的表现<br>Compute average query distance in each week估算每周请求的距离<br>Site counts hardly matter站点数几乎没有影响</p>
+<h4 id="Why-doesn’t-anycast-work-as-expected？"><a href="#Why-doesn’t-anycast-work-as-expected？" class="headerlink" title="Why doesn’t anycast work as expected？"></a>Why doesn’t anycast work as expected？</h4><p>Routing and topology constraints introduce path inﬂation  路程和拓扑限制导致了路径膨胀<br>The actual path is longer than the shortest 实际路程比最短的更长<br>However, path inﬂation in anycast is different但路径膨胀在anycast里是不同的<br>Directs packets away from the closest anycast site引导把最短路径点打包带走<br>Path inﬂation in unicast（单播流） is like taking a detour导航似的<br>Path inﬂation in anycast is like ﬂying to a different Cambridge直线一般<br>Anycast &amp; unicast path inﬂation：（路程距离区别）<br>Unicast inﬂation: Diﬀerence between the predicted latency to geographically closest site, and latency to lowest latency site. 地理最近<br>Anycast inﬂation: Diﬀerence between latency to lowest latency site, and latency to selected site.拥堵程度最低<br>Anycast path inﬂation is larger than unicast path inﬂation用anycast和unicast分别预估，结果anycast比unicast拥堵更严重</p>
+<h4 id="Would-the-best-routes-comply-with-typical-routing-policies-最好的路线遵从典型路径政策吗？"><a href="#Would-the-best-routes-comply-with-typical-routing-policies-最好的路线遵从典型路径政策吗？" class="headerlink" title="Would the best routes comply with typical routing policies?最好的路线遵从典型路径政策吗？"></a>Would the best routes comply with typical routing policies?最好的路线遵从典型路径政策吗？</h4><p>Find the ‘decision point’ where they diverge 找到它们选错的点<br>Examine if the better route is not selected due to:检查是不是因为以下原因错选<br>AS prefers routes through its customer ASes over the peer ASes, over its provider ASes：AS （访问服务器(ACCESSSERVER)）peer其他同等的<br>AS prefers routes with shortest AS path length最短的AS路径<br>Given routes with equal preference to different sites, BGP usually chooses poorly边界网关协议（BGP）是运行于 TCP 上的一种自治系统的路由协议<br>pets wsk</p>
+<h4 id="Embedding-geographic-information-in-BGP-announcements在BGP通告中完善地理信息"><a href="#Embedding-geographic-information-in-BGP-announcements在BGP通告中完善地理信息" class="headerlink" title="Embedding geographic information in BGP announcements在BGP通告中完善地理信息"></a>Embedding geographic information in BGP announcements在BGP通告中完善地理信息</h4><p> Embed geographic location of the anycast sites reachable through the announcement 在协议中完善可达到的site的地理信息<br>Use BGP community attributes属性<br>Two 16-bit values X:Y  X represents the AS number that sets the community<br>Y encodes the  latitude and longitude经纬度与数量</p>
+<h4 id="Evaluate-the-geographic-hint-through-simulation-with-real-network-traces评估模拟网络传输的地理阻碍"><a href="#Evaluate-the-geographic-hint-through-simulation-with-real-network-traces评估模拟网络传输的地理阻碍" class="headerlink" title="Evaluate the geographic hint through simulation with real network traces评估模拟网络传输的地理阻碍"></a>Evaluate the geographic hint through simulation with real network traces评估模拟网络传输的地理阻碍</h4><p>Using the traceroutes from each RIPE Atlas probe traceroute 是用来检测发出数据包的主机到目标主机之间所经过的网关数量的工具。<br>to the selected site  and to lowest-latency site 在我们选择的site和最低拥堵的site<br>Identify the ‘decision point’ 识别决定点<br>Identify the geo-closest site to the ‘decision point’, refer to as geo-hinted site 识别决定点查询是不是地理阻碍点<br>Beneﬁts of geo-hint is the difference between latency to geo-hinted site and to selected site地理阻碍的优势是地理阻碍和拥堵阻碍间的区别</p>
+<h4 id="Other-results"><a href="#Other-results" class="headerlink" title="Other results"></a>Other results</h4><p>Anycast does not distribute trafﬁc in a balanced manner anycast算法能算出不阻碍交通<br>Performance problems in anycast are common across deployments部署问题中anycast问题是很普遍的<br>RIPE-Atlas measurements overrepresent Europe, but this effect only over-estimates anycast performance这个地图的测量只在欧洲实施，但他的结果能完全预测anycast问题<br>Unicast management addresses for anycast sites are good representatives unicast替anycast的安排路径也是有见地的<br>Customized community attributes are more effective than expected, given the default conﬁguration in most routers完善的信息是很有用的</p>
+<h4 id="Anycast-doesn’t-work-as-well-as-it-should-but-it-can"><a href="#Anycast-doesn’t-work-as-well-as-it-should-but-it-can" class="headerlink" title="Anycast doesn’t work as well as it should, but it can"></a>Anycast doesn’t work as well as it should, but it can</h4><p>Inefﬁciencies in anycast are excessive 进步很快<br>Queries to most DNS roots travel to distant sites 传播都很远程（有大量提升余地）<br>Adding sites hardly improves anycast performance加site没用<br>Poor route selection in BGP causes larger path inﬂation in anycast than in unicast 路程选择在anycast比在unicast坏影响更大<br>There exist equal-preference routes to closer sites 相同表现路径是存在的<br>But no mechanism to choose the best among them没办法选择<br>Incrementally deployable “geo-hints” in BGP can recover most of performance deﬁcit添加地理信息可以解决大量这种问题</p>
+<h2 id="主要会议三：Wireless-Links"><a href="#主要会议三：Wireless-Links" class="headerlink" title="主要会议三：Wireless Links"></a>主要会议三：Wireless Links</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><h2 id="主要会议四：Data-Center-Networking"><a href="#主要会议四：Data-Center-Networking" class="headerlink" title="主要会议四：Data Center Networking"></a>主要会议四：Data Center Networking</h2><h3 id="1-Masking-Failures-from-Application-Performance-in-Data-Center-Networks-with-Shareable-Backup-使用可共享备份屏蔽数据中心网络中应用程序性能的失败"><a href="#1-Masking-Failures-from-Application-Performance-in-Data-Center-Networks-with-Shareable-Backup-使用可共享备份屏蔽数据中心网络中应用程序性能的失败" class="headerlink" title="1.Masking Failures from Application Performance in Data Center Networks with Shareable Backup 使用可共享备份屏蔽数据中心网络中应用程序性能的失败"></a>1.Masking Failures from Application Performance in Data Center Networks with Shareable Backup 使用可共享备份屏蔽数据中心网络中应用程序性能的失败</h3><h4 id="Today’s-Failure-Handling—Rerouting如今解决问题的方法：重新规划路线"><a href="#Today’s-Failure-Handling—Rerouting如今解决问题的方法：重新规划路线" class="headerlink" title="Today’s Failure Handling—Rerouting如今解决问题的方法：重新规划路线"></a>Today’s Failure Handling—Rerouting如今解决问题的方法：重新规划路线</h4><p>Fast local rerouting  inflated path length本地重新规划路径：路径变长<br>Global optimal rerouting  high latency of routes updates全球重新规划路径：高延迟<br>Impact flows not traveling trough the failure location影响不会流过错误的地点</p>
+<h4 id="Impact-on-Coflow-Completion-Time-CCT-影响并流完成时间的因素"><a href="#Impact-on-Coflow-Completion-Time-CCT-影响并流完成时间的因素" class="headerlink" title="Impact on Coflow Completion Time (CCT)影响并流完成时间的因素"></a>Impact on Coflow Completion Time (CCT)影响并流完成时间的因素</h4><p>Facebook coflow trace脸书并流<br>k = 16 Fat-tree network胖树交换网络<br>Global optimal rerouting全球理想的重新路径规划</p>
+<h4 id="Do-We-Have-Other-Options"><a href="#Do-We-Have-Other-Options" class="headerlink" title="Do We Have Other Options?"></a>Do We Have Other Options?</h4><p>Restores network capacity immediately after failure马上增加网络容量<br>Be cost efficient–Small pool of backup switch有备份的选择<br>How do we achieve that?</p>
+<h4 id="Circuit-Switches电路选择"><a href="#Circuit-Switches电路选择" class="headerlink" title="Circuit Switches电路选择"></a>Circuit Switches电路选择</h4><p>Physical layer device物理层设备<br>Circuit controlled by software软件控制<br>Examples<br>–optical 2D-MEMS switch, 40us, $10 per-port cost<br>–electrical cross-point switch, 70ns, $3 per-port cost</p>
+<h4 id="Ideal-Architecture理想网络结构"><a href="#Ideal-Architecture理想网络结构" class="headerlink" title="Ideal Architecture理想网络结构"></a>Ideal Architecture理想网络结构</h4><p>Entire network shares one backup switch备份开关<br>Replace any failed switch when necessary开关坏掉就替换掉<br>Unreasonable high port-count of circuit switch 电路开关的端口数很不合理<br>Single point of failure单点错误</p>
+<h4 id="How-to-Make-It-Practical它怎么变得实用？"><a href="#How-to-Make-It-Practical它怎么变得实用？" class="headerlink" title="How to Make It Practical它怎么变得实用？"></a>How to Make It Practical它怎么变得实用？</h4><p>Feasibility-small port-count circuit switches可行性：少端口数的电路开关<br>Scalability-partition network into failure groups-distribute circuit switches across the network可扩展性，将电路故障网络分隔开<br>Low cost-small backup pool-share backup switches per failure groups低开销的备份分享组</p>
+<h4 id="Recover-First-Diagnose-Later先覆盖后分析"><a href="#Recover-First-Diagnose-Later先覆盖后分析" class="headerlink" title="Recover First, Diagnose Later先覆盖后分析"></a>Recover First, Diagnose Later先覆盖后分析</h4><p>Failure Recovery–switch failure replaced by backups  via circuit reconfiguration–link failure switches on both side are replaced错误覆盖：电路重布局，连接错误，开关被替换<br>Automatic failure diagnosis performed offline-details in the paper自动错误分析离线执行</p>
+<h4 id="What-does-control-system-do"><a href="#What-does-control-system-do" class="headerlink" title="What does control system do?"></a>What does control system do?</h4><p>Collects keep-alive messages &amp; link status reports from switches不停收集开关信息<br>Reconfigures circuit switches under failures重新布局电路<br>Performs offline failure diagnosis 完成离线错误分析<br>Implications-needs to talk to many circuit switches and packet switches-keeps a large amount of states of circuit/switch/link status含义：需要处理很多信息</p>
+<h2 id="主要会议五：Applications-and-IoT"><a href="#主要会议五：Applications-and-IoT" class="headerlink" title="主要会议五：Applications and IoT"></a>主要会议五：Applications and IoT</h2><h3 id="4-MUTE-Bringing-IoT-to-Noise-Cancellation"><a href="#4-MUTE-Bringing-IoT-to-Noise-Cancellation" class="headerlink" title="4.MUTE: Bringing IoT to Noise Cancellation"></a>4.MUTE: Bringing IoT to Noise Cancellation</h3><h4 id="MUTE"><a href="#MUTE" class="headerlink" title="MUTE"></a>MUTE</h4><p> Leverage lookahead for noise cancellation.Lookahead allows us to cover ears in time</p>
+<h4 id="Timing-Gain-Wideband-Cancellation了解波段的频率"><a href="#Timing-Gain-Wideband-Cancellation了解波段的频率" class="headerlink" title="Timing Gain  Wideband Cancellation了解波段的频率"></a>Timing Gain  Wideband Cancellation了解波段的频率</h4><p>Why does noise cancellation not work at higher frequencies?<br>Time budget (lookahead): 𝑡_2−𝑡_1≈3 ms (100X larger)</p>
+<h4 id="Signal-Processing-Gain"><a href="#Signal-Processing-Gain" class="headerlink" title="Signal Processing Gain"></a>Signal Processing Gain</h4><h4 id="Application-Specific-Gain"><a href="#Application-Specific-Gain" class="headerlink" title="Application-Specific Gain"></a>Application-Specific Gain</h4><p>compute the anti-noise signal in time </p>
+<h2 id="主要会议六：RDMA-and-Hardware-Support"><a href="#主要会议六：RDMA-and-Hardware-Support" class="headerlink" title="主要会议六：RDMA and Hardware Support"></a>主要会议六：RDMA and Hardware Support</h2><h3 id="6-2-Revisiting-Network-Support-for-RDMA-重探网络对远程内存访问的支持"><a href="#6-2-Revisiting-Network-Support-for-RDMA-重探网络对远程内存访问的支持" class="headerlink" title="6.2 Revisiting Network Support for RDMA 重探网络对远程内存访问的支持"></a>6.2 Revisiting Network Support for RDMA 重探网络对远程内存访问的支持</h3><h4 id="Rise-of-RDMA-in-datacenters-RDMA在数据中心的崛起"><a href="#Rise-of-RDMA-in-datacenters-RDMA在数据中心的崛起" class="headerlink" title="Rise of RDMA in datacenters RDMA在数据中心的崛起"></a>Rise of RDMA in datacenters RDMA在数据中心的崛起</h4><p>Enables low CPU utilization, low latency, high throughput（因为可以免除OS对硬件层面的苛刻要求）</p>
+<h4 id="Current-Status现状"><a href="#Current-Status现状" class="headerlink" title="Current Status现状"></a>Current Status现状</h4><p>RoCE (RDMA over Converged Ethernet).集成以太网上的RDMA –Canonical approach for deploying RDMA in datacenters.在数据中心RDMA已经有符合规定的方法了 –Needs lossless network to get good performance.性能达到更高还需要无损网络<br> Network made lossless using Priority Flow Control (PFC). –Complicates network management. –Various known performance issues.<br>approach for deploying RDMA in datacenters. –Needs lossless network to get good performance.<br>• Network made lossless using Priority Flow Control (PFC). –Complicates network management. –Various known performance issues.<br>Is a lossless network really needed? No! Incremental changes to RoCE NIC design can enable better performance without a lossless network.</p>
+<h4 id="History-of-RDMA"><a href="#History-of-RDMA" class="headerlink" title="History of RDMA"></a>History of RDMA</h4><p>RDMA traditionally used in Infinibandclusters. –Losses are rare (credit-based flow control).用在不拥挤的网络中<br>Transport layer in RDMA NICs not designed to deal with losses efficiently. –Receiver discards out-of-order packets. –Sender does go-back-N on detecting packet loss.</p>
+<h2 id="主要会议七：SDN-and-Workloads-软件定义网络，是网络虚拟化的一种实现方式"><a href="#主要会议七：SDN-and-Workloads-软件定义网络，是网络虚拟化的一种实现方式" class="headerlink" title="主要会议七：SDN and Workloads 软件定义网络，是网络虚拟化的一种实现方式"></a>主要会议七：SDN and Workloads 软件定义网络，是网络虚拟化的一种实现方式</h2><h2 id="主要会议八：Wireless-Low-Power-and-High-Data-Rates是无线低功耗以及高传输速率化"><a href="#主要会议八：Wireless-Low-Power-and-High-Data-Rates是无线低功耗以及高传输速率化" class="headerlink" title="主要会议八：Wireless Low Power and High Data Rates是无线低功耗以及高传输速率化"></a>主要会议八：Wireless Low Power and High Data Rates是无线低功耗以及高传输速率化</h2><h2 id="主要会议九：Network-Verification-网络确认"><a href="#主要会议九：Network-Verification-网络确认" class="headerlink" title="主要会议九：Network Verification 网络确认"></a>主要会议九：Network Verification 网络确认</h2><h2 id="主要会议十：Measurements-测量方法"><a href="#主要会议十：Measurements-测量方法" class="headerlink" title="主要会议十：Measurements 测量方法"></a>主要会议十：Measurements 测量方法</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/15/串口接收中断/" rel="next" title="串口接收中断">
+                <i class="fa fa-chevron-left"></i> 串口接收中断
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/27/希尔伯特的23个问题/" rel="prev" title="希尔伯特的22个问题（1900年）">
+                希尔伯特的22个问题（1900年） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">estrella</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议一Congestion-Monitoring-and-Control监控网络拥挤"><span class="nav-number">1.</span> <span class="nav-text">主要会议一Congestion Monitoring and Control监控网络拥挤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1Inferring-Persistent-Interdomain-Congestion-推断网络拥挤"><span class="nav-number">1.1.</span> <span class="nav-text">1.1Inferring Persistent Interdomain Congestion 推断网络拥挤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络拥挤的原因：Interconnection-disputes-resulted-in-congestion：内部连接的矛盾造成拥堵"><span class="nav-number">1.1.1.</span> <span class="nav-text">网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上面这个原因造成的后果："><span class="nav-number">1.1.2.</span> <span class="nav-text">上面这个原因造成的后果：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“我”方贡献："><span class="nav-number">1.1.3.</span> <span class="nav-text">“我”方贡献：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Method-Time-Series-Latency-Probes拥挤潜伏时间调查"><span class="nav-number">1.1.4.</span> <span class="nav-text">Method: Time Series Latency Probes拥挤潜伏时间调查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Time-Series-Latency-Probes-TSLP-时间序列潜伏探针"><span class="nav-number">1.1.5.</span> <span class="nav-text">Time Series Latency Probes (TSLP)时间序列潜伏探针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pieces-of-the-Puzzle难点"><span class="nav-number">1.1.6.</span> <span class="nav-text">Pieces of the Puzzle难点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：这是一篇检测网络拥挤情况的方法的论文。后面实验结果就没看了。。"><span class="nav-number">1.1.7.</span> <span class="nav-text">总结：这是一篇检测网络拥挤情况的方法的论文。后面实验结果就没看了。。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议二Routing路由"><span class="nav-number">2.</span> <span class="nav-text">主要会议二Routing路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Internet-Anycast-Performance-Problems-and-Potential"><span class="nav-number">2.1.</span> <span class="nav-text">1.Internet Anycast: Performance, Problems and Potential</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题：Anycast-often-chooses-poorly就近算法经常选择路径非常愚蠢"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题：Anycast often chooses poorly就近算法经常选择路径非常愚蠢</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重点"><span class="nav-number">2.1.2.</span> <span class="nav-text">重点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Do-queries-go-to-nearby-sites-Does-adding-anycast-global-sites-help"><span class="nav-number">2.1.3.</span> <span class="nav-text">Do queries go to nearby sites?Does adding anycast (global) sites help?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-doesn’t-anycast-work-as-expected？"><span class="nav-number">2.1.4.</span> <span class="nav-text">Why doesn’t anycast work as expected？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Would-the-best-routes-comply-with-typical-routing-policies-最好的路线遵从典型路径政策吗？"><span class="nav-number">2.1.5.</span> <span class="nav-text">Would the best routes comply with typical routing policies?最好的路线遵从典型路径政策吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Embedding-geographic-information-in-BGP-announcements在BGP通告中完善地理信息"><span class="nav-number">2.1.6.</span> <span class="nav-text">Embedding geographic information in BGP announcements在BGP通告中完善地理信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Evaluate-the-geographic-hint-through-simulation-with-real-network-traces评估模拟网络传输的地理阻碍"><span class="nav-number">2.1.7.</span> <span class="nav-text">Evaluate the geographic hint through simulation with real network traces评估模拟网络传输的地理阻碍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Other-results"><span class="nav-number">2.1.8.</span> <span class="nav-text">Other results</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anycast-doesn’t-work-as-well-as-it-should-but-it-can"><span class="nav-number">2.1.9.</span> <span class="nav-text">Anycast doesn’t work as well as it should, but it can</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议三：Wireless-Links"><span class="nav-number">3.</span> <span class="nav-text">主要会议三：Wireless Links</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">3.1.</span> <span class="nav-text">1.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议四：Data-Center-Networking"><span class="nav-number">4.</span> <span class="nav-text">主要会议四：Data Center Networking</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Masking-Failures-from-Application-Performance-in-Data-Center-Networks-with-Shareable-Backup-使用可共享备份屏蔽数据中心网络中应用程序性能的失败"><span class="nav-number">4.1.</span> <span class="nav-text">1.Masking Failures from Application Performance in Data Center Networks with Shareable Backup 使用可共享备份屏蔽数据中心网络中应用程序性能的失败</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Today’s-Failure-Handling—Rerouting如今解决问题的方法：重新规划路线"><span class="nav-number">4.1.1.</span> <span class="nav-text">Today’s Failure Handling—Rerouting如今解决问题的方法：重新规划路线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Impact-on-Coflow-Completion-Time-CCT-影响并流完成时间的因素"><span class="nav-number">4.1.2.</span> <span class="nav-text">Impact on Coflow Completion Time (CCT)影响并流完成时间的因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Do-We-Have-Other-Options"><span class="nav-number">4.1.3.</span> <span class="nav-text">Do We Have Other Options?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Circuit-Switches电路选择"><span class="nav-number">4.1.4.</span> <span class="nav-text">Circuit Switches电路选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ideal-Architecture理想网络结构"><span class="nav-number">4.1.5.</span> <span class="nav-text">Ideal Architecture理想网络结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-Make-It-Practical它怎么变得实用？"><span class="nav-number">4.1.6.</span> <span class="nav-text">How to Make It Practical它怎么变得实用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Recover-First-Diagnose-Later先覆盖后分析"><span class="nav-number">4.1.7.</span> <span class="nav-text">Recover First, Diagnose Later先覆盖后分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-does-control-system-do"><span class="nav-number">4.1.8.</span> <span class="nav-text">What does control system do?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议五：Applications-and-IoT"><span class="nav-number">5.</span> <span class="nav-text">主要会议五：Applications and IoT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-MUTE-Bringing-IoT-to-Noise-Cancellation"><span class="nav-number">5.1.</span> <span class="nav-text">4.MUTE: Bringing IoT to Noise Cancellation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MUTE"><span class="nav-number">5.1.1.</span> <span class="nav-text">MUTE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Timing-Gain-Wideband-Cancellation了解波段的频率"><span class="nav-number">5.1.2.</span> <span class="nav-text">Timing Gain  Wideband Cancellation了解波段的频率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Signal-Processing-Gain"><span class="nav-number">5.1.3.</span> <span class="nav-text">Signal Processing Gain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Application-Specific-Gain"><span class="nav-number">5.1.4.</span> <span class="nav-text">Application-Specific Gain</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议六：RDMA-and-Hardware-Support"><span class="nav-number">6.</span> <span class="nav-text">主要会议六：RDMA and Hardware Support</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-Revisiting-Network-Support-for-RDMA-重探网络对远程内存访问的支持"><span class="nav-number">6.1.</span> <span class="nav-text">6.2 Revisiting Network Support for RDMA 重探网络对远程内存访问的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Rise-of-RDMA-in-datacenters-RDMA在数据中心的崛起"><span class="nav-number">6.1.1.</span> <span class="nav-text">Rise of RDMA in datacenters RDMA在数据中心的崛起</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Current-Status现状"><span class="nav-number">6.1.2.</span> <span class="nav-text">Current Status现状</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#History-of-RDMA"><span class="nav-number">6.1.3.</span> <span class="nav-text">History of RDMA</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议七：SDN-and-Workloads-软件定义网络，是网络虚拟化的一种实现方式"><span class="nav-number">7.</span> <span class="nav-text">主要会议七：SDN and Workloads 软件定义网络，是网络虚拟化的一种实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议八：Wireless-Low-Power-and-High-Data-Rates是无线低功耗以及高传输速率化"><span class="nav-number">8.</span> <span class="nav-text">主要会议八：Wireless Low Power and High Data Rates是无线低功耗以及高传输速率化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议九：Network-Verification-网络确认"><span class="nav-number">9.</span> <span class="nav-text">主要会议九：Network Verification 网络确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议十：Measurements-测量方法"><span class="nav-number">10.</span> <span class="nav-text">主要会议十：Measurements 测量方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">estrella</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
