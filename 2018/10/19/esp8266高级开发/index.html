@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="esp8266,wifi," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Esp8266有三种开发方式1.AT指令开发，这个最简单，我们已经很熟了。2.SDK开发，这个我们正准备学。3.LUA语言开发，这个还不太明白怎么做的。 AT开发就是往串口发AT指令即可，无需多说SDK开发装SDK开发的IDE 遇到一个有趣的问题：要求路径里不能有空格（can’t have space 我还以为是空间不够） 装SDK开发的IDE用安信可的一套集成开发软件就好，基于eclipse E">
+<meta name="keywords" content="esp8266,wifi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="esp8266高级开发">
+<meta property="og:url" content="http://yoursite.com/2018/10/19/esp8266高级开发/index.html">
+<meta property="og:site_name" content="estrella">
+<meta property="og:description" content="Esp8266有三种开发方式1.AT指令开发，这个最简单，我们已经很熟了。2.SDK开发，这个我们正准备学。3.LUA语言开发，这个还不太明白怎么做的。 AT开发就是往串口发AT指令即可，无需多说SDK开发装SDK开发的IDE 遇到一个有趣的问题：要求路径里不能有空格（can’t have space 我还以为是空间不够） 装SDK开发的IDE用安信可的一套集成开发软件就好，基于eclipse E">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/Qiz3pXU4d*xWV7D1zfo0umQjWiy5G3kthSGlsVMan4k!/c/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=9ADaAQAAAAARFw8!&tl=1&vuin=3033668267&tm=1533470400&sce=60-2-2&rf=0-0">
+<meta property="og:updated_time" content="2018-09-30T09:04:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="esp8266高级开发">
+<meta name="twitter:description" content="Esp8266有三种开发方式1.AT指令开发，这个最简单，我们已经很熟了。2.SDK开发，这个我们正准备学。3.LUA语言开发，这个还不太明白怎么做的。 AT开发就是往串口发AT指令即可，无需多说SDK开发装SDK开发的IDE 遇到一个有趣的问题：要求路径里不能有空格（can’t have space 我还以为是空间不够） 装SDK开发的IDE用安信可的一套集成开发软件就好，基于eclipse E">
+<meta name="twitter:image" content="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/Qiz3pXU4d*xWV7D1zfo0umQjWiy5G3kthSGlsVMan4k!/c/dPQAAAAAAAAA&ek=1&kp=1&pt=0&bo=9ADaAQAAAAARFw8!&tl=1&vuin=3033668267&tm=1533470400&sce=60-2-2&rf=0-0">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/19/esp8266高级开发/"/>
+
+
+
+
+
+  <title>esp8266高级开发 | estrella</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">estrella</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I can always be what I want to be.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/19/esp8266高级开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrella">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">esp8266高级开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T14:15:00+08:00">
+                2018-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/物联网/" itemprop="url" rel="index">
+                    <span itemprop="name">物联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Esp8266有三种开发方式"><a href="#Esp8266有三种开发方式" class="headerlink" title="Esp8266有三种开发方式"></a>Esp8266有三种开发方式</h1><p>1.AT指令开发，这个最简单，我们已经很熟了。<br>2.SDK开发，这个我们正准备学。<br>3.LUA语言开发，这个还不太明白怎么做的。</p>
+<h1 id="AT开发就是往串口发AT指令即可，无需多说"><a href="#AT开发就是往串口发AT指令即可，无需多说" class="headerlink" title="AT开发就是往串口发AT指令即可，无需多说"></a>AT开发就是往串口发AT指令即可，无需多说</h1><h1 id="SDK开发"><a href="#SDK开发" class="headerlink" title="SDK开发"></a>SDK开发</h1><h2 id="装SDK开发的IDE"><a href="#装SDK开发的IDE" class="headerlink" title="装SDK开发的IDE"></a>装SDK开发的IDE</h2><ul>
+<li>遇到一个有趣的问题：要求路径里不能有空格（can’t have space 我还以为是空间不够）</li>
+<li>装SDK开发的IDE用安信可的一套集成开发软件就好，基于eclipse</li>
+<li>ESP8266的烧录算是一个难点，像32、arduino等直接load，51烧录hex文件也不需要填写地址，ESP8266烧录bin文件就比较复杂<h3 id="bin与hex文件的区别"><a href="#bin与hex文件的区别" class="headerlink" title="bin与hex文件的区别"></a>bin与hex文件的区别</h3>1.hex文件包含了地址信息，bin文件只有数据信息<br>2.hex文件大小不是实际数据大小，bin文件大概是的<br>3.hex文件用16进制表示ASCII码，bin文件用二进制表示</li>
+<li>wifi模块上写着RoHS，RoHS是由欧盟立法制定的一项强制性标准，它的全称是《关于限制在电子电器设备中使用某些有害成分的指令》</li>
+<li>查到我的WiFi模块是四博智联做的WiFi模块，烧写略微有区别，目前只成功烧写了出厂bin文件<h2 id="SDK软件包结构"><a href="#SDK软件包结构" class="headerlink" title="SDK软件包结构"></a>SDK软件包结构</h2><img src="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/Qiz3pXU4d*xWV7D1zfo0umQjWiy5G3kthSGlsVMan4k!/c/dPQAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=9ADaAQAAAAARFw8!&amp;tl=1&amp;vuin=3033668267&amp;tm=1533470400&amp;sce=60-2-2&amp;rf=0-0" alt=""></li>
+<li>“app”目录为用户⼯工作主目录，⽤用户级代码及头⽂文件均放在此目录下编译</li>
+<li>“bin” 目录存放需下载到Flash的bin文件，其中：”at” 文件夹 -  Espressif 提供的支持 AT+指令的bin文件；”upgrade” 文件夹编译生成的支持云端升级的bin文件（user1.bin 或 user2.bin）“bin”文件夹根目录编译生成的不支持云端升级的 bin 文件，和其他 Espressif 提供的 bin 文件。</li>
+<li>“examples”目录存放 SDK 的上层示例代码，使⽤用时需将子目录（例如 IoT_Demo）目录下的所有内容复制到”app”目录下编译；</li>
+<li>“include”目录为 SDK 自带头文件，包含了用户可使用的相关 API 函数及其他宏定义，用户不需修改；</li>
+<li>“ld”目录为 SDK 软件编译链接时所需文件，用户不需修改；</li>
+<li>“lib”目录为 SDK 编译所需库文件；  </li>
+<li>“tools” 目录为编译生成 bin 文件所需的工具，用户不需修改。<h2 id="SDK理解"><a href="#SDK理解" class="headerlink" title="SDK理解"></a>SDK理解</h2></li>
+<li>SDK 为用户提供了一套数据接收、发送的函数接⼝口，⽤用户不必关心底层网络，如 Wi-Fi、TCP/IP 等的具体实现，只需要专注于物联网上层应用的开发，利⽤用相应接口完成网络数据的收发即可。<h2 id="解压完SDK后的操作"><a href="#解压完SDK后的操作" class="headerlink" title="解压完SDK后的操作"></a>解压完SDK后的操作</h2></li>
+<li>从examples里面复制出来你喜欢的代码到主目录下，更改名称为app</li>
+<li>driver_lib文件夹里的文件拷到app里面</li>
+<li>删除driver_lib文件夹</li>
+<li>把driver中的文件添加到app的user里makefile的编译中，修改头文件的路径</li>
+<li>删除examples文件夹<h2 id="makefile"><a href="#makefile" class="headerlink" title="makefile"></a>makefile</h2>搬运自<a href="https://blog.csdn.net/alpha_love/article/details/62953847" target="_blank" rel="noopener"></a></li>
+<li>一个工程中的源文件不计其数，其按类型、功能、模块分别放在若干个目录中，makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为 makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。</li>
+<li>无论是C、C++、还是pas，首先要把源文件编译成中间代码文件，在Windows下也就是.obj文件，UNIX下是.o文件，即Object File，这个动作叫做编译（compile）。然后再把大量的Object File合成执行文件，这个动作叫作链接（link）</li>
+<li>链接时，主要是链接函数和全局变量，所以，我们可以使用这些中间目标文件（O文件或是OBJ文件）来链接我们的应用程序。链接器并不管函数所在的源文件，只管函数的中间目标文件（Object File）</li>
+<li>在大多数时候，由于源文件太多，编译生成的中间目标文件太多，而在链接时需要明显地指出中间目标文件名，这对于编译很不方便，所以，我们要给中间目标文件打个包，在Windows下这种包叫“库文件”（LibraryFile)，也就是 .lib文件，在UNIX下，是Archive File，也就是 .a文件。</li>
+<li>makefile实例：这个示例来源于GNU的make使用手册，在这个示例中，我们的工程有8个C文件，和3个头文件，我们要写一个Makefile来告诉make命令如何编译和链接这几个文件。我们的规则是：<br>1.如果这个工程没有编译过，那么我们的所有C文件都要编译并被链接。<br>2.如果这个工程的某几个C文件被修改，那么我们只编译被修改的C文件，并链接目标程序。<br>3.如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的C文件，并链接目标程序。</li>
+<li>makefile的规则<br>  target…: prerequisites …(预备知识，先决条件)<br>  command（指令）<br>  …<h2 id="…"><a href="#…" class="headerlink" title="  …"></a>  …</h2><h2 id="eclipse的操作"><a href="#eclipse的操作" class="headerlink" title="eclipse的操作"></a>eclipse的操作</h2></li>
+<li>eclipse编译前要clean project</li>
+</ul>
+<h1 id="LUA开发"><a href="#LUA开发" class="headerlink" title="LUA开发"></a>LUA开发</h1><h2 id="LUA开发环境为ESPlorer"><a href="#LUA开发环境为ESPlorer" class="headerlink" title="LUA开发环境为ESPlorer"></a>LUA开发环境为ESPlorer</h2><h2 id="LUA烧录软件为LuaLoader"><a href="#LUA烧录软件为LuaLoader" class="headerlink" title="LUA烧录软件为LuaLoader"></a>LUA烧录软件为LuaLoader</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/esp8266/" rel="tag"># esp8266</a>
+          
+            <a href="/tags/wifi/" rel="tag"># wifi</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/19/esp8266与手机通信/" rel="next" title="ESP8266与手机通信">
+                <i class="fa fa-chevron-left"></i> ESP8266与手机通信
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/19/GPIO的概念/" rel="prev" title="GPIO的概念">
+                GPIO的概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">estrella</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Esp8266有三种开发方式"><span class="nav-number">1.</span> <span class="nav-text">Esp8266有三种开发方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AT开发就是往串口发AT指令即可，无需多说"><span class="nav-number">2.</span> <span class="nav-text">AT开发就是往串口发AT指令即可，无需多说</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SDK开发"><span class="nav-number">3.</span> <span class="nav-text">SDK开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#装SDK开发的IDE"><span class="nav-number">3.1.</span> <span class="nav-text">装SDK开发的IDE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bin与hex文件的区别"><span class="nav-number">3.1.1.</span> <span class="nav-text">bin与hex文件的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDK软件包结构"><span class="nav-number">3.2.</span> <span class="nav-text">SDK软件包结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDK理解"><span class="nav-number">3.3.</span> <span class="nav-text">SDK理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压完SDK后的操作"><span class="nav-number">3.4.</span> <span class="nav-text">解压完SDK后的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#makefile"><span class="nav-number">3.5.</span> <span class="nav-text">makefile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#…"><span class="nav-number">3.6.</span> <span class="nav-text">  …</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse的操作"><span class="nav-number">3.7.</span> <span class="nav-text">eclipse的操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LUA开发"><span class="nav-number">4.</span> <span class="nav-text">LUA开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LUA开发环境为ESPlorer"><span class="nav-number">4.1.</span> <span class="nav-text">LUA开发环境为ESPlorer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LUA烧录软件为LuaLoader"><span class="nav-number">4.2.</span> <span class="nav-text">LUA烧录软件为LuaLoader</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">estrella</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
