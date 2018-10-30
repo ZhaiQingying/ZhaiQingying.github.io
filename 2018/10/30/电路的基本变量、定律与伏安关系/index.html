@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="电路电场与电路 概念：电场与电路是紧密联系的概念。电荷在电场的作用下定向移动形成 电流，电流所通过的路径则称为电路。 联系：描述电场的物理量如电场强度、电流密度等与描述电路的物理量电 压、电流等具有直接的定量关系。事实上电路中的欧姆定律、基尔 霍夫定律等可以从麦克斯韦电磁场理论推导得到。 描述电磁场特征的基本物理量电场强度、磁场强 度、电位移矢量和磁感应强度,分别用E、H、D和 B表示 描述电路特">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电路的基本变量、定律与伏安关系">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/电路的基本变量、定律与伏安关系/index.html">
+<meta property="og:site_name" content="estrella">
+<meta property="og:description" content="电路电场与电路 概念：电场与电路是紧密联系的概念。电荷在电场的作用下定向移动形成 电流，电流所通过的路径则称为电路。 联系：描述电场的物理量如电场强度、电流密度等与描述电路的物理量电 压、电流等具有直接的定量关系。事实上电路中的欧姆定律、基尔 霍夫定律等可以从麦克斯韦电磁场理论推导得到。 描述电磁场特征的基本物理量电场强度、磁场强 度、电位移矢量和磁感应强度,分别用E、H、D和 B表示 描述电路特">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-30T04:47:14.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="电路的基本变量、定律与伏安关系">
+<meta name="twitter:description" content="电路电场与电路 概念：电场与电路是紧密联系的概念。电荷在电场的作用下定向移动形成 电流，电流所通过的路径则称为电路。 联系：描述电场的物理量如电场强度、电流密度等与描述电路的物理量电 压、电流等具有直接的定量关系。事实上电路中的欧姆定律、基尔 霍夫定律等可以从麦克斯韦电磁场理论推导得到。 描述电磁场特征的基本物理量电场强度、磁场强 度、电位移矢量和磁感应强度,分别用E、H、D和 B表示 描述电路特">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/30/电路的基本变量、定律与伏安关系/"/>
+
+
+
+
+
+  <title>电路的基本变量、定律与伏安关系 | estrella</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">estrella</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I can always be what I want to be.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/电路的基本变量、定律与伏安关系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrella">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">电路的基本变量、定律与伏安关系</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T00:00:00+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/电路分析/" itemprop="url" rel="index">
+                    <span itemprop="name">电路分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="电路"><a href="#电路" class="headerlink" title="电路"></a>电路</h2><h3 id="电场与电路"><a href="#电场与电路" class="headerlink" title="电场与电路"></a>电场与电路</h3><ul>
+<li>概念：电场与电路是紧密联系的概念。电荷在电场的作用下定向移动形成 电流，电流所通过的路径则称为电路。</li>
+<li>联系：描述电场的物理量如电场强度、电流密度等与描述电路的物理量电 压、电流等具有直接的定量关系。事实上电路中的欧姆定律、基尔 霍夫定律等可以从麦克斯韦电磁场理论推导得到。</li>
+<li>描述电磁场特征的基本物理量电场强度、磁场强 度、电位移矢量和磁感应强度,分别用E、H、D和 B表示</li>
+<li>描述电路特征的基本物理量电流、电压、电荷和 磁通,通常用 i 、u 、q 和Φ表示。</li>
+<li>它们之间有一定的对应关系:<h3 id="电路的性质与分类"><a href="#电路的性质与分类" class="headerlink" title="电路的性质与分类"></a>电路的性质与分类</h3></li>
+<li>利用电荷的有序运动，可以传输能量和信息。 </li>
+<li>当用导线将电源及电子元器件连在一起构成一个导电回路时，电流 在金属导线内流动，但是电能分布却并非仅在导线之内。 </li>
+<li>这里要考虑到辐射效应，也就是在导线周围有电能的分布。</li>
+<li>集总参数电路：当电路的几何尺寸远远小于电路中信号的波长时，电路周围的辐射效应很小，可以忽略不计，这时电流的能量完全分布在金属导线和 电路元件之内，这样的电路称为<strong>集总参数电路</strong>。这种电路往往可以用简化的电路模型来描述</li>
+<li>分布参数电路：反之，当电路的几何尺寸相对于电路中信号的波长很大时，辐射效应明显，电路各处的电流都不一样，电流的能量在空间分布，这样的电路称为<strong>分布参数电路</strong>。</li>
+<li>如果把工作信号的频率大幅度提高，则波长会迅速减小。当波长减小到比电路的本身尺寸要小得多时，这时就要用分布参数电路来考虑了。</li>
+<li>对于集总参数电路，可以把电路元件用简单的电路模型来等效，然后用电路的电压电流等物理量之间的关系求解，这是采用路的观点来分析。对于分布参数电路，采用场的观点来分析</li>
+<li>场和路所关注的重点不一样，在场的问题中，关注的是物理系统在空间各点发生的物理过程、电磁能量在空间的分布情况。在路的问题中，用路的模型以及路的物理量来描述一个物理系统的电磁过程 。 </li>
+<li>显然，场是路的基础，场的问题是一般问题，而路的问题仅仅是场的问题在某种特殊情况下的能够近似处理的问题<h2 id="电压、电流、电功率"><a href="#电压、电流、电功率" class="headerlink" title="电压、电流、电功率"></a>电压、电流、电功率</h2><h3 id="电流"><a href="#电流" class="headerlink" title="电流"></a>电流</h3></li>
+<li>电荷的定向运动形成电流。其大小等于单位时间内通过导体横截面 的电荷。</li>
+<li>电流的参考方向：参考方向是假定的电流方向，如果假定方向和实际方向一致，则电流量值为正；否则为负。<h3 id="电压"><a href="#电压" class="headerlink" title="电压"></a>电压</h3></li>
+<li>电场力将单位正电荷从电场中的a点移到b点所做的功，称为a、b 两点间的电压。</li>
+<li>为了便于分析计算，电压也引入参考方向，电压的参考方向用一对正负号表示。</li>
+<li>电流参考方向的流入端为电压参考方向的正极性，称为关联参考方向。<h3 id="电功率"><a href="#电功率" class="headerlink" title="电功率"></a>电功率</h3></li>
+<li>单位时间内某一段电路消耗（或提供）的能量，称为功率</li>
+<li>功率正负号的物理意义：如果电路中的电压电流参考方向任意假定，正负号所代表的物理意义没有共性可言。而在关联参考方向的前提下，功率为正号时表示吸收功率，负时表示发出功率。这一点通过熟悉的电 阻器件很容易理解。<h2 id="基尔霍夫定律"><a href="#基尔霍夫定律" class="headerlink" title="基尔霍夫定律"></a>基尔霍夫定律</h2><h3 id="常用名词"><a href="#常用名词" class="headerlink" title="常用名词"></a>常用名词</h3><em>我们的教材上并没有这些定义的地方，课件上才有，不同教材和课件的定义还不一样，这就。。。</em></li>
+<li>支路(Branch)：电路中流过同一电流的几个元件串联的分支</li>
+<li>节点(Node)：两条以上支路的汇集点（连接点）</li>
+<li>广义节点：将电路中的一部分围成一个封闭平面（高斯面），此封闭平面为广义节点</li>
+<li>回路(Loop)：由支路构成的电路中的任意闭合路径</li>
+<li>网孔(mesh)：指不包括任何支路的单一回路。（平面适用）网孔是支路，回路不一定是网孔。平面电路的每个网眼都是网孔<h3 id="基尔霍夫定律-1"><a href="#基尔霍夫定律-1" class="headerlink" title="基尔霍夫定律"></a>基尔霍夫定律</h3><h4 id="KCL"><a href="#KCL" class="headerlink" title="KCL"></a>KCL</h4>+概念：对于集总参数电路中的任一节点，在任一时刻流出该节点的电流代数和等于零。</li>
+<li>根据定义，我们可以规定流出节点的支路电流取正号，流入节点的支路电流取负号。</li>
+<li>证明/物理意义：结点只是理想导体的汇合点，不可能积累电荷，也不可能创造或消灭。</li>
+<li>KCL方程是线性齐次代数方程，它表明了各个支路电流所受的线性 约束。</li>
+<li>KCL适用于任何集总参数电路。它仅与元件的相互连接方式有关， 而与元件的性质无关。所以说，KCL反映了电路的互连性质。</li>
+<li>KCL对集总参数电路中任一假设的闭合面也是适用的（<em>含容？</em>）<h4 id="KVL"><a href="#KVL" class="headerlink" title="KVL"></a>KVL</h4></li>
+<li>概念：对于集总参数电路中任一回路，在任一时刻，沿闭合回路绕行一周，各支路电压的代数和等于零</li>
+<li>证明/物理意义：电荷沿着回路绕行一圈，回到原点，其电势能不变。 KVL是电路中能量守恒的体现。</li>
+<li>KVL方程是线性齐次代数方程，它表明了各个支路电压所受的线性约束</li>
+<li>KVL适用于任何集总参数电路。它仅与元件的相互连接方式有关，而与元件的性质无关。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/26/不确定度/" rel="next" title="测量的不确定度">
+                <i class="fa fa-chevron-left"></i> 测量的不确定度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/30/电阻与电源/" rel="prev" title="电阻与电源">
+                电阻与电源 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">estrella</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#电路"><span class="nav-number">1.</span> <span class="nav-text">电路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#电场与电路"><span class="nav-number">1.1.</span> <span class="nav-text">电场与电路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电路的性质与分类"><span class="nav-number">1.2.</span> <span class="nav-text">电路的性质与分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电压、电流、电功率"><span class="nav-number">2.</span> <span class="nav-text">电压、电流、电功率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#电流"><span class="nav-number">2.1.</span> <span class="nav-text">电流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电压"><span class="nav-number">2.2.</span> <span class="nav-text">电压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电功率"><span class="nav-number">2.3.</span> <span class="nav-text">电功率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基尔霍夫定律"><span class="nav-number">3.</span> <span class="nav-text">基尔霍夫定律</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用名词"><span class="nav-number">3.1.</span> <span class="nav-text">常用名词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基尔霍夫定律-1"><span class="nav-number">3.2.</span> <span class="nav-text">基尔霍夫定律</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#KCL"><span class="nav-number">3.2.1.</span> <span class="nav-text">KCL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KVL"><span class="nav-number">3.2.2.</span> <span class="nav-text">KVL</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">estrella</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
