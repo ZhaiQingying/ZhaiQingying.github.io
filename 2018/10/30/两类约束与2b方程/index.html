@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="两类约束 由不同的元件构成的电路所表现出的特性不同，而相同的元件 不同的连接关系也会呈现出不同的特性。 因此电路的总体特性包含在两个方面：元件特性，连接特性，也就是拓扑特性。两类约束就是元件约束和拓扑约束。 元件约束元件特性由元件的VCR描述，VCR反应了电路元件对所在支路的电压和电流之间所起的一种约束关系。这种约束关系在电路里面称为元件约束。 拓扑约束基尔霍夫电流定律反应了电路结构对支路电流的约">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两类约束与2b方程">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/两类约束与2b方程/index.html">
+<meta property="og:site_name" content="estrella">
+<meta property="og:description" content="两类约束 由不同的元件构成的电路所表现出的特性不同，而相同的元件 不同的连接关系也会呈现出不同的特性。 因此电路的总体特性包含在两个方面：元件特性，连接特性，也就是拓扑特性。两类约束就是元件约束和拓扑约束。 元件约束元件特性由元件的VCR描述，VCR反应了电路元件对所在支路的电压和电流之间所起的一种约束关系。这种约束关系在电路里面称为元件约束。 拓扑约束基尔霍夫电流定律反应了电路结构对支路电流的约">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-30T08:30:43.875Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="两类约束与2b方程">
+<meta name="twitter:description" content="两类约束 由不同的元件构成的电路所表现出的特性不同，而相同的元件 不同的连接关系也会呈现出不同的特性。 因此电路的总体特性包含在两个方面：元件特性，连接特性，也就是拓扑特性。两类约束就是元件约束和拓扑约束。 元件约束元件特性由元件的VCR描述，VCR反应了电路元件对所在支路的电压和电流之间所起的一种约束关系。这种约束关系在电路里面称为元件约束。 拓扑约束基尔霍夫电流定律反应了电路结构对支路电流的约">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/30/两类约束与2b方程/"/>
+
+
+
+
+
+  <title>两类约束与2b方程 | estrella</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">estrella</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I can always be what I want to be.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/两类约束与2b方程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrella">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">两类约束与2b方程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T00:00:00+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/电路分析/" itemprop="url" rel="index">
+                    <span itemprop="name">电路分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="两类约束"><a href="#两类约束" class="headerlink" title="两类约束"></a>两类约束</h2><ul>
+<li>由不同的元件构成的电路所表现出的特性不同，而相同的元件 不同的连接关系也会呈现出不同的特性。</li>
+<li>因此电路的总体特性包含在两个方面：元件特性，连接特性，也就是拓扑特性。两类约束就是元件约束和拓扑约束。</li>
+<li><em>元件约束</em>元件特性由元件的VCR描述，VCR反应了电路元件对所在支路的电压和电流之间所起的一种约束关系。这种约束关系在电路里面称为元件约束。</li>
+<li><em>拓扑约束</em>基尔霍夫电流定律反应了电路结构对支路电流的约束；而基尔霍 夫电压定律反映了电路结构对支路电压的约束。这种约束在电路里面称为拓扑约束</li>
+<li>应用两类约束建立的电路方程称为2b方程。对于含有b条支路的集总电路，以b条支路电压和b条支路电流作为变量，可以建立2b个方程。2b方程是电路分析的最基本方法，也是后续很多方法的依据<h2 id="KCL的独立方程数"><a href="#KCL的独立方程数" class="headerlink" title="KCL的独立方程数"></a>KCL的独立方程数</h2></li>
+<li>对于含有b条支路，n个节点的连通电路。假设对每个节点都列写出KCL方程；由于每条支路都跨接在两个节点之间，每个支路电流必然是从其中一个节点流入，从另一个节点流出；因此每个支路电流在KCL方程组中会出现2次，一次正，一次负。</li>
+<li>可以证明，n个结点的KCL方程相加必然为0。如果对任意的 (n-1)个结点列写方程，可以得到 (n-1)个独立的KCL方程。<h2 id="KVL的独立方程数"><a href="#KVL的独立方程数" class="headerlink" title="KVL的独立方程数"></a>KVL的独立方程数</h2></li>
+<li>KVL独立数目是独立回路的数目，其数量是(b-n+1) ，（应用 图论的知识可以证明） 。电路分析这门课程主要分析讨论平面电 路，对于平面电路KVL的独立性给出证明。</li>
+<li>对于含有b条支路，n个结点的平面连通电路。先用归纳法证明电路的网孔数目是(b-n+1) 。然后再证明对网孔所列写的KVL是独立方程组。</li>
+<li>证明（有点看不懂）：平面电路的网孔数目m=b-n+1，用数学归纳法。<br>当电路为单网孔时，即网孔数m=1。形成单个网孔的支路目和结点 数目相等，因此m=b-n+1=1成立。<br>假设m=b-n+1成立，则需m+1也是成立的。<br>设新电路的网孔、支路、结点分别用m′、b ′ 、 n ′ 来表示。显然 m′=m+1，b′=b+k<br>， n′=n+k-1<br>因此：m′=m+1=(b-n+1)+1=[(b′-k)-(n′-k+1)+1]+1= b′-n′+1</li>
+<li>由平面电路网孔列写的KVL方程显然是一组独立方程。证明和 KCL独立方程数目类似</li>
+<li>对于形成网孔的公共支路电压，在KVL方 程组中出现两次，如果绕行方向一致，一次正， 另一次必然为负。而形成外围支路的电压变量只出现一次，因此是一组独立的方程组</li>
+<li>倘若再加一个以外围支路构成的回路的 KVL方程，方程组必然线性相关了。<h2 id="2b方程"><a href="#2b方程" class="headerlink" title="2b方程"></a>2b方程</h2></li>
+<li>2b方程是指以b个支路电流和b个支路电压作为变量建立的一组数目为2b的方程组。2b方程是求解电路最基本的电路方程，分析电路的基本依据。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/26/不确定度/" rel="next" title="测量的不确定度">
+                <i class="fa fa-chevron-left"></i> 测量的不确定度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/30/含源线性电阻单口的等效/" rel="prev" title="含源线性电阻单口的等效">
+                含源线性电阻单口的等效 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">estrella</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两类约束"><span class="nav-number">1.</span> <span class="nav-text">两类约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KCL的独立方程数"><span class="nav-number">2.</span> <span class="nav-text">KCL的独立方程数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KVL的独立方程数"><span class="nav-number">3.</span> <span class="nav-text">KVL的独立方程数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2b方程"><span class="nav-number">4.</span> <span class="nav-text">2b方程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">estrella</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
