@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux,嵌入式,makefile," />
+  <meta name="keywords" content="嵌入式,linux,makefile," />
 
 
 
@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="Linux develop创建一个应用编辑gedit main.c还有另一种是vi，但首推gedit编译gcc -o main.c main运行main程序./main 嵌入式软件开发模式嵌入式系统资源受限，直接在嵌入式系统硬件平台上编写软件较为困难。解决方法首先在通用计算机上编写软件然后通过本地编译或者交叉编译生成目标平台上可以运行的二进制代码格式最后再下载到目标平台上运行（51单片机下载进去需">
-<meta name="keywords" content="linux,嵌入式,makefile">
+<meta name="description" content="从一个简单的应用程序入手，介绍了开发一个Linux应用程序的流程。通过实例分析了编译和连接的原理，并且剖析了程序执行的过程。最后讲述了Makefile管理工程文件如何管理软件代码。请读者多实践，只有不断的实践才能对这部分的知识深入理解。 Linux develop创建一个应用编辑gedit main.c还有另一种是vi，但首推gedit编译gcc -o main.c main运行main程序./m">
+<meta name="keywords" content="嵌入式,linux,makefile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux第一个应用及makefile文件">
 <meta property="og:url" content="http://yoursite.com/2019/04/11/linux第一个应用及makefile文件/index.html">
 <meta property="og:site_name" content="estrella">
-<meta property="og:description" content="Linux develop创建一个应用编辑gedit main.c还有另一种是vi，但首推gedit编译gcc -o main.c main运行main程序./main 嵌入式软件开发模式嵌入式系统资源受限，直接在嵌入式系统硬件平台上编写软件较为困难。解决方法首先在通用计算机上编写软件然后通过本地编译或者交叉编译生成目标平台上可以运行的二进制代码格式最后再下载到目标平台上运行（51单片机下载进去需">
+<meta property="og:description" content="从一个简单的应用程序入手，介绍了开发一个Linux应用程序的流程。通过实例分析了编译和连接的原理，并且剖析了程序执行的过程。最后讲述了Makefile管理工程文件如何管理软件代码。请读者多实践，只有不断的实践才能对这部分的知识深入理解。 Linux develop创建一个应用编辑gedit main.c还有另一种是vi，但首推gedit编译gcc -o main.c main运行main程序./m">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/fReSmwGoLbWCg*kR3GeHG1**vLZLnTjo18aIs2pw*j8!/c/dLgAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AEQAQAAAAADF*4!&tl=1&vuin=3033668267&tm=1554987600&sce=60-2-2&rf=0-0">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/1lFAOBTjWzdesET3zXnbKvJbgS1BC8ouM2Y3HeXHyUE!/c/dL4AAAAAAAAA&ek=1&kp=1&pt=0&bo=0ALAAwAAAAARFzE!&tl=1&vuin=3033668267&tm=1554998400&sce=60-2-2&rf=0-0">
 <meta property="og:image" content="http://a4.qpic.cn/psb?/V11V3soz2JNi4c/oKeo7tXdh9GHL4sfbBMteVkJx8KlwIMOQHmusGqYWvk!/c/dL8AAAAAAAAA&ek=1&kp=1&pt=0&bo=wAPQAgAAAAARFzE!&tl=1&vuin=3033668267&tm=1554998400&sce=60-2-2&rf=0-0">
-<meta property="og:updated_time" content="2019-04-11T16:20:08.039Z">
+<meta property="og:updated_time" content="2019-04-12T00:32:35.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux第一个应用及makefile文件">
-<meta name="twitter:description" content="Linux develop创建一个应用编辑gedit main.c还有另一种是vi，但首推gedit编译gcc -o main.c main运行main程序./main 嵌入式软件开发模式嵌入式系统资源受限，直接在嵌入式系统硬件平台上编写软件较为困难。解决方法首先在通用计算机上编写软件然后通过本地编译或者交叉编译生成目标平台上可以运行的二进制代码格式最后再下载到目标平台上运行（51单片机下载进去需">
+<meta name="twitter:description" content="从一个简单的应用程序入手，介绍了开发一个Linux应用程序的流程。通过实例分析了编译和连接的原理，并且剖析了程序执行的过程。最后讲述了Makefile管理工程文件如何管理软件代码。请读者多实践，只有不断的实践才能对这部分的知识深入理解。 Linux develop创建一个应用编辑gedit main.c还有另一种是vi，但首推gedit编译gcc -o main.c main运行main程序./m">
 <meta name="twitter:image" content="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/fReSmwGoLbWCg*kR3GeHG1**vLZLnTjo18aIs2pw*j8!/c/dLgAAAAAAAAA&ek=1&kp=1&pt=0&bo=3AEQAQAAAAADF*4!&tl=1&vuin=3033668267&tm=1554987600&sce=60-2-2&rf=0-0">
 
 
@@ -346,7 +346,8 @@
       
 
       
-        <h2 id="Linux-develop"><a href="#Linux-develop" class="headerlink" title="Linux develop"></a>Linux develop</h2><h3 id="创建一个应用"><a href="#创建一个应用" class="headerlink" title="创建一个应用"></a>创建一个应用</h3><p>编辑gedit main.c还有另一种是vi，但首推gedit<br>编译gcc -o main.c main<br>运行main程序./main</p>
+        <p>从一个简单的应用程序入手，介绍了开发一个Linux应用程序的流程。通过实例分析了编译和连接的原理，并且剖析了程序执行的过程。最后讲述了Makefile管理工程文件如何管理软件代码。请读者多实践，只有不断的实践才能对这部分的知识深入理解。</p>
+<h2 id="Linux-develop"><a href="#Linux-develop" class="headerlink" title="Linux develop"></a>Linux develop</h2><h3 id="创建一个应用"><a href="#创建一个应用" class="headerlink" title="创建一个应用"></a>创建一个应用</h3><p>编辑gedit main.c还有另一种是vi，但首推gedit<br>编译gcc -o main.c main<br>运行main程序./main</p>
 <h2 id="嵌入式软件开发模式"><a href="#嵌入式软件开发模式" class="headerlink" title="嵌入式软件开发模式"></a>嵌入式软件开发模式</h2><p>嵌入式系统资源受限，直接在嵌入式系统硬件平台上编写软件较为困难。<br>解决方法<br>首先在通用计算机上编写软件<br>然后通过本地编译或者交叉编译生成目标平台上可以运行的二进制代码格式<br>最后再下载到目标平台上运行<br>（51单片机下载进去需要hex文件与bin文件区别在有地址，esp8266的ide开发用eclipse生成的bin文件下载进去，需要写地址）</p>
 <h3 id="交叉编译的概念"><a href="#交叉编译的概念" class="headerlink" title="交叉编译的概念"></a>交叉编译的概念</h3><p>在一种平台上编译出能在另一种平台（体系结构不同）上运行的程序；<br>在PC平台(X86)上编译出能运行在ARM平台上的程序，即编译得到的程序在X86平台上不能运行，必须放到ARM平台上才能运行；<br>用来编译这种程序的编译器就叫交叉编译器；<br>为了不与本地编译器混淆，交叉编译器的名字一般都有前缀，例如：arm-linux-gcc</p>
 <h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h3 id="What-is-Makefile"><a href="#What-is-Makefile" class="headerlink" title="What is Makefile?"></a>What is Makefile?</h3><p>我们要做的是make，makefile是make的基础<br>Makefile是一个文本文件，是GNU make程序在执行的时候默认读取的配置文件。Makefile有强大的功能，它记录了文件之间的依赖关系，通过比对目标文件和依赖文件的时间戳，决定是否需要执行相应的命令；同时，Makefile还可以定义变量，接收用户传递的参数变量，通过这些元素的相互配合，省去了繁杂的编译命令，不仅节省时间，也减小了出错的概率。</p>
@@ -359,7 +360,8 @@
 <h3 id="make"><a href="#make" class="headerlink" title="make"></a>make</h3><p>Make的工作过程类似一次深度优先遍历过程</p>
 <h3 id="the-Variables-of-Makefile"><a href="#the-Variables-of-Makefile" class="headerlink" title="the  Variables of Makefile"></a>the  Variables of Makefile</h3><p>1.objects变量（$(objects)）<br>objects = main.o kbd.o command.o \<br>        display.o insert.o search.o files.o utils.o<br>edit : $(objects)<br>        cc -o edit $(objects)<br>2.预定义变量<br>无视无视<br>3.内部变量<br>$@扩展成当前规则的目的文件名<br>$&lt;扩展成依靠列表中的第一个依靠文件<br>$^扩展成整个依靠的列表（除掉了里面所有重复的文件名） </p>
 <h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>I just find it complicated to understand my makefile on the embeded system class, cause it was written from models given by Mrs Sun. Studying in B site is not realistic, while under a course vedio is a useful comment saying it is helpful to read the CN edition of GUN makefile mannul. I’ll try.</p>
-<h2 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h2><pre><code>OBJS=main.o test.o test1.o test2.o test3.o
+<h2 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h2><p>编写加、减、乘、除功能的多文件程序，使用make工具，要求在makefile文件中使用内部变量。参考pdf文档。</p>
+<pre><code>OBJS=main.o test.o test1.o test2.o test3.o
 CC=gcc
 CFLAGS = -c
 
@@ -401,9 +403,9 @@ test3.o : test3.c test.h
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
             <a href="/tags/嵌入式/" rel="tag"># 嵌入式</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
             <a href="/tags/makefile/" rel="tag"># makefile</a>
           
@@ -418,8 +420,8 @@ test3.o : test3.c test.h
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/09/嵌入式系统和linux概述/" rel="next" title="嵌入式及linux系统概述">
-                <i class="fa fa-chevron-left"></i> 嵌入式及linux系统概述
+              <a href="/2019/03/19/linux建立静态库和动态库/" rel="next" title="linux建立静态库和动态库">
+                <i class="fa fa-chevron-left"></i> linux建立静态库和动态库
               </a>
             
           </div>
@@ -427,6 +429,10 @@ test3.o : test3.c test.h
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/12/linux gcc详解/" rel="prev" title="linux gcc详解">
+                linux gcc详解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -503,7 +509,7 @@ test3.o : test3.c test.h
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -525,7 +531,7 @@ test3.o : test3.c test.h
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

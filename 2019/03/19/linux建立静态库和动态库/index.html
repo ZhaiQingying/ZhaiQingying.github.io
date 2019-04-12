@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="嵌入式,linux,动态库," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="动态库和静态库动态库和静态库的概念Linux系统有两种程序库，一种是被称作静态库（static library），在程序连接的时候，把库函数的目标代码和程序连接在一起；还有一种就是前面提到的动态库（shared library），从英文字面翻译，动态库可以翻译为共享库。库有两种：动态和静态；动态是以.so 为后缀，静态是以.a为后缀；比如：libhello.so  libhello.a 静态库静态">
+<meta name="keywords" content="嵌入式,linux,动态库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux建立静态库和动态库">
+<meta property="og:url" content="http://yoursite.com/2019/03/19/linux建立静态库和动态库/index.html">
+<meta property="og:site_name" content="estrella">
+<meta property="og:description" content="动态库和静态库动态库和静态库的概念Linux系统有两种程序库，一种是被称作静态库（static library），在程序连接的时候，把库函数的目标代码和程序连接在一起；还有一种就是前面提到的动态库（shared library），从英文字面翻译，动态库可以翻译为共享库。库有两种：动态和静态；动态是以.so 为后缀，静态是以.a为后缀；比如：libhello.so  libhello.a 静态库静态">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-12T01:14:07.409Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux建立静态库和动态库">
+<meta name="twitter:description" content="动态库和静态库动态库和静态库的概念Linux系统有两种程序库，一种是被称作静态库（static library），在程序连接的时候，把库函数的目标代码和程序连接在一起；还有一种就是前面提到的动态库（shared library），从英文字面翻译，动态库可以翻译为共享库。库有两种：动态和静态；动态是以.so 为后缀，静态是以.a为后缀；比如：libhello.so  libhello.a 静态库静态">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/19/linux建立静态库和动态库/"/>
+
+
+
+
+
+  <title>linux建立静态库和动态库 | estrella</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">estrella</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I can always be what I want to be.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/linux建立静态库和动态库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrella">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux建立静态库和动态库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T00:00:00+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/嵌入式/" itemprop="url" rel="index">
+                    <span itemprop="name">嵌入式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="动态库和静态库"><a href="#动态库和静态库" class="headerlink" title="动态库和静态库"></a>动态库和静态库</h2><h3 id="动态库和静态库的概念"><a href="#动态库和静态库的概念" class="headerlink" title="动态库和静态库的概念"></a>动态库和静态库的概念</h3><p>Linux系统有两种程序库，一种是被称作静态库（static library），在程序连接的时候，把库函数的目标代码和程序连接在一起；还有一种就是前面提到的动态库（shared library），从英文字面翻译，动态库可以翻译为共享库。<br>库有两种：动态和静态；动态是以.so 为后缀，静态是以.a为后缀；比如：libhello.so  libhello.a</p>
+<h3 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h3><p>静态库是在写代码时调用的库函数，代码中调用库函数，在编译时会从库函数中copy 整个库函数到可执行文件；所以一旦连接成功(编译成功)；可执行文件中就包含了<br>整个库函数的代码，以后在执行这个静态文件时就不用这个静态库函数了。</p>
+<h3 id="动态库函数"><a href="#动态库函数" class="headerlink" title="动态库函数"></a>动态库函数</h3><p>1.在linux中.so 为后缀，不是可执行程序的一部分，当执行可执行程序时动态加载这个动态链接库；而且这个动态链接库也是多个程序共享的，可以节省空间；linux 2.下进行连接的默认操作是首先连接动态连接。工作原理是动态库会在可执行程序内留下一个标记；指明当程序执行时，首先必须载入这个动态库<br>3.linux 动态连接库，叫 共享对象：shared object  ；就相当于windows下面的DLL<br>LINUX 的shared object 在我们日常写代码中可以自己写，把一些常用的工具都写成库函数，这样每次用时直接调用库函数，不用重复写代码。</p>
+<h3 id="windows的dll"><a href="#windows的dll" class="headerlink" title="windows的dll"></a>windows的dll</h3><p>windows下的dll全称是动态链接库，linux中虽然也叫动态链接库，但英文名是shared object。<br>和linux so的异同<br>两种系统动态库比较分析（摘自CSDN<a href="https://blog.csdn.net/LinSeeker85/article/details/82684722" target="_blank" rel="noopener">https://blog.csdn.net/LinSeeker85/article/details/82684722</a>）<br>Windows和Linux采用动态链接库技术目的是基本一致的，但由于操作系统的不同，他们在许多方面还是不尽相同，下面从以下几个方面进行阐述。<br>(1)动态库程序编写，在Windows系统下的执行文件格式是PE格式，动态库需要一个DllMain函数作为初始化的人口，通常在导出函数的声明时需要有_declspec(dllexport)关键字。Linux下的gcc编译的执行文件默认是ELF格式，不需要初始化入口，亦不需要到函数做特别声明，编写比较方便。<br>(2)动态库编译，在windows系统下面，有方便的调试编译环境，通常不用自己去编写makefile文件，但在linux下面，需要自己动手去编写makefile文件，因此，必须掌握一定的makefile编写技巧，另外，通常Linux编译规则相对严格。<br>(3)动态库调用方面，Windows和Linux对其下编制的动态库都可以采用显式调用或隐式调用，但具体的调用方式也不尽相同。<br>(4)动态库输出函数查看，在Windows中，有许多工具和软件可以进行查看DLL中所输出的函数，例如命令行方式的dumpbin以及VC++工具中的DEPENDS程序。在Linux系统中通常采用nm来查看输出函数，也可以使用ldd查看程序隐式链接的共享对象文件。<br>(5)对操作系统的依赖，这两种动态库运行依赖于各自的操作系统，不能跨平台使用。因此，对于实现相同功能的动态库，必须为两种不同的操作系统提供不同的动态库版本。</p>
+<h2 id="linux创建静态库"><a href="#linux创建静态库" class="headerlink" title="linux创建静态库"></a>linux创建静态库</h2><pre><code>ar crv libmylib.a my_print.o my_math.o
+</code></pre><p>我们就得到了libmylib.a，这就是我们需要的静态库。<br>上述命令中 crv 是 ar的命令选项：<br>c 如果需要生成新的库文件，不要警告<br>r 代替库中现有的文件或者插入新的文件<br>v 输出详细信息</p>
+<h2 id="linux链接动态库"><a href="#linux链接动态库" class="headerlink" title="linux链接动态库"></a>linux链接动态库</h2><h3 id="linux链接库函数的应用"><a href="#linux链接库函数的应用" class="headerlink" title="linux链接库函数的应用"></a>linux链接库函数的应用</h3><p>1.linux下dlopen的使用：<br>dlopen（）<br>　　功能：打开一个动态链接库<br>　　包含头文件：<br>　　#include &lt;dlfcn.h&gt;<br>　　函数定义：<br>　　void <em> dlopen( const char </em> pathname, int mode );<br> 函数描述：<br>　　在dlopen的（）函数以指定模式打开指定的动态连接库文件，并返回一个句柄给调用进程。使用dlclose（）来卸载打开的库<br>mode是打开方式，其值有多个，不同操作系统上实现的功能有所不同，在linux下，按功能可分为三类：<br> 解析方式<br>         RTLD_LAZY：在dlopen返回前，对于动态库中的未定义的符号不执行解析（只对函数引用有效，对于变量引用总是立即解析）。<br>        RTLD_NOW： 需要在dlopen返回前，解析出所有未定义符号，如果解析不出来，在dlopen会返回NULL，错误为：: undefined symbol: xxxx…….<br>作用范围，可与解析方式通过“|”组合使用。<br>        RTLD_GLOBAL：动态库中定义的符号可被其后打开的其它库重定位。<br>        RTLD_LOCAL： 与RTLD_GLOBAL作用相反，动态库中定义的符号不能被其后打开的其它库重定位。如果没有指明是RTLD_GLOBAL还是RTLD_LOCAL，则缺省为RTLD_LOCAL。<br>作用方式<br>        RTLD_NODELETE： 在dlclose()期间不卸载库，并且在以后使用dlopen()重新加载库时不初始化库中的静态变量。这个flag不是POSIX-2001标准。<br>        RTLD_NOLOAD： 不加载库。可用于测试库是否已加载(dlopen()返回NULL说明未加载，否则说明已加载），也可用于改变已加载库的flag，如：先前加载库的flag为RTLD＿LOCAL，用dlopen(RTLD_NOLOAD|RTLD_GLOBAL)后flag将变成RTLD_GLOBAL。这个flag不是POSIX-2001标准。<br>        RTLD_DEEPBIND：在搜索全局符号前先搜索库内的符号，避免同名符号的冲突。这个flag不是POSIX-2001标准<br>返回值:<br>　　打开错误返回NULL<br>　　成功，返回其首地址</p>
+<p>　　编译时候要加入 -ldl (指定dl库)<br>　　例如<br>　　gcc test.c -o test -ldl<br>2.linux下dlsym的使用<br>3.linux下dlerror的使用<br>4.linux下dlclose的使用</p>
+<h2 id="linux建立静态库和动态库实验"><a href="#linux建立静态库和动态库实验" class="headerlink" title="linux建立静态库和动态库实验"></a>linux建立静态库和动态库实验</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/嵌入式/" rel="tag"># 嵌入式</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/动态库/" rel="tag"># 动态库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/07/嵌入式系统和linux概述/" rel="next" title="嵌入式及linux系统概述">
+                <i class="fa fa-chevron-left"></i> 嵌入式及linux系统概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/11/linux第一个应用及makefile文件/" rel="prev" title="linux第一个应用及makefile文件">
+                linux第一个应用及makefile文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">estrella</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态库和静态库"><span class="nav-number">1.</span> <span class="nav-text">动态库和静态库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态库和静态库的概念"><span class="nav-number">1.1.</span> <span class="nav-text">动态库和静态库的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态库"><span class="nav-number">1.2.</span> <span class="nav-text">静态库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态库函数"><span class="nav-number">1.3.</span> <span class="nav-text">动态库函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#windows的dll"><span class="nav-number">1.4.</span> <span class="nav-text">windows的dll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux创建静态库"><span class="nav-number">2.</span> <span class="nav-text">linux创建静态库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux链接动态库"><span class="nav-number">3.</span> <span class="nav-text">linux链接动态库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linux链接库函数的应用"><span class="nav-number">3.1.</span> <span class="nav-text">linux链接库函数的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux建立静态库和动态库实验"><span class="nav-number">4.</span> <span class="nav-text">linux建立静态库和动态库实验</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">estrella</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
