@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="stm32,DMA," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文：https://blog.csdn.net/zhejfl/article/details/82555634  DMA由来DMA(Direct Memory Access,直接存储器访问)。在ＤＭＡ出现之前，CPU与外设之间的数据传送方式有程序传送方式、中断传送方式。CPU是通过系统总线与其他部件连接并进行数据传输。 程序传送方式程序传送方式是指直接在程序控制下进行数据的输入/输出操作。分为无">
+<meta name="keywords" content="stm32,DMA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DMA是什么">
+<meta property="og:url" content="http://yoursite.com/2018/05/29/DMA是什么/index.html">
+<meta property="og:site_name" content="estrella">
+<meta property="og:description" content="原文：https://blog.csdn.net/zhejfl/article/details/82555634  DMA由来DMA(Direct Memory Access,直接存储器访问)。在ＤＭＡ出现之前，CPU与外设之间的数据传送方式有程序传送方式、中断传送方式。CPU是通过系统总线与其他部件连接并进行数据传输。 程序传送方式程序传送方式是指直接在程序控制下进行数据的输入/输出操作。分为无">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-10T01:18:16.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DMA是什么">
+<meta name="twitter:description" content="原文：https://blog.csdn.net/zhejfl/article/details/82555634  DMA由来DMA(Direct Memory Access,直接存储器访问)。在ＤＭＡ出现之前，CPU与外设之间的数据传送方式有程序传送方式、中断传送方式。CPU是通过系统总线与其他部件连接并进行数据传输。 程序传送方式程序传送方式是指直接在程序控制下进行数据的输入/输出操作。分为无">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/29/DMA是什么/"/>
+
+
+
+
+
+  <title>DMA是什么 | estrella</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">estrella</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I can always be what I want to be.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/DMA是什么/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrella">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DMA是什么</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T00:00:00+08:00">
+                2018-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/单片机/" itemprop="url" rel="index">
+                    <span itemprop="name">单片机</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文：<a href="https://blog.csdn.net/zhejfl/article/details/82555634" target="_blank" rel="noopener">https://blog.csdn.net/zhejfl/article/details/82555634</a> </p>
+<h2 id="DMA由来"><a href="#DMA由来" class="headerlink" title="DMA由来"></a>DMA由来</h2><p>DMA(Direct Memory Access,直接存储器访问)。在ＤＭＡ出现之前，CPU与外设之间的数据传送方式有程序传送方式、中断传送方式。CPU是通过系统总线与其他部件连接并进行数据传输。</p>
+<h2 id="程序传送方式"><a href="#程序传送方式" class="headerlink" title="程序传送方式"></a>程序传送方式</h2><p>程序传送方式是指直接在程序控制下进行数据的输入/输出操作。分为无条件传送方式和查询(条件传送方式)两种。</p>
+<h3 id="无条件传送方式"><a href="#无条件传送方式" class="headerlink" title="无条件传送方式"></a>无条件传送方式</h3><p>微机系统中的一些简单的外设，如开关、继电器、数码管、发光二极管等，在它们工作时，可以认为输入设备已随时准备好向CPU提供数据，而输出设备也随时准备好接收CPU送来的数据，这样，在CPU需要同外设交换信息时，就能够用IN或OUT指令直接对这些外设进行输入/输出操作。由于在这种方式下CPU对外设进行输入/输出操作时无需考虑外设的状态，故称之为无条件传送方式。</p>
+<h3 id="查询-有条件-传送方式"><a href="#查询-有条件-传送方式" class="headerlink" title="查询(有条件)传送方式"></a>查询(有条件)传送方式</h3><p>查询传送也称为条件传送，是指在执行输入指令（IN）或输出指令（OUT）前，要先查询相应设备的状态，当输入设备处于准备好状态、输出设备处于空闲状态时，CPU才执行输入/输出指令与外设交换信息。为此，接口电路中既要有数据端口，还要有状态端口。</p>
+<h2 id="中断传送方式"><a href="#中断传送方式" class="headerlink" title="中断传送方式"></a>中断传送方式</h2><p>中断传送方式是指当外设需要与CPU进行信息交换时，由外设向CPU发出请求信号，使CPU暂停正在执行的程序，转而去执行数据输入/输出操作，待数据传送结束后，CPU再继续执行被暂停的程序。<br>以上两种方式，均由CPU控制数据传输，不同的是程序传送方式由CPU来查询外设状态，CPU处于主动地位，而外设处于被动地位。这就是常说的—-对外设的轮询，效率低。而中断传送法师则是外设主动向CPU发生请求，等候CPU处理，在没有发出请求时，CPU和外设都可以独立进行各自的工作。  需要进行断点和现场的保护和恢复，浪费了很多CPU的时间，适合少量数据的传送。</p>
+<h2 id="DMA原理"><a href="#DMA原理" class="headerlink" title="DMA原理"></a>DMA原理</h2><p>DMA的出现就是为了解决批量数据的输入/输出问题。DMA是指外部设备不通过CPU而直接与系统内存交换数据的接口技术。这样数据的传送速度就取决于存储器和外设的工作速度。<br>通常系统总线是由CPU管理的，在ＤＭＡ方式时，就希望CPU把这些总线让出来，即CPU连到这些总线上的线处于第三态(高阻状态)，而由DMA控制器接管，控制传送的字节数，判断DMA是否结束，以及发出DMA结束信号。因此DMA控制器必须有以下功能:<br>1、能向CPU发出系统保持(HOLD)信号，提出总线接管请求；<br>2、当CPU发出允许接管信号后，负责对总线的控制，进入DMA方式;<br>3、能对存储器寻址及能修改地址指针，实现对内存的读写；<br>4、能决定本次DMA传送的字节数，判断DMA传送是否借宿。<br>5、发出DMA结束信号，使CPU恢复正常工作状态。</p>
+<p>DMA传输将从一个地址空间复制到另外一个地址空间。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实行和完成。  典型例子—移动一个外部内存的区块到芯片内部更快的内存区。<br>对于实现ＤＭＡ传输，它是由DMA控制器直接掌管总线（地址总线、数据总线和控制总线），因此，存在一个总线控制权转移问题<br>DMA传输开始前：　　　　CPU——&gt;DMA控制器<br>DMA传输结束后：              DMA控制器——&gt;CPU<br>一个完整的DMA传输过程必须经历DMA请求、DMA响应、DMA传输、DMA结束4个步骤。<br>DMA方式是一种完全由硬件进行组信息传送的控制方式，具有中断方式的优点，即在数据准备阶段，CPU与外设并行工作。</p>
+<h2 id="DMA的传送过程"><a href="#DMA的传送过程" class="headerlink" title="DMA的传送过程"></a>DMA的传送过程</h2><p>DMA的数据传送分为预处理、数据传送和后处理3个阶段。<br>(1)预处理<br>由CPU完成一些必要的准备工作。首先，CPU执行几条I/O指令，用以测试I/O设备状态，向DMA控制器的有关寄存器置初值，设置传送方向、启动该设备等。然后，CPU继续执行原来的程序，直到I/O设备准备好发送的数据(输入情况)或接受的数据(输出情况)时，I/O设备向DMA控制器发送DMA请求，再由DMA控制器向CPU发送总线请求(统称为DMA请求)，用以传输数据。<br>(2)数据传送<br>DMA的数据传输可以以单字节(或字)为基本单位，对于以数据块为单位的传送(如银盘)，DMA占用总线后的数据输入和输出操作都是通过循环来实现。需要特别之处的是，这一循环也是由DMA控制器(而不是通过CPU执行程序)实现的，即数据传送阶段是完全由DMA(硬件)来控制的。<br>(3)后处理<br>DMA控制器向CPU发送中断请求，CPU执行中断服务程序做DMA结束处理，包括检验送入主存的数据是否正确，测试传送过程中是否出错(错误则转入诊断程序)和决定是否继续使用DMA传送其他数据块等。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/stm32/" rel="tag"># stm32</a>
+          
+            <a href="/tags/DMA/" rel="tag"># DMA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/29/STM32工程模板建立笔记/" rel="next" title="STM32工程模板建立笔记">
+                <i class="fa fa-chevron-left"></i> STM32工程模板建立笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/22/esp8266与手机通信/" rel="prev" title="ESP8266与手机通信">
+                ESP8266与手机通信 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">estrella</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DMA由来"><span class="nav-number">1.</span> <span class="nav-text">DMA由来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序传送方式"><span class="nav-number">2.</span> <span class="nav-text">程序传送方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无条件传送方式"><span class="nav-number">2.1.</span> <span class="nav-text">无条件传送方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询-有条件-传送方式"><span class="nav-number">2.2.</span> <span class="nav-text">查询(有条件)传送方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中断传送方式"><span class="nav-number">3.</span> <span class="nav-text">中断传送方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DMA原理"><span class="nav-number">4.</span> <span class="nav-text">DMA原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DMA的传送过程"><span class="nav-number">5.</span> <span class="nav-text">DMA的传送过程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">estrella</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
