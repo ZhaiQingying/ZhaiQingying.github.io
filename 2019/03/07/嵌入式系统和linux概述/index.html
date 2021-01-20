@@ -1,358 +1,142 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>嵌入式及linux系统概述 | estrella</title>
+  <meta name="author" content="estrella">
+  
+  <meta name="description" content="嵌入式系统（Enbedded system）嵌入式系统的定义目前国内一个普遍被认同的定义是：以应用为中心、以计算机技术为基础，软、硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统。
+嵌入式系统的特点1.很强的专用性 ;2.可裁剪性；3.系统精简；4.系统内核小；5.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+  <meta property="og:title" content="嵌入式及linux系统概述"/>
+  <meta property="og:site_name" content="estrella"/>
 
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    <meta property="og:image" content=""/>
+  
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
+  <script src="/js/jquery-2.0.3.min.js"></script>
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="嵌入式,linux," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="嵌入式系统（Enbedded system）嵌入式系统的定义目前国内一个普遍被认同的定义是：以应用为中心、以计算机技术为基础，软、硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统。 嵌入式系统的特点1.很强的专用性 ;2.可裁剪性；3.系统精简；4.系统内核小；5.高实时性的操作系统软件是嵌入软件的基本要求；6.是将先进的计算机技术、半导体技术和电子技术以及各个行">
-<meta name="keywords" content="嵌入式,linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="嵌入式及linux系统概述">
-<meta property="og:url" content="http://yoursite.com/2019/03/07/嵌入式系统和linux概述/index.html">
-<meta property="og:site_name" content="estrella">
-<meta property="og:description" content="嵌入式系统（Enbedded system）嵌入式系统的定义目前国内一个普遍被认同的定义是：以应用为中心、以计算机技术为基础，软、硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统。 嵌入式系统的特点1.很强的专用性 ;2.可裁剪性；3.系统精简；4.系统内核小；5.高实时性的操作系统软件是嵌入软件的基本要求；6.是将先进的计算机技术、半导体技术和电子技术以及各个行">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-12T13:55:05.353Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="嵌入式及linux系统概述">
-<meta name="twitter:description" content="嵌入式系统（Enbedded system）嵌入式系统的定义目前国内一个普遍被认同的定义是：以应用为中心、以计算机技术为基础，软、硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统。 嵌入式系统的特点1.很强的专用性 ;2.可裁剪性；3.系统精简；4.系统内核小；5.高实时性的操作系统软件是嵌入软件的基本要求；6.是将先进的计算机技术、半导体技术和电子技术以及各个行">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
 </script>
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/07/嵌入式系统和linux概述/"/>
-
-
-
-
-
-  <title>嵌入式及linux系统概述 | estrella</title>
-  
-
-
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?8dbeab8043ac95c74425ba3f8175d020";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">estrella</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">I can always be what I want to be.</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">estrella</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
 </nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 嵌入式及linux系统概述</h1>
+		</div>
+	
 
 
 
- </div>
-    </header>
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+	<!-- content -->
+	<div class="mypage">		
+	  		
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/嵌入式系统和linux概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">嵌入式及linux系统概述</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T00:00:00+08:00">
-                2019-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/嵌入式/" itemprop="url" rel="index">
-                    <span itemprop="name">嵌入式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="嵌入式系统（Enbedded-system）"><a href="#嵌入式系统（Enbedded-system）" class="headerlink" title="嵌入式系统（Enbedded system）"></a>嵌入式系统（Enbedded system）</h2><h3 id="嵌入式系统的定义"><a href="#嵌入式系统的定义" class="headerlink" title="嵌入式系统的定义"></a>嵌入式系统的定义</h3><p>目前国内一个普遍被认同的定义是：以应用为中心、以计算机技术为基础，软、硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统。</p>
+	  <h2 id="嵌入式系统（Enbedded-system）"><a href="#嵌入式系统（Enbedded-system）" class="headerlink" title="嵌入式系统（Enbedded system）"></a>嵌入式系统（Enbedded system）</h2><h3 id="嵌入式系统的定义"><a href="#嵌入式系统的定义" class="headerlink" title="嵌入式系统的定义"></a>嵌入式系统的定义</h3><p>目前国内一个普遍被认同的定义是：以应用为中心、以计算机技术为基础，软、硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统。</p>
 <h3 id="嵌入式系统的特点"><a href="#嵌入式系统的特点" class="headerlink" title="嵌入式系统的特点"></a>嵌入式系统的特点</h3><p>1.很强的专用性 ;<br>2.可裁剪性；<br>3.系统精简；<br>4.系统内核小；<br>5.高实时性的操作系统软件是嵌入软件的基本要求；<br>6.是将先进的计算机技术、半导体技术和电子技术以及各个行业的具体应用相结合后的产物；<br>7.嵌入式软件开发要想走向标准化，就必须使用多任务的操作系统；<br>8.嵌入式系统开发需要专门的开发工具和环境</p>
 <h3 id="后PC时代的概念"><a href="#后PC时代的概念" class="headerlink" title="后PC时代的概念"></a>后PC时代的概念</h3><p>计算机、通信和消费产品的技术结合起来，以3C产品的形式通过Internet进入家庭，这将是一个庞大的嵌入式应用市场</p>
 <h2 id="LINUX系统"><a href="#LINUX系统" class="headerlink" title="LINUX系统"></a>LINUX系统</h2><p>为什么嵌入式系统设计这门课要学linux系统？<br>这门课软件部分学习Linux，硬件部分用一个豪华开发板，开发板上有arduino、arm三四种不同的mcu，以及数不清的外设。也不知道得多贵。软件学linux主要因为系统开源，比较简单。符合嵌入式系统软件部分的可剪裁性和系统精简性。</p>
@@ -360,395 +144,130 @@
 <h3 id="linux定义"><a href="#linux定义" class="headerlink" title="linux定义"></a>linux定义</h3><p>Linux系统是一个免费使用的类似UNIX操作系统，最初运行在x86体系结构，目前已经被移植到数十种处理器上。Linux系统的开发和维护是由分布在全球各地的数百名程序员完成的，这得益于它的源代码开放特性。Linux不仅支持丰富的硬件设备、文件系统，更主要的是它提供了完整的源代码和开发工具。对于嵌入式开发来说，使用Linux系统可以帮助用户从底层了解嵌入式开发的全过程，以及一个操作系统内部是如何运作的。学习Linux系统开发对初学者有很大的帮助。</p>
 <h3 id="linux开发环境"><a href="#linux开发环境" class="headerlink" title="linux开发环境"></a>linux开发环境</h3><p>1.独立的Linux系统：需要单独安装在PC机的磁盘分区<br>2.运行在Windows上的Linux系统：cygwin<br>3.虚拟机中Ubuntu系统的安装（ubuntu是linux的一种版本，除了它还有red hat等等，版本超过250种）<br>嵌入式linux开发环境由宿主机（Host，又称为上位机）、目标平台（Target，目标机，又称下位机）、通过网线、串口线、USB线等通信线缆连接而成</p>
 <h2 id="参考书目：1-《嵌入式Linux开发详解》刘庆敏-张小亮：初学者友好型，可读性好，比较具体全面"><a href="#参考书目：1-《嵌入式Linux开发详解》刘庆敏-张小亮：初学者友好型，可读性好，比较具体全面" class="headerlink" title="参考书目：1.《嵌入式Linux开发详解》刘庆敏 张小亮：初学者友好型，可读性好，比较具体全面"></a>参考书目：1.《嵌入式Linux开发详解》刘庆敏 张小亮：初学者友好型，可读性好，比较具体全面</h2><p>2.《嵌入式linux实践教程》罗怡桂 适合选修完这门课的人看，不是很详细，没有特定的硬件平台，硬件部分可以参考<br>3.《嵌入式linux c语言应用程序设计与实践》熊茂华 偏软件<br>4.《ARM嵌入式Linux系统设计与开发》俞辉 偏向具体开发适合最后看，信息量很大，拓宽很好，有具体实例</p>
+	  
+	</div>
 
-      
-    </div>
-    
-    
-    
-
-    
+	<div>
+  	<center>
+	<div class="pagination">
 
     
-
+    
+    <a href="/2019/03/27/linux开发：文件的编译流程/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/嵌入式/" rel="tag"># 嵌入式</a>
-          
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/02/13/c#上位机学习/" rel="next" title="c#上位机学习">
-                <i class="fa fa-chevron-left"></i> c#上位机学习
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/27/linux开发：文件的编译流程/" rel="prev" title="linux开发：文件的编译流程">
-                linux开发：文件的编译流程 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <div class="sidebar-inner">
+    <a href="/2019/02/13/c#上位机学习/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
 
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">estrella</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">51</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌入式系统（Enbedded-system）"><span class="nav-number">1.</span> <span class="nav-text">嵌入式系统（Enbedded system）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入式系统的定义"><span class="nav-number">1.1.</span> <span class="nav-text">嵌入式系统的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入式系统的特点"><span class="nav-number">1.2.</span> <span class="nav-text">嵌入式系统的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后PC时代的概念"><span class="nav-number">1.3.</span> <span class="nav-text">后PC时代的概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LINUX系统"><span class="nav-number">2.</span> <span class="nav-text">LINUX系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入式系统的发展历史"><span class="nav-number">2.1.</span> <span class="nav-text">嵌入式系统的发展历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux定义"><span class="nav-number">2.2.</span> <span class="nav-text">linux定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux开发环境"><span class="nav-number">2.3.</span> <span class="nav-text">linux开发环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考书目：1-《嵌入式Linux开发详解》刘庆敏-张小亮：初学者友好型，可读性好，比较具体全面"><span class="nav-number">3.</span> <span class="nav-text">参考书目：1.《嵌入式Linux开发详解》刘庆敏 张小亮：初学者友好型，可读性好，比较具体全面</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">estrella</span>
-
-  
+    
 </div>
 
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
+</section>
 
-    
 
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-03-07 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/嵌入式/">嵌入式<span>4</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/嵌入式/">嵌入式<span>4</span></a></li> <li><a href="/tags/linux/">linux<span>4</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
   </div>
-
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 estrella
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
   
 
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
 
 
 
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-
 </body>
-</html>
+   </html>

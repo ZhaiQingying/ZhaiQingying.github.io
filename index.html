@@ -1,2037 +1,763 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>estrella</title>
+  <meta name="author" content="estrella">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+  
+  <meta property="og:site_name" content="estrella"/>
 
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    <meta property="og:image" content=""/>
+  
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
+  <script src="/js/jquery-2.0.3.min.js"></script>
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="estrella">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="estrella">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="estrella">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
 </script>
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
-
-
-
-
-
-  <title>estrella</title>
-  
-
-
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?8dbeab8043ac95c74425ba3f8175d020";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">estrella</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">I can always be what I want to be.</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">estrella</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
 </nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 <div class="page-header logo">
+  <h1>I can always be what I want to be.<span class="blink-fast">∎</span></h1>
+</div>
+
+<div class="row page">
+
+	
+	<div class="col-md-9">
+	
+
+		<div class="slogan">
 
 
+		<i class="fa fa-heart blink-slow"></i>
 
- </div>
-    </header>
+		Keep and carry on.
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
+</div>    
+
+		<div id="top_search"></div>
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2021/01/20/MySQL注入学习记录/" >MySQL注入的学习记录</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2021-01-20  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Mysql注入练习了两个题，一个是DVWA的字符型sql注入，一个是优秀同事发的数字型sql注入。</p>
+<h1 id="1、判断是否存在sql注入点和sql注入类型"><a href="#1、判断是否存在sql注入点和sql注入类型" class="headerlink" title="1、判断是否存在sql注入点和sql注入类型"></a>1、判断是否存在sql注入点和sql注入类型</h1><h2 id="1-1理论上只要与数据库有交互的点都存在sql注入可能"><a href="#1-1理论上只要与数据库有交互的点都存在sql注入可能" class="headerlink" title="1.1理论上只要与数据库有交互的点都存在sql注入可能"></a>1.1理论上只要与数据库有交互的点都存在sql注入可能</h2><h2 id="1-2现在我掌握的只有最简单的单引号判断法"><a href="#1-2现在我掌握的只有最简单的单引号判断法" class="headerlink" title="1.2现在我掌握的只有最简单的单引号判断法"></a>1.2现在我掌握的只有最简单的单引号判断法</h2><p>原理：如果正常输入的话单引号应该刚刚好，如果加上单引号就会造成不匹配报错<br>这里还要注意有的报错<em>不代表存在</em>sql注入漏洞，比如5xx是服务器错误</p>
+<h2 id="1-3-sql注入类型"><a href="#1-3-sql注入类型" class="headerlink" title="1.3 sql注入类型"></a>1.3 sql注入类型</h2><p>字符型</p>
+<pre><code>?id=1’ and ‘1’=’1返回正常
+?id=1’ and ’1’=’2报错
+</code></pre><p>可知存在字符型SQL注入<br>数字型:<br>如果</p>
+<pre><code>?id=1 and 1=1返回正常
+?id=1 and 1=2报错
+</code></pre><p>可知存在数字型SQL注入</p>
+<h1 id="2、判断sql查询返回表的字段数与回显位置"><a href="#2、判断sql查询返回表的字段数与回显位置" class="headerlink" title="2、判断sql查询返回表的字段数与回显位置"></a>2、判断sql查询返回表的字段数与回显位置</h1><h2 id="2-1利用order-by-语句判断返回表的字段数"><a href="#2-1利用order-by-语句判断返回表的字段数" class="headerlink" title="2.1利用order by 语句判断返回表的字段数"></a>2.1利用order by 语句判断返回表的字段数</h2><pre><code>1&apos; order by 2#
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5oCG3pZkbCoVy.ijrLn28QQBsV71TUYWymU27m9Oe5s6sK5KMo3s6GCmjOQX*kWd85ecU*5HhuByu7WGae9MjZg!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=KgJeAAAAAAABF0Y!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-3-3&amp;rf=0-0" alt="orderby"></p>
+<h2 id="2-2判断回显位置"><a href="#2-2判断回显位置" class="headerlink" title="2.2判断回显位置"></a>2.2判断回显位置</h2><p>用order by判断字段数后，用优秀同事发给我的90sec火狐浏览器生成查询语句<br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5oCG3pZkbCoVy.ijrLn28QSRFRX*7Dyq8KR2mM1.vZi7xjpuhKNfbd1QdixI0qWs5xmYK1unBzMLwR*KsY6MWOg!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=tgH8AAAAAAABF3s!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="select"><br>判断得第几个字段存在回显</p>
+<h1 id="3、查询当前数据库database-、当前用户user-、版本version-等的信息"><a href="#3、查询当前数据库database-、当前用户user-、版本version-等的信息" class="headerlink" title="3、查询当前数据库database()、当前用户user()、版本version()等的信息"></a>3、查询当前数据库database()、当前用户user()、版本version()等的信息</h1><pre><code>1&apos; union select version(),database()#
+</code></pre><p>查询存储元数据的数据库里的所有表名<br>Information_schema的information_schema.table和information_schema.column<br>table_schema中存的是所有数据库的名称<br>table_name中存的是所有数据表的名称<br>column_name中存的是所有字段的名字<br>那么查询语句是</p>
+<pre><code>1&apos; union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()#
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YmDop.2Rts*vZs9Y2ZUDHHJqafaZnVgkNXiL9QGiLHUd3RRXv0ji.AWI8uFwuo0Y50!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=ZQTOAAAAAAABF58!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="select"></p>
+<pre><code>1&apos; union select 1, group_concat(column_name) from information_schema.columns where table_name=&apos;users&apos;#
+</code></pre><p>Group_concat的作用是以id分组，把price字段的值在同一行打印出来，逗号分隔(默认)<br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7Ykcca5SXGCxDJyEer22X2MwBMdMHzpCoFWDMLMGoUZJswsUZvO5J.k1*q2TkWk0i4E!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=0wInAAAAAAABF8Y!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-3-3&amp;rf=0-0" alt="group"><br>如果去掉了group_concat函数，那么回显如下<br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YlWyeQYvjHwgbZ2yDJoTW8YuIFRiLpA6DI9NEYRdSRmszfEjPOEKZsAOOTPF0Meyzg!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=0ANmAQAAAAABF4Q!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="group"><br>注意这里不用加上group by 是因为只有1，如果别的情况不加group by的话，数据就会被第一个覆盖掉</p>
+<h1 id="4、最后就是获得字段中的数据了"><a href="#4、最后就是获得字段中的数据了" class="headerlink" title="4、最后就是获得字段中的数据了"></a>4、最后就是获得字段中的数据了</h1><pre><code>1&apos; union select user,password from users#
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YmpVDLVExmSAalpK3i6hm9FlGAt9kb7Lm7fVLTP.ShaE1QqLmK9BWFuaokf1NCCnS0!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=aQJuAgAAAAABFzc!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="group"></p>
+<pre><code>1&apos; union select group_concat(user), password from users group by password#
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5lnIQRLxfsvngMOPkYgCEuOSlvGRg2jZ5jQO85MhKcV5WX9v6Q*FOTsw6XMuFLKI4nd1.Tnpw2mqh1DYlqJQo1I!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=ZQP9AQAAAAABF6o!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="group"></p>
+<h1 id="5、其他值得注意的点"><a href="#5、其他值得注意的点" class="headerlink" title="5、其他值得注意的点"></a>5、其他值得注意的点</h1><h2 id="5-1如果单引号被转义，用16进制绕过"><a href="#5-1如果单引号被转义，用16进制绕过" class="headerlink" title="5.1如果单引号被转义，用16进制绕过"></a>5.1如果单引号被转义，用16进制绕过</h2><h2 id="5-2如果像DVWA-medium那样只能选择数字，就用burpsuite绕过"><a href="#5-2如果像DVWA-medium那样只能选择数字，就用burpsuite绕过" class="headerlink" title="5.2如果像DVWA medium那样只能选择数字，就用burpsuite绕过"></a>5.2如果像DVWA medium那样只能选择数字，就用burpsuite绕过</h2>
+	
+	</div>
+  <a type="button" href="/2021/01/20/MySQL注入学习记录/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2021/01/15/ACCESS注入学习记录/" >ACCESS注入学习记录</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2021-01-15  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Access练习地点：8002端口<br>Access结构：只有一个库，若干张表</p>
+<h1 id="第一步：判断网站是否存在注入点"><a href="#第一步：判断网站是否存在注入点" class="headerlink" title="第一步：判断网站是否存在注入点"></a>第一步：判断网站是否存在注入点</h1><p>这个和MySQL注入一样，只要存在与数据库交互的就会存在注入可能，也有很多判断方法，我会的只有单引号法</p>
+<h1 id="第二步：猜解表名和列名"><a href="#第二步：猜解表名和列名" class="headerlink" title="第二步：猜解表名和列名"></a>第二步：猜解表名和列名</h1><p>有两种方法：联合查询法和逐字猜解法</p>
+<h2 id="联合查询法"><a href="#联合查询法" class="headerlink" title="联合查询法"></a>联合查询法</h2><pre><code>order by 22
+union select 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 from admin 
+</code></pre><p>猜表名（报错说明表名不存在，将admin换成别的继续猜）</p>
+<pre><code>union select 1,2,username,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22  from admin
+</code></pre><p>猜列名，列名位置放置页面上显示的数字位置上，报错说明列名不存在，换列明继续猜，列名猜对后及出账号密码。</p>
+<h2 id="逐字拆解法"><a href="#逐字拆解法" class="headerlink" title="逐字拆解法"></a>逐字拆解法</h2><p>通过ascii码来推测出来密码和表名</p>
+<pre><code>and exists (select * from admin) ——猜表名
+and exists (select user_name from admin) ——猜列名
+</code></pre><p>查数据：1.确定长度 2.确定asc数据(asc编码)<br>    and (select top 1 len(user_name ) from admin)=5(user_name 的长度=5，正常则=5，也可以用&gt;,&lt;号去判断）<br>    and (select top 1 asc(mid(user_name ,1,1)) from admin)=97 判断第一位（97代表‘a’的ascll值）<br>    and (select top 1 asc(mid(user_name ,2,1)) from admin)=97 判断第二位<br>    （user_name =admin 第一位a 第二位d 第三位m 第四位i 第五位n pass_word=a48e190fafc257d3）</p>
+<h1 id="第三步：通过select语句查询数据"><a href="#第三步：通过select语句查询数据" class="headerlink" title="第三步：通过select语句查询数据"></a>第三步：通过select语句查询数据</h1><p><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3832427626,9668527&amp;fm=26&amp;gp=0.jpg" alt="group"></p>
+
+	
+	</div>
+  <a type="button" href="/2021/01/15/ACCESS注入学习记录/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2021/01/01/ACCESS常用表名列名/" >ACCESS常用表名列名</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2021-01-01  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="常用表名"><a href="#常用表名" class="headerlink" title="常用表名"></a>常用表名</h1><p>admin<br>a_admin<br>x_admin<br>m_admin<br>adminuser<br>admin_user<br>areicle_admin<br>adminisrearor<br>manage<br>manager<br>member<br>memberlist<br>user<br>users<br>Manage_User<br>user_info<br>admin_userinfo<br>UserGroups<br>user_list<br>login<br>用户<br>Friend<br>zl<br>movie<br>news<br>password<br>clubconfig<br>config<br>company<br>book<br>art<br>dv_admin<br>userinfo</p>
+<h1 id="常用列名"><a href="#常用列名" class="headerlink" title="常用列名"></a>常用列名</h1><p>username<br>adminusername<br>admin_username<br>adminname<br>admin_name<br>admin<br>adminuser<br>admin_user<br>usrname<br>usr_name<br>user_admin<br>password<br>admin_password<br>administrator<br>administrarors<br>adminpassword<br>adminpwd<br>admin_pwd<br>adminpass<br>admin_pass<br>usrpass<br>usr_pass<br>user<br>name<br>pass<br>userpass<br>user_pass<br>userpassword<br>user_password<br>pwd<br>userpwd<br>user_pwd<br>useradmin<br>pword<br>p_word<br>pass-wd<br>yonghu<br>用户<br>用户名<br>密码<br>帐号<br>id<br>uid<br>userid<br>user_id<br>adminid<br>admin_id<br>login_name</p>
+
+	
+	</div>
+  <a type="button" href="/2021/01/01/ACCESS常用表名列名/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/07/03/matlab开发stm32初学笔记/" >matlab开发stm32初学笔记</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-07-03  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="基于模型的设计"><a href="#基于模型的设计" class="headerlink" title="基于模型的设计"></a>基于模型的设计</h2><h3 id="基于模型设计的概念"><a href="#基于模型设计的概念" class="headerlink" title="基于模型设计的概念"></a>基于模型设计的概念</h3><p>采用建模与仿真的方法以及代码自动生成技术来开发嵌入式系统，现在市面上基于模型的设计的软件主要有两种SCADE和MATLAB。</p>
+<h3 id="基于模型设计的优点"><a href="#基于模型设计的优点" class="headerlink" title="基于模型设计的优点"></a>基于模型设计的优点</h3><p>1.代码生成可以提高软件开发效率<br>2.为工程师提供了一种通用的开发与测试平台，使得具有不同工程背景的工程师之间建立起更好的联系，使得开发高集成的复杂系统成为可能<br>3.算法的早期验证，开发初期引入的bug，如果到了晚期才发现出来，修复这一的bug，会产生非常大的费用。所以，我们期望能够尽早的发现开发过程中引入的bug。</p>
+<h2 id="所需软件"><a href="#所需软件" class="headerlink" title="所需软件"></a>所需软件</h2><p>最广泛的基于模型的设计软件是matlab</p>
+<h3 id="matlab-simulink"><a href="#matlab-simulink" class="headerlink" title="matlab simulink"></a>matlab simulink</h3><p>simulink是matlab里的一个可视化仿真工具</p>
+<h2 id="开发过程"><a href="#开发过程" class="headerlink" title="开发过程"></a>开发过程</h2><h3 id="基于模型设计的开发过程"><a href="#基于模型设计的开发过程" class="headerlink" title="基于模型设计的开发过程"></a>基于模型设计的开发过程</h3><p>一般情况下我们开发产品的开发过程为：1.需求分析与技术规划阶段 2.设计阶段 3.实现阶段 4.测试与验证阶段<br>而基于模型设计的开发过程为：1.创建可执行、可跟踪的技术规范 2.生成定点模型 3.嵌入式代码的自动生成 4.连续的测试和验证</p>
+<h3 id="stm32的开发过程"><a href="#stm32的开发过程" class="headerlink" title="stm32的开发过程"></a>stm32的开发过程</h3><p>先介绍matlab开发stm32的三种方式（意思是simulink的三种库）<br>1.Stm32-mat/target<br>推出公司是意法半导体，可以开发stm32全系列，需要用到stm32cubeMX，在matlab上可以操作这些外设</p>
+<p>2.Waijung blockset<br>推出公司是印度的aimagin，只能开发f0和f4系列，能操作这些外设（挺多的）</p>
+<p>3.rapidstm32 blockset<br>也是aimagin推出，已经过时了，不考虑</p>
+<h4 id="stm32开发现状"><a href="#stm32开发现状" class="headerlink" title="stm32开发现状"></a>stm32开发现状</h4><p>首先平时只用mdk配置一个stm32的开发环境就的花上好长时间，而且开发过程中很多时候我们的代码都是在配置端口，像最简单的GPIO的配置，也需要定义结构体，很费时间<br>后来st公司开发了stm32cubemx这个软件来帮助我们完成这些端口的初始化配置，我们可以通过图形界面，配置选择的每一个端口的作用，之后便可以生成对应的工程文件 ，但是仅仅用cube剩下的核心（除了底层框架的部分）还是得自己写，我们把实际用途转化为代码还是需要一定的时间<br>这时候结合matlab就能解决剩下的核心部分自己写的问题。simulink具有非常强大的自动代码生成功能，simulink加上stm32的开发库就可以实现在simulink上对剩下部分的”编程”，也是图形化的，最后生成c文件用mdk打开就好了</p>
+<p>第一种用得最普遍，只学习第一种<br>step1在stm32cube上配置基本配置框架（GPIO之类的）<br>step2用matlab导入cube上的，再处理后续的任务，导出c文件<br>step3用mdk打开c文件，烧写到stm32上</p>
+
+	
+	</div>
+  <a type="button" href="/2019/07/03/matlab开发stm32初学笔记/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/05/18/外刊阅读和技术文档翻译/" >外刊阅读和技术文档翻译</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-05-18  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>还是写一点东西吧，不然就越来越懒得管这个博客了</p>
+<h2 id="外刊阅读"><a href="#外刊阅读" class="headerlink" title="外刊阅读"></a>外刊阅读</h2><p>坚持每天阅读一页半A4纸的英语文章</p>
+<h3 id="一、材料-每周下载一周份的阅读"><a href="#一、材料-每周下载一周份的阅读" class="headerlink" title="一、材料(每周下载一周份的阅读)"></a>一、材料(每周下载一周份的阅读)</h3><p>1.TPO Reading，来源：小站托福<br>2.The Economist，来源：<a href="https://www.tianfateng.cn/7399.html" target="_blank" rel="noopener">https://www.tianfateng.cn/7399.html</a></p>
+<h3 id="二、阅读方法"><a href="#二、阅读方法" class="headerlink" title="二、阅读方法"></a>二、阅读方法</h3><p>1.按照考试时读阅读的方法读一遍。<br>（需要积累专业术语的翻译，经常对比阅读中英文文档）<br>2.精读每句话：要求分析出语法，记下不会的表达（单词、短语、特殊用法）和精妙的表达。可摘抄好的句子和观点到摘抄本上。<br>tip:遇到某些分析不出来意思，甚至分析不出来语法就要百度，找到有相似用法的例句就是固定搭配，没有就得问老师<br>3.再快读一边，用英语概括出每段大意和联系。</p>
+<p>这种方法还可以用来备考各种考试的阅读部分：比如托福，从我精读做的笔记来看，难在长难句的语法上，固定搭配不是很多。而现实生活中的更实用的阅读，比如外刊，难在固定搭配和词汇。还有六级。。六级我还没开始看</p>
+<h2 id="技术文档翻译"><a href="#技术文档翻译" class="headerlink" title="技术文档翻译"></a>技术文档翻译</h2><p>1.特别少的几句话直接用脑子翻译就好<br>2.比较多的内容用谷歌翻译<br>3.特别多的，而且要求编辑出来中文文档的，直接去淘宝买翻译狗机翻，然后用Adobe去水印，再编辑就好</p>
+
+	
+	</div>
+  <a type="button" href="/2019/05/18/外刊阅读和技术文档翻译/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/17/用云服务器搭建静态页面/" >用云服务器搭建静态页面</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-17  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="OSS概念"><a href="#OSS概念" class="headerlink" title="OSS概念"></a>OSS概念</h2><h3 id="OSS中基本概念"><a href="#OSS中基本概念" class="headerlink" title="OSS中基本概念"></a>OSS中基本概念</h3><p>1.存储空间（Bucket）<br>存储空间是您用于存储对象（Object）的容器，所有的对象都必须隶属于某个存储空间。您可以设置和修改存储空间属性用来控制地域、访问权限、生命周期等，这些属性设置直接作用于该存储空间内所有对象，因此您可以通过灵活创建不同的存储空间来完成不同的管理功能。</p>
+<p>同一个存储空间的内部是扁平的，没有文件系统的目录等概念，所有的对象都直接隶属于其对应的存储空间。<br>每个用户可以拥有多个存储空间。<br>存储空间的名称在 OSS 范围内必须是全局唯一的，一旦创建之后无法修改名称。<br>存储空间内部的对象数目没有限制。</p>
+<p>存储空间的命名规范如下：<br>只能包括小写字母，数字和短横线（-）。<br>必须以小写字母或者数字开头。<br>长度必须在3-63字节之间。</p>
+<ol start="2">
+<li>对象/文件（Object）<br>对象是 OSS 存储数据的基本单元，也被称为 OSS 的文件。对象由元信息（Object Meta），用户数据（Data）和文件名（Key）组成。<br>对象由存储空间内部唯一的 Key 来标识。对象元信息是一个键值对，表示了对象的一些属性，比如最后修改时间、大小等信息，同时用户也可以在元信息中存储一些自定义的信息。<br>根据不同的上传方式，对象的大小限制是不一样的。分片上传 最大支持 48.8TB 的对象大小，其他的上传方式最大支持 5GB。<br>对象的生命周期是从上传成功到被删除为止。在整个生命周期内，对象信息不可变更。重复上传同名的对象会覆盖之前的对象，因此，OSS 不支持修改文件的部分内容等操作。<br>OSS 提供了 追加上传 功能，用户可以使用该功能不断地在Object尾部追加写入数据。<br>对象的命名规范如下：<br>使用UTF-8编码。<br>长度必须在1-1023字节之间。<br>不能以“/”或者“\”字符开头。<br>对象名称需要区分大小写。如无特殊说明，本文档中的对象、文件称谓等同于 Object。</li>
+</ol>
+<p>1.3 Region（区域）<br>Region 表示 OSS 的数据中心所在的区域，物理位置。用户可以根据费用、请求来源等综合选择数据存储的 Region。一般来说，距离用户更近的 Region 访问速度更快。详细请查看 OSS 已经开通的 Region。<br>Region是在创建 Bucket 的时候指定的，一旦指定之后就不允许更改，该 Bucket 下所有的 Object 都存储在对应的数据中心，目前不支持 Object 级别的 Region 设置。</p>
+<p>1.4 Endpoint（访问域名）<br>Endpoint 表示 OSS 对外服务的访问域名。OSS 以 HTTP RESTful API 的形式对外提供服务，当访问不同的 Region 的时候，需要不同的域名。通过内网和外网访问同一个 Region 所需要的 Endpoint 也是不同的。例如杭州 Region 的外网 Endpoint 是 oss-cn-hangzhou.aliyuncs.com，内网 Endpoint 是 oss-cn-hangzhou-internal.aliyuncs.com。具体的内容请参见 各个 Region 对应的 Endpoint。</p>
+<p>1.5 AccessKey（访问密钥）<br>AccessKey，简称 AK，指的是访问身份验证中用到的 AccessKeyId 和AccessKeySecret。OSS 通过使用 AccessKeyId 和 AccessKeySecret 对称加密的方法来验证某个请求的发送者身份。AccessKeyId 用于标识用户，AccessKeySecret 是用户用于加密签名字符串和 OSS 用来验证签名字符串的密钥，其中 AccessKeySecret 必须保密。对于 OSS 来说，AccessKey 的来源有：<br>Bucket 的拥有者申请的 AccessKey。<br>被 Bucket 的拥有者通过 RAM 授权给第三方请求者的 AccessKey。<br>被 Bucket 的拥有者通过 STS 授权给第三方请求者的 AccessKey。<br>更多 AccessKey 介绍请参见 访问控制。</p>
+<p>1.6 强一致性<br>Object 操作在 OSS 上具有原子性，操作要么成功要么失败，不会存在有中间状态的Object。OSS 保证用户一旦上传完成之后读到的 Object 是完整的，OSS 不会返回给用户一个部分上传成功的 Object。<br>Object 操作在 OSS 上同样具有强一致性，用户一旦收到了一个上传（PUT）成功的响应，该上传的 Object 就已经立即可读，并且数据的三份副本已经写成功。不存在一种上传的中间状态，即 read-after-write 却无法读取到数据。对于删除操作也是一样的，用户删除指定的 Object 成功之后，该 Object 立即变为不存在。<br>强一致性方便了用户架构设计，可以使用跟传统存储设备同样的逻辑来使用OSS，修改立即可见，无需考虑最终一致性带来的各种问题。</p>
+<p>1.7 OSS与文件系统的对比<br>OSS 是一个分布式的对象存储服务，提供的是一个 Key-Value 对形式的对象存储服务。用户可以根据 Object 的名称（Key）唯一的获取该Object的内容。虽然用户可以使用类似 test1/test.jpg 的名字，但是这并不表示用户的 Object 是保存在test1 目录下面的。对于 OSS 来说，test1/test.jpg 仅仅只是一个字符串，和a.jpg 这种并没有本质的区别。因此不同名称的 Object 之间的访问消耗的资源是类似的。<br>文件系统是一种典型的树状索引结构，一个名为 test1/test.jpg 的文件，访问过程需要先访问到 test1 这个目录，然后再在该目录下查找名为 test.jpg 的文件。因此文件系统可以很轻易的支持文件夹的操作，比如重命名目录、删除目录、移动目录等，因为这些操作仅仅只是针对目录节点的操作。这种组织结构也决定了文件系统访问越深的目录消耗的资源也越大，操作拥有很多文件的目录也会非常慢。<br>对于 OSS 来说，可以通过一些操作来模拟类似的功能，但是代价非常昂贵。比如重命名目录，希望将 test1 目录重命名成 test2，那么 OSS 的实际操作是将所有以 test1/ 开头的 Object 都重新复制成以 test2/ 开头的 Object，这是一个非常消耗资源的操作。因此在使用 OSS 的时候要尽量避免类似的操作。<br>OSS 保存的 Object 不支持修改（追加写 Object 需要调用特定的接口，生成的 Object 也和正常上传的 Object 类型上有差别）。用户哪怕是仅仅需要修改一个字节也需要重新上传整个 Object。而文件系统的文件支持修改，比如修改指定偏移位置的内容、截断文件尾部等，这些特点也使得文件系统拥有广泛的适用性。但另外一方面，OSS 能支持海量的用户并发访问，而文件系统会受限于单个设备的性能。<br>因此，将 OSS 映射为文件系统是非常低效的，也是不建议的做法。如果一定要挂载成文件系统的话，建议尽量只做写新文件、删除文件、读取文件这几种操作。使用 OSS 应该充分发挥其优点，即海量数据处理能力，优先用来存储海量的非结构化数据，比如图片、视频、文档等。</p>
+<h2 id="云服务器的一些配置"><a href="#云服务器的一些配置" class="headerlink" title="云服务器的一些配置"></a>云服务器的一些配置</h2><p>1.打开阿里云的OSS控制管理台，如图所示<br><img src="http://a4.qpic.cn/psb?/V11V3soz2JNi4c/c1TtudIsuePWvm7FInASmhDRicjTLxMA*y5Jjs.v4iY!/m/dL8AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=Qgc4BAAAAAARF1k!&amp;tl=1&amp;vuin=3033668267&amp;tm=1555394400&amp;sce=60-4-3&amp;rf=0-0" alt=""><br>2.选择地区地域设置完不可改，设置为公开读<br>上传首页的html和错误html<br><img src="http://a2.qpic.cn/psb?/V11V3soz2JNi4c/3FP.L3rKR4HYCGQancDLxMCKnumgvNtfdZbWBD*4Wlg!/m/dDUBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=Qgc4BAAAAAARF1k!&amp;tl=1&amp;vuin=3033668267&amp;tm=1555394400&amp;sce=60-4-3&amp;rf=0-0" alt=""><br>3.在首页和错误页的设置上填上html的名字</p>
+
+	
+	</div>
+  <a type="button" href="/2019/04/17/用云服务器搭建静态页面/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/16/html写一个网页/" >html写第一个网页</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-16  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="什么是html"><a href="#什么是html" class="headerlink" title="什么是html"></a>什么是html</h3><p>HTML 是用来描述网页的一种语言。HTML 指的是超文本标记语言: HyperText Markup Language<br>HTML 不是一种编程语言，而是一种标记语言标记语言是一套标记标签 (markup tag)<br>HTML 使用标记标签来描述网页，HTML 文档包含了HTML 标签及文本内容<br>HTML文档也叫做 web 页面。Web浏览器（如谷歌浏览器，Internet Explorer，Firefox，Safari）是用于读取HTML文件，并将其作为网页显示。<br>浏览器并不是直接显示的HTML标签，但可以使用标签来决定如何展现HTML页面的内容给用户</p>
+<h3 id="什么是html标签"><a href="#什么是html标签" class="headerlink" title="什么是html标签"></a>什么是html标签</h3><p>HTML 标记标签通常被称为 HTML 标签 (HTML tag)。HTML 标签是由尖括号包围的关键词，比如 <html><br>HTML 标签通常是成对出现的，比如 <b> 和 </b>标签对中的第一个标签是开始标签，第二个标签是结束标签开始和结束标签也被称为开放标签和闭合标签<br>&lt;标签&gt;内容&lt;/标签&gt;</html></p>
+<h3 id="什么是html元素"><a href="#什么是html元素" class="headerlink" title="什么是html元素"></a>什么是html元素</h3><p>“HTML 标签” 和 “HTML 元素” 通常都是描述同样的意思.<br>但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签，如下实例:<br>HTML 元素:</p>
+<p>这是一个段落。</p>
+
+<h2 id="简单的尝试"><a href="#简单的尝试" class="headerlink" title="简单的尝试"></a>简单的尝试</h2><p>目前在大部分浏览器中，直接输出中文会出现中文乱码的情况，这时候我们就需要在头部将字符声明为 UTF-8。</p>
+
+	
+	</div>
+  <a type="button" href="/2019/04/16/html写一个网页/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/12/linux gcc详解/" >linux gcc详解</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-12  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Welcome</p>
+
+	
+	</div>
+  <a type="button" href="/2019/04/12/linux gcc详解/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/12/linux建立静态库和动态库/" >linux建立静态库和动态库</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-12  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="动态库和静态库"><a href="#动态库和静态库" class="headerlink" title="动态库和静态库"></a>动态库和静态库</h2><h3 id="动态库和静态库的概念"><a href="#动态库和静态库的概念" class="headerlink" title="动态库和静态库的概念"></a>动态库和静态库的概念</h3><p>Linux系统有两种程序库，一种是被称作静态库（static library），在程序连接的时候，把库函数的目标代码和程序连接在一起；还有一种就是前面提到的动态库（shared library），从英文字面翻译，动态库可以翻译为共享库。<br>库有两种：动态和静态；动态是以.so 为后缀，静态是以.a为后缀；比如：libhello.so  libhello.a</p>
+<h3 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h3><p>静态库是在写代码时调用的库函数，代码中调用库函数，在编译时会从库函数中copy 整个库函数到可执行文件；所以一旦连接成功(编译成功)；可执行文件中就包含了<br>整个库函数的代码，以后在执行这个静态文件时就不用这个静态库函数了。</p>
+<h3 id="动态库函数"><a href="#动态库函数" class="headerlink" title="动态库函数"></a>动态库函数</h3><p>1.在linux中.so 为后缀，不是可执行程序的一部分，当执行可执行程序时动态加载这个动态链接库；而且这个动态链接库也是多个程序共享的，可以节省空间；linux 2.下进行连接的默认操作是首先连接动态连接。工作原理是动态库会在可执行程序内留下一个标记；指明当程序执行时，首先必须载入这个动态库<br>3.linux 动态连接库，叫 共享对象：shared object  ；就相当于windows下面的DLL<br>LINUX 的shared object 在我们日常写代码中可以自己写，把一些常用的工具都写成库函数，这样每次用时直接调用库函数，不用重复写代码。</p>
+<h3 id="windows的dll"><a href="#windows的dll" class="headerlink" title="windows的dll"></a>windows的dll</h3><p>windows下的dll全称是动态链接库，linux中虽然也叫动态链接库，但英文名是shared object。<br>和linux so的异同<br>两种系统动态库比较分析（摘自CSDN<a href="https://blog.csdn.net/LinSeeker85/article/details/82684722" target="_blank" rel="noopener">https://blog.csdn.net/LinSeeker85/article/details/82684722</a>）<br>Windows和Linux采用动态链接库技术目的是基本一致的，但由于操作系统的不同，他们在许多方面还是不尽相同，下面从以下几个方面进行阐述。<br>(1)动态库程序编写，在Windows系统下的执行文件格式是PE格式，动态库需要一个DllMain函数作为初始化的人口，通常在导出函数的声明时需要有_declspec(dllexport)关键字。Linux下的gcc编译的执行文件默认是ELF格式，不需要初始化入口，亦不需要到函数做特别声明，编写比较方便。<br>(2)动态库编译，在windows系统下面，有方便的调试编译环境，通常不用自己去编写makefile文件，但在linux下面，需要自己动手去编写makefile文件，因此，必须掌握一定的makefile编写技巧，另外，通常Linux编译规则相对严格。<br>(3)动态库调用方面，Windows和Linux对其下编制的动态库都可以采用显式调用或隐式调用，但具体的调用方式也不尽相同。<br>(4)动态库输出函数查看，在Windows中，有许多工具和软件可以进行查看DLL中所输出的函数，例如命令行方式的dumpbin以及VC++工具中的DEPENDS程序。在Linux系统中通常采用nm来查看输出函数，也可以使用ldd查看程序隐式链接的共享对象文件。<br>(5)对操作系统的依赖，这两种动态库运行依赖于各自的操作系统，不能跨平台使用。因此，对于实现相同功能的动态库，必须为两种不同的操作系统提供不同的动态库版本。</p>
+<h2 id="linux创建静态库"><a href="#linux创建静态库" class="headerlink" title="linux创建静态库"></a>linux创建静态库</h2><pre><code>ar crv libmylib.a my_print.o my_math.o
+</code></pre><p>我们就得到了libmylib.a，这就是我们需要的静态库。<br>上述命令中 crv 是 ar的命令选项：<br>c 如果需要生成新的库文件，不要警告<br>r 代替库中现有的文件或者插入新的文件<br>v 输出详细信息</p>
+<h2 id="linux链接动态库"><a href="#linux链接动态库" class="headerlink" title="linux链接动态库"></a>linux链接动态库</h2><h3 id="linux链接库函数的应用"><a href="#linux链接库函数的应用" class="headerlink" title="linux链接库函数的应用"></a>linux链接库函数的应用</h3><p>1.linux下dlopen的使用：<br>dlopen（）<br>　　功能：打开一个动态链接库<br>　　包含头文件：<br>　　#include &lt;dlfcn.h&gt;<br>　　函数定义：<br>　　void <em> dlopen( const char </em> pathname, int mode );<br> 函数描述：<br>　　在dlopen的（）函数以指定模式打开指定的动态连接库文件，并返回一个句柄给调用进程。使用dlclose（）来卸载打开的库<br>mode是打开方式，其值有多个，不同操作系统上实现的功能有所不同，在linux下，按功能可分为三类：<br> 解析方式<br>         RTLD_LAZY：在dlopen返回前，对于动态库中的未定义的符号不执行解析（只对函数引用有效，对于变量引用总是立即解析）。<br>        RTLD_NOW： 需要在dlopen返回前，解析出所有未定义符号，如果解析不出来，在dlopen会返回NULL，错误为：: undefined symbol: xxxx…….<br>作用范围，可与解析方式通过“|”组合使用。<br>        RTLD_GLOBAL：动态库中定义的符号可被其后打开的其它库重定位。<br>        RTLD_LOCAL： 与RTLD_GLOBAL作用相反，动态库中定义的符号不能被其后打开的其它库重定位。如果没有指明是RTLD_GLOBAL还是RTLD_LOCAL，则缺省为RTLD_LOCAL。<br>作用方式<br>        RTLD_NODELETE： 在dlclose()期间不卸载库，并且在以后使用dlopen()重新加载库时不初始化库中的静态变量。这个flag不是POSIX-2001标准。<br>        RTLD_NOLOAD： 不加载库。可用于测试库是否已加载(dlopen()返回NULL说明未加载，否则说明已加载），也可用于改变已加载库的flag，如：先前加载库的flag为RTLD＿LOCAL，用dlopen(RTLD_NOLOAD|RTLD_GLOBAL)后flag将变成RTLD_GLOBAL。这个flag不是POSIX-2001标准。<br>        RTLD_DEEPBIND：在搜索全局符号前先搜索库内的符号，避免同名符号的冲突。这个flag不是POSIX-2001标准<br>返回值:<br>　　打开错误返回NULL<br>　　成功，返回其首地址</p>
+<p>　　编译时候要加入 -ldl (指定dl库)<br>　　例如<br>　　gcc test.c -o test -ldl<br>2.linux下dlsym的使用<br>3.linux下dlerror的使用<br>4.linux下dlclose的使用</p>
+<h2 id="linux建立静态库和动态库实验"><a href="#linux建立静态库和动态库实验" class="headerlink" title="linux建立静态库和动态库实验"></a>linux建立静态库和动态库实验</h2>
+	
+	</div>
+  <a type="button" href="/2019/04/12/linux建立静态库和动态库/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2019/04/04/linux第一个应用及makefile文件/" >linux第一个应用及makefile文件</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2019-04-04  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>从一个简单的应用程序入手，介绍了开发一个Linux应用程序的流程。通过实例分析了编译和连接的原理，并且剖析了程序执行的过程。最后讲述了Makefile管理工程文件如何管理软件代码。请读者多实践，只有不断的实践才能对这部分的知识深入理解。</p>
+<h2 id="Linux-develop"><a href="#Linux-develop" class="headerlink" title="Linux develop"></a>Linux develop</h2><h3 id="创建一个应用"><a href="#创建一个应用" class="headerlink" title="创建一个应用"></a>创建一个应用</h3><p>编辑gedit main.c还有另一种是vi，但首推gedit<br>编译gcc -o main.c main<br>运行main程序./main</p>
+<h2 id="嵌入式软件开发模式"><a href="#嵌入式软件开发模式" class="headerlink" title="嵌入式软件开发模式"></a>嵌入式软件开发模式</h2><p>嵌入式系统资源受限，直接在嵌入式系统硬件平台上编写软件较为困难。<br>解决方法<br>首先在通用计算机上编写软件<br>然后通过本地编译或者交叉编译生成目标平台上可以运行的二进制代码格式<br>最后再下载到目标平台上运行<br>（51单片机下载进去需要hex文件与bin文件区别在有地址，esp8266的ide开发用eclipse生成的bin文件下载进去，需要写地址）</p>
+<h3 id="交叉编译的概念"><a href="#交叉编译的概念" class="headerlink" title="交叉编译的概念"></a>交叉编译的概念</h3><p>在一种平台上编译出能在另一种平台（体系结构不同）上运行的程序；<br>在PC平台(X86)上编译出能运行在ARM平台上的程序，即编译得到的程序在X86平台上不能运行，必须放到ARM平台上才能运行；<br>用来编译这种程序的编译器就叫交叉编译器；<br>为了不与本地编译器混淆，交叉编译器的名字一般都有前缀，例如：arm-linux-gcc</p>
+<h3 id="交叉编译的原因"><a href="#交叉编译的原因" class="headerlink" title="交叉编译的原因"></a>交叉编译的原因</h3><p>1.目标平台所需要的Boot Loader以及OS核心还没有建立时，需要做交叉编译<br>2.目标机设备不具备一定的处理能力和存储空间</p>
+<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h3 id="What-is-Makefile"><a href="#What-is-Makefile" class="headerlink" title="What is Makefile?"></a>What is Makefile?</h3><p>我们要做的是make，makefile是make的基础<br>Makefile是一个文本文件，是GNU make程序在执行的时候默认读取的配置文件。Makefile有强大的功能，它记录了文件之间的依赖关系，通过比对目标文件和依赖文件的时间戳，决定是否需要执行相应的命令；同时，Makefile还可以定义变量，接收用户传递的参数变量，通过这些元素的相互配合，省去了繁杂的编译命令，不仅节省时间，也减小了出错的概率。</p>
+<h3 id="Brief-Introduction-of-Makefile"><a href="#Brief-Introduction-of-Makefile" class="headerlink" title="Brief Introduction of Makefile"></a>Brief Introduction of Makefile</h3><p>make 命令对于构建具有多个源文件的程序有很大的帮助<br>只有 make 命令还是不够的，还必须用 makefile 告诉它要做什么以及怎么做<br>make 命令和 Makefile 配合使用，能给项目管理带来极大便利。</p>
+<h3 id="Composition-of-Makefile"><a href="#Composition-of-Makefile" class="headerlink" title="Composition of Makefile"></a>Composition of Makefile</h3><p>一个 makefile 由依赖关系和规则两部分内容组成: 1.规则用来说明怎样使用所依赖的文件来建立目标文件。2.依赖关系由一个目标和一组该目标所依赖的源文件组成。<br><img src="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/fReSmwGoLbWCg*kR3GeHG1**vLZLnTjo18aIs2pw*j8!/c/dLgAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=3AEQAQAAAAADF*4!&amp;tl=1&amp;vuin=3033668267&amp;tm=1554987600&amp;sce=60-2-2&amp;rf=0-0" alt=""><br>依赖关系如图示</p>
+<h3 id="Rules-of-Makefile"><a href="#Rules-of-Makefile" class="headerlink" title="Rules of Makefile"></a>Rules of Makefile</h3><pre><code>目标：[依赖模块] 
+    命令 
+    命令
+</code></pre><p><em>命令前必须是tab键</em></p>
+<h3 id="make"><a href="#make" class="headerlink" title="make"></a>make</h3><p>Make的工作过程类似一次深度优先遍历过程</p>
+<h3 id="the-Variables-of-Makefile"><a href="#the-Variables-of-Makefile" class="headerlink" title="the  Variables of Makefile"></a>the  Variables of Makefile</h3><p>1.objects变量（$(objects)）<br>objects = main.o kbd.o command.o \<br>        display.o insert.o search.o files.o utils.o<br>edit : $(objects)<br>        cc -o edit $(objects)<br>2.预定义变量<br>无视无视<br>3.内部变量<br>$@扩展成当前规则的目的文件名<br>$&lt;扩展成依靠列表中的第一个依靠文件<br>$^扩展成整个依靠的列表（除掉了里面所有重复的文件名） </p>
+<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>I just find it complicated to understand my makefile on the embeded system class, cause it was written from models given by Mrs Sun. Studying in B site is not realistic, while under a course vedio is a useful comment saying it is helpful to read the CN edition of GUN makefile mannul. I’ll try.</p>
+<h2 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h2><p>编写加、减、乘、除功能的多文件程序，使用make工具，要求在makefile文件中使用内部变量。参考pdf文档。</p>
+<pre><code>OBJS=main.o test.o test1.o test2.o test3.o
+CC=gcc
+CFLAGS = -c
+
+test :$(OBJS)
+    @$(CC) -o $@ $^
+
+main.o : main.c test.h
+    @$(CC) $(CFLAGS) $^
+
+test.o : test.c test.h
+    @$(CC) $(CFLAGS) $^
+
+test1.o : test1.c test.h
+    @$(CC) $(CFLAGS) $^
+
+test2.o : test2.c test.h
+    @$(CC) $(CFLAGS) $^
+
+test3.o : test3.c test.h
+    @$(CC) $(CFLAGS) $^
+
+.PHONY clean:
+    @rm -f  *.o  test
+</code></pre><p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/1lFAOBTjWzdesET3zXnbKvJbgS1BC8ouM2Y3HeXHyUE!/c/dL4AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=0ALAAwAAAAARFzE!&amp;tl=1&amp;vuin=3033668267&amp;tm=1554998400&amp;sce=60-2-2&amp;rf=0-0" alt=""><br><img src="http://a4.qpic.cn/psb?/V11V3soz2JNi4c/oKeo7tXdh9GHL4sfbBMteVkJx8KlwIMOQHmusGqYWvk!/c/dL8AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAPQAgAAAAARFzE!&amp;tl=1&amp;vuin=3033668267&amp;tm=1554998400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
+
+	
+	</div>
+  <a type="button" href="/2019/04/04/linux第一个应用及makefile文件/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+
+   
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/20/MySQL注入学习记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/20/MySQL注入学习记录/" itemprop="url">MySQL注入的学习记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T00:00:00+08:00">
-                2021-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络安全/" itemprop="url" rel="index">
-                    <span itemprop="name">网络安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Mysql注入练习了两个题，一个是DVWA的字符型sql注入，一个是优秀同事发的数字型sql注入。
-1、判断是否存在sql注入点和sql注入类型1.1理论上只要与数据库有交互的点都存在sql注入可能1.2现在我掌握的只有最简单的单引号判断法原理：如果正常输入的话单引号应该刚刚好，如果加上单引号就会造
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/20/MySQL注入学习记录/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/03/matlab开发stm32初学笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/03/matlab开发stm32初学笔记/" itemprop="url">matlab开发stm32初学笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T00:00:00+08:00">
-                2019-07-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/stm32/" itemprop="url" rel="index">
-                    <span itemprop="name">stm32</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          基于模型的设计基于模型设计的概念采用建模与仿真的方法以及代码自动生成技术来开发嵌入式系统，现在市面上基于模型的设计的软件主要有两种SCADE和MATLAB。
-基于模型设计的优点1.代码生成可以提高软件开发效率2.为工程师提供了一种通用的开发与测试平台，使得具有不同工程背景的工程师之间建立起更好的联系
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/03/matlab开发stm32初学笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/外刊阅读和技术文档翻译/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/18/外刊阅读和技术文档翻译/" itemprop="url">外刊阅读和技术文档翻译</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-18T00:00:00+08:00">
-                2019-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/英语/" itemprop="url" rel="index">
-                    <span itemprop="name">英语</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          还是写一点东西吧，不然就越来越懒得管这个博客了
-外刊阅读坚持每天阅读一页半A4纸的英语文章
-一、材料(每周下载一周份的阅读)1.TPO Reading，来源：小站托福2.The Economist，来源：https://www.tianfateng.cn/7399.html
-二、阅读方法1.按照考试
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/18/外刊阅读和技术文档翻译/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/用云服务器搭建静态页面/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/用云服务器搭建静态页面/" itemprop="url">用云服务器搭建静态页面</a></h1>
+           <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
         
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T00:00:00+08:00">
-                2019-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+        <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+ 
+       <a href="/page/2/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>     
         
-          
-          OSS概念OSS中基本概念1.存储空间（Bucket）存储空间是您用于存储对象（Object）的容器，所有的对象都必须隶属于某个存储空间。您可以设置和修改存储空间属性用来控制地域、访问权限、生命周期等，这些属性设置直接作用于该存储空间内所有对象，因此您可以通过灵活创建不同的存储空间来完成不同的管理功
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/17/用云服务器搭建静态页面/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/html写一个网页/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/16/html写一个网页/" itemprop="url">html写第一个网页</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T00:00:00+08:00">
-                2019-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/html/" itemprop="url" rel="index">
-                    <span itemprop="name">html</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          概念什么是htmlHTML 是用来描述网页的一种语言。HTML 指的是超文本标记语言: HyperText Markup LanguageHTML 不是一种编程语言，而是一种标记语言标记语言是一套标记标签 (markup tag)HTML 使用标记标签来描述网页，HTML 文档包含了HTML 标签及
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/16/html写一个网页/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/12/linux gcc详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/12/linux gcc详解/" itemprop="url">linux gcc详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-12T00:00:00+08:00">
-                2019-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/" itemprop="url" rel="index">
-                    <span itemprop="name">  </span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Welcome
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/12/linux gcc详解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/12/linux建立静态库和动态库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/12/linux建立静态库和动态库/" itemprop="url">linux建立静态库和动态库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-12T00:00:00+08:00">
-                2019-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/嵌入式/" itemprop="url" rel="index">
-                    <span itemprop="name">嵌入式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          动态库和静态库动态库和静态库的概念Linux系统有两种程序库，一种是被称作静态库（static library），在程序连接的时候，把库函数的目标代码和程序连接在一起；还有一种就是前面提到的动态库（shared library），从英文字面翻译，动态库可以翻译为共享库。库有两种：动态和静态；动态是以
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/12/linux建立静态库和动态库/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/linux第一个应用及makefile文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/04/linux第一个应用及makefile文件/" itemprop="url">linux第一个应用及makefile文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-04T00:00:00+08:00">
-                2019-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/嵌入式/" itemprop="url" rel="index">
-                    <span itemprop="name">嵌入式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          从一个简单的应用程序入手，介绍了开发一个Linux应用程序的流程。通过实例分析了编译和连接的原理，并且剖析了程序执行的过程。最后讲述了Makefile管理工程文件如何管理软件代码。请读者多实践，只有不断的实践才能对这部分的知识深入理解。
-Linux develop创建一个应用编辑gedit main
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/04/linux第一个应用及makefile文件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/linux开发：文件的编译流程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/27/linux开发：文件的编译流程/" itemprop="url">linux开发：文件的编译流程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T00:00:00+08:00">
-                2019-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/嵌入式/" itemprop="url" rel="index">
-                    <span itemprop="name">嵌入式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          基本概念计算机能够执行的是机器语言，高级语言必须翻译为机器语言才能被计算机执行。这个翻译的方式有两种：编译和解释1.编译性语言程序在执行前需要专门的编译过程，生成一个二进制文件。运行时不需要重新编译，效率比较高，比如C。2.解释性语言程序在运行时才翻译为机器语言，执行第n条语句之后，再执行第n+1条
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/27/linux开发：文件的编译流程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/嵌入式系统和linux概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/07/嵌入式系统和linux概述/" itemprop="url">嵌入式及linux系统概述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T00:00:00+08:00">
-                2019-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/嵌入式/" itemprop="url" rel="index">
-                    <span itemprop="name">嵌入式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          嵌入式系统（Enbedded system）嵌入式系统的定义目前国内一个普遍被认同的定义是：以应用为中心、以计算机技术为基础，软、硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统。
-嵌入式系统的特点1.很强的专用性 ;2.可裁剪性；3.系统精简；4.系统内核小；5.
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/07/嵌入式系统和linux概述/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">estrella</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">51</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">estrella</span>
 
   
 </div>
 
+  		</center>
+		</div>
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+		
+		
+	</div> <!-- col-md-9 -->
 
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+  <div id="site_search">
+   <div class="form-group">
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+   </div>  
+  <div id="local-search-result"></div>
   </div>
 
+
+		
+			
+	<div class="widget">
+		<h4>Categories</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories//">  <span>2</span></a></li>
+		
+			<li><a href="/categories/html/">html<span>1</span></a></li>
+		
+			<li><a href="/categories/matlab/">matlab<span>4</span></a></li>
+		
+			<li><a href="/categories/stm32/">stm32<span>1</span></a></li>
+		
+			<li><a href="/categories/上位机/">上位机<span>1</span></a></li>
+		
+			<li><a href="/categories/传感器/">传感器<span>2</span></a></li>
+		
+			<li><a href="/categories/单片机/">单片机<span>16</span></a></li>
+		
+			<li><a href="/categories/博客/">博客<span>3</span></a></li>
+		
+			<li><a href="/categories/后端/">后端<span>1</span></a></li>
+		
+			<li><a href="/categories/嵌入式/">嵌入式<span>4</span></a></li>
+		
+			<li><a href="/categories/数学/">数学<span>1</span></a></li>
+		
+			<li><a href="/categories/树莓派/">树莓派<span>3</span></a></li>
+		
+			<li><a href="/categories/物理/">物理<span>2</span></a></li>
+		
+			<li><a href="/categories/物联网/">物联网<span>3</span></a></li>
+		
+			<li><a href="/categories/网络安全/">网络安全<span>3</span></a></li>
+		
+			<li><a href="/categories/英语/">英语<span>1</span></a></li>
+		
+			<li><a href="/categories/计算机网络/">计算机网络<span>1</span></a></li>
+		
+			<li><a href="/categories/软件使用/">软件使用<span>2</span></a></li>
+		
+			<li><a href="/categories/随想/">随想<span>1</span></a></li>
+		
+			<li><a href="/categories/顶会顶刊/">顶会顶刊<span>1</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>Tag Cloud</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/量子物理/">量子物理<span>1</span></a></li>
+		
+			<li><a href="/tags/stm32/">stm32<span>15</span></a></li>
+		
+			<li><a href="/tags/GPIO/">GPIO<span>1</span></a></li>
+		
+			<li><a href="/tags/编译流程/">编译流程<span>1</span></a></li>
+		
+			<li><a href="/tags/技术外语文档/">技术外语文档<span>1</span></a></li>
+		
+			<li><a href="/tags/寄存器/">寄存器<span>2</span></a></li>
+		
+			<li><a href="/tags/数学/">数学<span>1</span></a></li>
+		
+			<li><a href="/tags/linux/">linux<span>4</span></a></li>
+		
+			<li><a href="/tags/前端/">前端<span>1</span></a></li>
+		
+			<li><a href="/tags/SQL注入/">SQL注入<span>3</span></a></li>
+		
+			<li><a href="/tags/重映射/">重映射<span>1</span></a></li>
+		
+			<li><a href="/tags/后端/">后端<span>1</span></a></li>
+		
+			<li><a href="/tags/mathematica/">mathematica<span>2</span></a></li>
+		
+			<li><a href="/tags/指令/">指令<span>1</span></a></li>
+		
+			<li><a href="/tags/MySQL/">MySQL<span>1</span></a></li>
+		
+			<li><a href="/tags/HC-05/">HC-05<span>1</span></a></li>
+		
+			<li><a href="/tags/工程模板/">工程模板<span>1</span></a></li>
+		
+			<li><a href="/tags/ADC/">ADC<span>1</span></a></li>
+		
+			<li><a href="/tags/markdown/">markdown<span>1</span></a></li>
+		
+			<li><a href="/tags/c/">c#<span>1</span></a></li>
+		
+		
+		   <li><a href="/tags">...<span>53</span></a></li>
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2021/01/20/MySQL注入学习记录/" ><i class="fa fa-file-o"></i>MySQL注入的学习记录</a>
+      </li>
+    
+      <li>
+        <a href="/2021/01/15/ACCESS注入学习记录/" ><i class="fa fa-file-o"></i>ACCESS注入学习记录</a>
+      </li>
+    
+      <li>
+        <a href="/2021/01/01/ACCESS常用表名列名/" ><i class="fa fa-file-o"></i>ACCESS常用表名列名</a>
+      </li>
+    
+      <li>
+        <a href="/2019/07/03/matlab开发stm32初学笔记/" ><i class="fa fa-file-o"></i>matlab开发stm32初学笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2019/05/18/外刊阅读和技术文档翻译/" ><i class="fa fa-file-o"></i>外刊阅读和技术文档翻译</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/hexo-theme-freemind" title="Freemind's Github repository." target="_blank"]);">Freemind</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/kristopolous/BOOTSTRA.386" title="BOOTSTRA.386's Github repository." target="_blank"]);">BOOTSTRA.386</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/blackshow/hexo-theme-freemind.386" title="Freemind.386's Github repository." target="_blank"]);">Freemind.386</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/blackshow" title="My Github account." target="_blank"]);">My Github</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+	
+	
+</div> <!-- row-fluid -->
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 estrella
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
   
 
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
 
 
 
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-
 </body>
-</html>
+   </html>

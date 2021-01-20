@@ -1,358 +1,141 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>linux开发：文件的编译流程 | estrella</title>
+  <meta name="author" content="estrella">
+  
+  <meta name="description" content="基本概念计算机能够执行的是机器语言，高级语言必须翻译为机器语言才能被计算机执行。这个翻译的方式有两种：编译和解释1.编译性语言程序在执行前需要专门的编译过程，生成一个二进制文件。运行时不需要重新编译，效率比较高，比如C。2.解释性语言程序在运行时才翻译为机器语言，执行第n条语句之后，再执行第n+1条">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+  <meta property="og:title" content="linux开发：文件的编译流程"/>
+  <meta property="og:site_name" content="estrella"/>
 
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    <meta property="og:image" content=""/>
+  
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
+  <script src="/js/jquery-2.0.3.min.js"></script>
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="嵌入式,linux,编译流程," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="基本概念计算机能够执行的是机器语言，高级语言必须翻译为机器语言才能被计算机执行。这个翻译的方式有两种：编译和解释1.编译性语言程序在执行前需要专门的编译过程，生成一个二进制文件。运行时不需要重新编译，效率比较高，比如C。2.解释性语言程序在运行时才翻译为机器语言，执行第n条语句之后，再执行第n+1条，每次执行要有一个翻译过程，效率比较低，比如basic、shell等 编译流程在以前win、51单片">
-<meta name="keywords" content="嵌入式,linux,编译流程">
-<meta property="og:type" content="article">
-<meta property="og:title" content="linux开发：文件的编译流程">
-<meta property="og:url" content="http://yoursite.com/2019/03/27/linux开发：文件的编译流程/index.html">
-<meta property="og:site_name" content="estrella">
-<meta property="og:description" content="基本概念计算机能够执行的是机器语言，高级语言必须翻译为机器语言才能被计算机执行。这个翻译的方式有两种：编译和解释1.编译性语言程序在执行前需要专门的编译过程，生成一个二进制文件。运行时不需要重新编译，效率比较高，比如C。2.解释性语言程序在运行时才翻译为机器语言，执行第n条语句之后，再执行第n+1条，每次执行要有一个翻译过程，效率比较低，比如basic、shell等 编译流程在以前win、51单片">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-12T14:04:30.929Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux开发：文件的编译流程">
-<meta name="twitter:description" content="基本概念计算机能够执行的是机器语言，高级语言必须翻译为机器语言才能被计算机执行。这个翻译的方式有两种：编译和解释1.编译性语言程序在执行前需要专门的编译过程，生成一个二进制文件。运行时不需要重新编译，效率比较高，比如C。2.解释性语言程序在运行时才翻译为机器语言，执行第n条语句之后，再执行第n+1条，每次执行要有一个翻译过程，效率比较低，比如basic、shell等 编译流程在以前win、51单片">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
 </script>
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/27/linux开发：文件的编译流程/"/>
-
-
-
-
-
-  <title>linux开发：文件的编译流程 | estrella</title>
-  
-
-
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?8dbeab8043ac95c74425ba3f8175d020";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">estrella</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">I can always be what I want to be.</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">estrella</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
 </nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> linux开发：文件的编译流程</h1>
+		</div>
+	
 
 
 
- </div>
-    </header>
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+	<!-- content -->
+	<div class="mypage">		
+	  		
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/linux开发：文件的编译流程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">linux开发：文件的编译流程</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T00:00:00+08:00">
-                2019-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/嵌入式/" itemprop="url" rel="index">
-                    <span itemprop="name">嵌入式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>计算机能够执行的是机器语言，高级语言必须翻译为机器语言才能被计算机执行。<br>这个翻译的方式有两种：编译和解释<br>1.编译性语言<br>程序在执行前需要专门的编译过程，生成一个二进制文件。运行时不需要重新编译，效率比较高，比如C。<br>2.解释性语言<br>程序在运行时才翻译为机器语言，执行第n条语句之后，再执行第n+1条，每次执行要有一个翻译过程，效率比较低，比如basic、shell等</p>
+	  <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>计算机能够执行的是机器语言，高级语言必须翻译为机器语言才能被计算机执行。<br>这个翻译的方式有两种：编译和解释<br>1.编译性语言<br>程序在执行前需要专门的编译过程，生成一个二进制文件。运行时不需要重新编译，效率比较高，比如C。<br>2.解释性语言<br>程序在运行时才翻译为机器语言，执行第n条语句之后，再执行第n+1条，每次执行要有一个翻译过程，效率比较低，比如basic、shell等</p>
 <h2 id="编译流程"><a href="#编译流程" class="headerlink" title="编译流程"></a>编译流程</h2><p>在以前win、51单片机、32、arduino等等上开发的编译单击几个按钮就好。直到遇到了esp8266的ide开发。。。。。。<br>现在学习linux，必须要弄明白编译流程，才不枉在ee的路上朝cs瞥的这一眼</p>
 <h3 id="认识文件扩展名"><a href="#认识文件扩展名" class="headerlink" title="认识文件扩展名"></a>认识文件扩展名</h3><pre><code>.c    c原始文件
 .h    头文件（预处理文件）
@@ -369,397 +152,130 @@
 <h3 id="4-汇编阶段"><a href="#4-汇编阶段" class="headerlink" title="4.汇编阶段"></a>4.汇编阶段</h3><p>该阶段的工作是将汇编语言汇编成目标文件。该目标文件已经是二进制文件，但还不能执行，缺少的是系统启动代码和引用的库函数</p>
 <h3 id="5-链接阶段"><a href="#5-链接阶段" class="headerlink" title="5.链接阶段"></a>5.链接阶段</h3><p>链接函数库，需要了解加载器和链接器的基本原理<br>在Linux下，函数库分为静态库和动态库两种，对应的链接方式为静态链接和动态链接。静态链接时需要把用到库函数的代码全部加到可执行文件中，因此生成文件比较大，但是在运行时就不需要库文件了。动态链接并不会将库函数的代码加入到可执行文件中，而是程序执行时由运行时链接文件加载库，从而节省系统的开销。<br>GCC在编译时默认使用的是动态库。<br>嵌入式系统对空间比较敏感，所以在增加应用程序时要综合考虑。如果静态链接后的可执行文件大于动态链接生成的可执行文件和依赖的动态库之和，那么采用动态链接；反之，采用静态链接。<br>总之要追求系统尺寸最小。</p>
 <h3 id="6-调试阶段"><a href="#6-调试阶段" class="headerlink" title="6.调试阶段"></a>6.调试阶段</h3><p>得到可执行文件就可以运行了，如果运行出现问题就用调试器来进行调试。</p>
+	  
+	</div>
 
-      
-    </div>
-    
-    
-    
-
-    
+	<div>
+  	<center>
+	<div class="pagination">
 
     
-
+    
+    <a href="/2019/04/04/linux第一个应用及makefile文件/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/嵌入式/" rel="tag"># 嵌入式</a>
-          
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-            <a href="/tags/编译流程/" rel="tag"># 编译流程</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/03/07/嵌入式系统和linux概述/" rel="next" title="嵌入式及linux系统概述">
-                <i class="fa fa-chevron-left"></i> 嵌入式及linux系统概述
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/04/linux第一个应用及makefile文件/" rel="prev" title="linux第一个应用及makefile文件">
-                linux第一个应用及makefile文件 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <div class="sidebar-inner">
+    <a href="/2019/03/07/嵌入式系统和linux概述/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
 
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">estrella</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">51</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译流程"><span class="nav-number">2.</span> <span class="nav-text">编译流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#认识文件扩展名"><span class="nav-number">2.1.</span> <span class="nav-text">认识文件扩展名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-编辑阶段"><span class="nav-number">2.2.</span> <span class="nav-text">1.编辑阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-预处理阶段"><span class="nav-number">2.3.</span> <span class="nav-text">2.预处理阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-编译阶段"><span class="nav-number">2.4.</span> <span class="nav-text">3.编译阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-汇编阶段"><span class="nav-number">2.5.</span> <span class="nav-text">4.汇编阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-链接阶段"><span class="nav-number">2.6.</span> <span class="nav-text">5.链接阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-调试阶段"><span class="nav-number">2.7.</span> <span class="nav-text">6.调试阶段</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">estrella</span>
-
-  
+    
 </div>
 
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
+</section>
 
-    
 
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-03-27 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/嵌入式/">嵌入式<span>4</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/嵌入式/">嵌入式<span>4</span></a></li> <li><a href="/tags/linux/">linux<span>4</span></a></li> <li><a href="/tags/编译流程/">编译流程<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
   </div>
-
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 estrella
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
   
 
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
 
 
 
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-
 </body>
-</html>
+   </html>

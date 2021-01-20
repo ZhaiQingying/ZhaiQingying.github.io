@@ -1,358 +1,141 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>sigcomm2018阅读笔记 | estrella</title>
+  <meta name="author" content="estrella">
+  
+  <meta name="description" content="主要会议一Congestion Monitoring and Control监控网络拥挤1.1Inferring Persistent Interdomain Congestion 推断网络拥挤网络拥挤的原因：Interconnection disputes resulted in congesti">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+  <meta property="og:title" content="sigcomm2018阅读笔记"/>
+  <meta property="og:site_name" content="estrella"/>
 
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    <meta property="og:image" content=""/>
+  
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
+  <script src="/js/jquery-2.0.3.min.js"></script>
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="顶会," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="主要会议一Congestion Monitoring and Control监控网络拥挤1.1Inferring Persistent Interdomain Congestion 推断网络拥挤网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵No data was available for third-part">
-<meta name="keywords" content="顶会">
-<meta property="og:type" content="article">
-<meta property="og:title" content="sigcomm2018阅读笔记">
-<meta property="og:url" content="http://yoursite.com/2018/09/18/sigcomm2018阅读笔记/index.html">
-<meta property="og:site_name" content="estrella">
-<meta property="og:description" content="主要会议一Congestion Monitoring and Control监控网络拥挤1.1Inferring Persistent Interdomain Congestion 推断网络拥挤网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵No data was available for third-part">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-19T09:29:40.670Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sigcomm2018阅读笔记">
-<meta name="twitter:description" content="主要会议一Congestion Monitoring and Control监控网络拥挤1.1Inferring Persistent Interdomain Congestion 推断网络拥挤网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵No data was available for third-part">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
 </script>
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/18/sigcomm2018阅读笔记/"/>
-
-
-
-
-
-  <title>sigcomm2018阅读笔记 | estrella</title>
-  
-
-
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?8dbeab8043ac95c74425ba3f8175d020";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">estrella</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">I can always be what I want to be.</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">estrella</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
 </nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> sigcomm2018阅读笔记</h1>
+		</div>
+	
 
 
 
- </div>
-    </header>
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+	<!-- content -->
+	<div class="mypage">		
+	  		
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/sigcomm2018阅读笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="estrella">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="estrella">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">sigcomm2018阅读笔记</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T00:00:00+08:00">
-                2018-09-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/顶会顶刊/" itemprop="url" rel="index">
-                    <span itemprop="name">顶会顶刊</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="主要会议一Congestion-Monitoring-and-Control监控网络拥挤"><a href="#主要会议一Congestion-Monitoring-and-Control监控网络拥挤" class="headerlink" title="主要会议一Congestion Monitoring and Control监控网络拥挤"></a>主要会议一Congestion Monitoring and Control监控网络拥挤</h2><h3 id="1-1Inferring-Persistent-Interdomain-Congestion-推断网络拥挤"><a href="#1-1Inferring-Persistent-Interdomain-Congestion-推断网络拥挤" class="headerlink" title="1.1Inferring Persistent Interdomain Congestion 推断网络拥挤"></a>1.1Inferring Persistent Interdomain Congestion 推断网络拥挤</h3><h4 id="网络拥挤的原因：Interconnection-disputes-resulted-in-congestion：内部连接的矛盾造成拥堵"><a href="#网络拥挤的原因：Interconnection-disputes-resulted-in-congestion：内部连接的矛盾造成拥堵" class="headerlink" title="网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵"></a>网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵</h4><p>No data was available for third-party to study these links：但第三方没有数据了解这些连接（以调控）</p>
+	  <h2 id="主要会议一Congestion-Monitoring-and-Control监控网络拥挤"><a href="#主要会议一Congestion-Monitoring-and-Control监控网络拥挤" class="headerlink" title="主要会议一Congestion Monitoring and Control监控网络拥挤"></a>主要会议一Congestion Monitoring and Control监控网络拥挤</h2><h3 id="1-1Inferring-Persistent-Interdomain-Congestion-推断网络拥挤"><a href="#1-1Inferring-Persistent-Interdomain-Congestion-推断网络拥挤" class="headerlink" title="1.1Inferring Persistent Interdomain Congestion 推断网络拥挤"></a>1.1Inferring Persistent Interdomain Congestion 推断网络拥挤</h3><h4 id="网络拥挤的原因：Interconnection-disputes-resulted-in-congestion：内部连接的矛盾造成拥堵"><a href="#网络拥挤的原因：Interconnection-disputes-resulted-in-congestion：内部连接的矛盾造成拥堵" class="headerlink" title="网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵"></a>网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵</h4><p>No data was available for third-party to study these links：但第三方没有数据了解这些连接（以调控）</p>
 <h4 id="上面这个原因造成的后果："><a href="#上面这个原因造成的后果：" class="headerlink" title="上面这个原因造成的后果："></a>上面这个原因造成的后果：</h4><p>Congestion on transit links affects parties other than those involved in the dispute 拥堵的传输连接除了内部连接矛盾的直接参与者还影响了其他(没有内部连接矛盾)的人<br>Limited data available to regulators and researchers to increase transparency and empirical grounding of debate数据有限所以管理员和调研人员只能力所能及的做出经验性的推理<br>Our goal: third-party inference of congestion at interdomain interconnections我们的目标是让网络拥挤时提供第三方接口<br>Scientiﬁc approach to achieving this goal involves challenges in network inference, system development and data mining科学界试图从网络接口，系统升级，数据挖掘方面解决这个问题</p>
 <h4 id="“我”方贡献："><a href="#“我”方贡献：" class="headerlink" title="“我”方贡献："></a>“我”方贡献：</h4><p>Methodology: Operationalized a lightweight method for third-party inference of interdomain congestion, conducted thorough validation理论系统：通过确认实施第三方接口的轻量理论<br>System: Built data collection and analysis platform to support the entire scientiﬁc workﬂow, and enable others to access and further study the data (ongoing) 系统：为了实现整个理论进行收集平台数据分析<br>Observations: Studied 8 large U.S. broadband providers from March 2016 to Dec 2017 (data collection ongoing)观察：研究美国March 2016 to Dec 2017的宽带情况</p>
 <h4 id="Method-Time-Series-Latency-Probes拥挤潜伏时间调查"><a href="#Method-Time-Series-Latency-Probes拥挤潜伏时间调查" class="headerlink" title="Method: Time Series Latency Probes拥挤潜伏时间调查"></a>Method: Time Series Latency Probes拥挤潜伏时间调查</h4><p>Peak-hour congestion ﬁlls up router buffers, resulting in elevated latency across an interdomain link  顶峰时间路径缓存全满，导致潜伏时间提高How do we measure latency across an interdomain link?我们如何测量拥堵潜伏？</p>
@@ -382,393 +165,130 @@
 <h2 id="主要会议六：RDMA-and-Hardware-Support"><a href="#主要会议六：RDMA-and-Hardware-Support" class="headerlink" title="主要会议六：RDMA and Hardware Support"></a>主要会议六：RDMA and Hardware Support</h2><h3 id="6-2-Revisiting-Network-Support-for-RDMA-重探网络对远程内存访问的支持"><a href="#6-2-Revisiting-Network-Support-for-RDMA-重探网络对远程内存访问的支持" class="headerlink" title="6.2 Revisiting Network Support for RDMA 重探网络对远程内存访问的支持"></a>6.2 Revisiting Network Support for RDMA 重探网络对远程内存访问的支持</h3><h4 id="Rise-of-RDMA-in-datacenters-RDMA在数据中心的崛起"><a href="#Rise-of-RDMA-in-datacenters-RDMA在数据中心的崛起" class="headerlink" title="Rise of RDMA in datacenters RDMA在数据中心的崛起"></a>Rise of RDMA in datacenters RDMA在数据中心的崛起</h4><p>Enables low CPU utilization, low latency, high throughput（因为可以免除OS对硬件层面的苛刻要求）</p>
 <h4 id="Current-Status现状"><a href="#Current-Status现状" class="headerlink" title="Current Status现状"></a>Current Status现状</h4><p>RoCE (RDMA over Converged Ethernet).集成以太网上的RDMA –Canonical approach for deploying RDMA in datacenters.在数据中心RDMA已经有符合规定的方法了 –Needs lossless network to get good performance.性能达到更高还需要无损网络<br> Network made lossless using Priority Flow Control (PFC). –Complicates network management. –Various known performance issues.<br>approach for deploying RDMA in datacenters. –Needs lossless network to get good performance.<br>• Network made lossless using Priority Flow Control (PFC). –Complicates network management. –Various known performance issues.<br>Is a lossless network really needed? No! Incremental changes to RoCE NIC design can enable better performance without a lossless network.</p>
 <h4 id="History-of-RDMA"><a href="#History-of-RDMA" class="headerlink" title="History of RDMA"></a>History of RDMA</h4><p>RDMA traditionally used in Infinibandclusters. –Losses are rare (credit-based flow control).用在不拥挤的网络中<br>Transport layer in RDMA NICs not designed to deal with losses efficiently. –Receiver discards out-of-order packets. –Sender does go-back-N on detecting packet loss.</p>
-<h2 id="主要会议七：SDN-and-Workloads-软件定义网络，是网络虚拟化的一种实现方式"><a href="#主要会议七：SDN-and-Workloads-软件定义网络，是网络虚拟化的一种实现方式" class="headerlink" title="主要会议七：SDN and Workloads 软件定义网络，是网络虚拟化的一种实现方式"></a>主要会议七：SDN and Workloads 软件定义网络，是网络虚拟化的一种实现方式</h2><h2 id="主要会议八：Wireless-Low-Power-and-High-Data-Rates是无线低功耗以及高传输速率化"><a href="#主要会议八：Wireless-Low-Power-and-High-Data-Rates是无线低功耗以及高传输速率化" class="headerlink" title="主要会议八：Wireless Low Power and High Data Rates是无线低功耗以及高传输速率化"></a>主要会议八：Wireless Low Power and High Data Rates是无线低功耗以及高传输速率化</h2><h2 id="主要会议九：Network-Verification-网络确认"><a href="#主要会议九：Network-Verification-网络确认" class="headerlink" title="主要会议九：Network Verification 网络确认"></a>主要会议九：Network Verification 网络确认</h2><h2 id="主要会议十：Measurements-测量方法"><a href="#主要会议十：Measurements-测量方法" class="headerlink" title="主要会议十：Measurements 测量方法"></a>主要会议十：Measurements 测量方法</h2>
-      
-    </div>
-    
-    
-    
+<h2 id="主要会议七：SDN-and-Workloads-软件定义网络，是网络虚拟化的一种实现方式"><a href="#主要会议七：SDN-and-Workloads-软件定义网络，是网络虚拟化的一种实现方式" class="headerlink" title="主要会议七：SDN and Workloads 软件定义网络，是网络虚拟化的一种实现方式"></a>主要会议七：SDN and Workloads 软件定义网络，是网络虚拟化的一种实现方式</h2><h2 id="主要会议八：Wireless-Low-Power-and-High-Data-Rates是无线低功耗以及高传输速率化"><a href="#主要会议八：Wireless-Low-Power-and-High-Data-Rates是无线低功耗以及高传输速率化" class="headerlink" title="主要会议八：Wireless Low Power and High Data Rates是无线低功耗以及高传输速率化"></a>主要会议八：Wireless Low Power and High Data Rates是无线低功耗以及高传输速率化</h2><h2 id="主要会议九：Network-Verification-网络确认"><a href="#主要会议九：Network-Verification-网络确认" class="headerlink" title="主要会议九：Network Verification 网络确认"></a>主要会议九：Network Verification 网络确认</h2><h2 id="主要会议十：Measurements-测量方法"><a href="#主要会议十：Measurements-测量方法" class="headerlink" title="主要会议十：Measurements 测量方法"></a>主要会议十：Measurements 测量方法</h2>	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
 
     
+    
+    <a href="/2018/09/27/希尔伯特的23个问题/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
 
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2018/09/15/串口接收中断/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
     
 
     
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/顶会/" rel="tag"># 顶会</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/09/15/串口接收中断/" rel="next" title="串口接收中断">
-                <i class="fa fa-chevron-left"></i> 串口接收中断
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/27/希尔伯特的23个问题/" rel="prev" title="希尔伯特的23个问题">
-                希尔伯特的23个问题 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">estrella</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">51</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议一Congestion-Monitoring-and-Control监控网络拥挤"><span class="nav-number">1.</span> <span class="nav-text">主要会议一Congestion Monitoring and Control监控网络拥挤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1Inferring-Persistent-Interdomain-Congestion-推断网络拥挤"><span class="nav-number">1.1.</span> <span class="nav-text">1.1Inferring Persistent Interdomain Congestion 推断网络拥挤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络拥挤的原因：Interconnection-disputes-resulted-in-congestion：内部连接的矛盾造成拥堵"><span class="nav-number">1.1.1.</span> <span class="nav-text">网络拥挤的原因：Interconnection disputes resulted in congestion：内部连接的矛盾造成拥堵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上面这个原因造成的后果："><span class="nav-number">1.1.2.</span> <span class="nav-text">上面这个原因造成的后果：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“我”方贡献："><span class="nav-number">1.1.3.</span> <span class="nav-text">“我”方贡献：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Method-Time-Series-Latency-Probes拥挤潜伏时间调查"><span class="nav-number">1.1.4.</span> <span class="nav-text">Method: Time Series Latency Probes拥挤潜伏时间调查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Time-Series-Latency-Probes-TSLP-时间序列潜伏探针"><span class="nav-number">1.1.5.</span> <span class="nav-text">Time Series Latency Probes (TSLP)时间序列潜伏探针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pieces-of-the-Puzzle难点"><span class="nav-number">1.1.6.</span> <span class="nav-text">Pieces of the Puzzle难点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：这是一篇检测网络拥挤情况的方法的论文。后面实验结果就没看了。。"><span class="nav-number">1.1.7.</span> <span class="nav-text">总结：这是一篇检测网络拥挤情况的方法的论文。后面实验结果就没看了。。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议二Routing路由"><span class="nav-number">2.</span> <span class="nav-text">主要会议二Routing路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Internet-Anycast-Performance-Problems-and-Potential"><span class="nav-number">2.1.</span> <span class="nav-text">1.Internet Anycast: Performance, Problems and Potential</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题：Anycast-often-chooses-poorly就近算法经常选择路径非常愚蠢"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题：Anycast often chooses poorly就近算法经常选择路径非常愚蠢</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重点"><span class="nav-number">2.1.2.</span> <span class="nav-text">重点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Do-queries-go-to-nearby-sites-Does-adding-anycast-global-sites-help"><span class="nav-number">2.1.3.</span> <span class="nav-text">Do queries go to nearby sites?Does adding anycast (global) sites help?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-doesn’t-anycast-work-as-expected？"><span class="nav-number">2.1.4.</span> <span class="nav-text">Why doesn’t anycast work as expected？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Would-the-best-routes-comply-with-typical-routing-policies-最好的路线遵从典型路径政策吗？"><span class="nav-number">2.1.5.</span> <span class="nav-text">Would the best routes comply with typical routing policies?最好的路线遵从典型路径政策吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Embedding-geographic-information-in-BGP-announcements在BGP通告中完善地理信息"><span class="nav-number">2.1.6.</span> <span class="nav-text">Embedding geographic information in BGP announcements在BGP通告中完善地理信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Evaluate-the-geographic-hint-through-simulation-with-real-network-traces评估模拟网络传输的地理阻碍"><span class="nav-number">2.1.7.</span> <span class="nav-text">Evaluate the geographic hint through simulation with real network traces评估模拟网络传输的地理阻碍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Other-results"><span class="nav-number">2.1.8.</span> <span class="nav-text">Other results</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anycast-doesn’t-work-as-well-as-it-should-but-it-can"><span class="nav-number">2.1.9.</span> <span class="nav-text">Anycast doesn’t work as well as it should, but it can</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议三：Wireless-Links"><span class="nav-number">3.</span> <span class="nav-text">主要会议三：Wireless Links</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">3.1.</span> <span class="nav-text">1.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议四：Data-Center-Networking"><span class="nav-number">4.</span> <span class="nav-text">主要会议四：Data Center Networking</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Masking-Failures-from-Application-Performance-in-Data-Center-Networks-with-Shareable-Backup-使用可共享备份屏蔽数据中心网络中应用程序性能的失败"><span class="nav-number">4.1.</span> <span class="nav-text">1.Masking Failures from Application Performance in Data Center Networks with Shareable Backup 使用可共享备份屏蔽数据中心网络中应用程序性能的失败</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Today’s-Failure-Handling—Rerouting如今解决问题的方法：重新规划路线"><span class="nav-number">4.1.1.</span> <span class="nav-text">Today’s Failure Handling—Rerouting如今解决问题的方法：重新规划路线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Impact-on-Coflow-Completion-Time-CCT-影响并流完成时间的因素"><span class="nav-number">4.1.2.</span> <span class="nav-text">Impact on Coflow Completion Time (CCT)影响并流完成时间的因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Do-We-Have-Other-Options"><span class="nav-number">4.1.3.</span> <span class="nav-text">Do We Have Other Options?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Circuit-Switches电路选择"><span class="nav-number">4.1.4.</span> <span class="nav-text">Circuit Switches电路选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ideal-Architecture理想网络结构"><span class="nav-number">4.1.5.</span> <span class="nav-text">Ideal Architecture理想网络结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-Make-It-Practical它怎么变得实用？"><span class="nav-number">4.1.6.</span> <span class="nav-text">How to Make It Practical它怎么变得实用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Recover-First-Diagnose-Later先覆盖后分析"><span class="nav-number">4.1.7.</span> <span class="nav-text">Recover First, Diagnose Later先覆盖后分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-does-control-system-do"><span class="nav-number">4.1.8.</span> <span class="nav-text">What does control system do?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议五：Applications-and-IoT"><span class="nav-number">5.</span> <span class="nav-text">主要会议五：Applications and IoT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-MUTE-Bringing-IoT-to-Noise-Cancellation"><span class="nav-number">5.1.</span> <span class="nav-text">4.MUTE: Bringing IoT to Noise Cancellation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MUTE"><span class="nav-number">5.1.1.</span> <span class="nav-text">MUTE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Timing-Gain-Wideband-Cancellation了解波段的频率"><span class="nav-number">5.1.2.</span> <span class="nav-text">Timing Gain  Wideband Cancellation了解波段的频率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Signal-Processing-Gain"><span class="nav-number">5.1.3.</span> <span class="nav-text">Signal Processing Gain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Application-Specific-Gain"><span class="nav-number">5.1.4.</span> <span class="nav-text">Application-Specific Gain</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议六：RDMA-and-Hardware-Support"><span class="nav-number">6.</span> <span class="nav-text">主要会议六：RDMA and Hardware Support</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-Revisiting-Network-Support-for-RDMA-重探网络对远程内存访问的支持"><span class="nav-number">6.1.</span> <span class="nav-text">6.2 Revisiting Network Support for RDMA 重探网络对远程内存访问的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Rise-of-RDMA-in-datacenters-RDMA在数据中心的崛起"><span class="nav-number">6.1.1.</span> <span class="nav-text">Rise of RDMA in datacenters RDMA在数据中心的崛起</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Current-Status现状"><span class="nav-number">6.1.2.</span> <span class="nav-text">Current Status现状</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#History-of-RDMA"><span class="nav-number">6.1.3.</span> <span class="nav-text">History of RDMA</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议七：SDN-and-Workloads-软件定义网络，是网络虚拟化的一种实现方式"><span class="nav-number">7.</span> <span class="nav-text">主要会议七：SDN and Workloads 软件定义网络，是网络虚拟化的一种实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议八：Wireless-Low-Power-and-High-Data-Rates是无线低功耗以及高传输速率化"><span class="nav-number">8.</span> <span class="nav-text">主要会议八：Wireless Low Power and High Data Rates是无线低功耗以及高传输速率化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议九：Network-Verification-网络确认"><span class="nav-number">9.</span> <span class="nav-text">主要会议九：Network Verification 网络确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要会议十：Measurements-测量方法"><span class="nav-number">10.</span> <span class="nav-text">主要会议十：Measurements 测量方法</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">estrella</span>
-
-  
 </div>
 
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
 
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
+</section>
 
-    
 
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2018-09-18 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/顶会顶刊/">顶会顶刊<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/顶会/">顶会<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
   </div>
-
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2021 estrella
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
   
 
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
 
 
 
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-
 </body>
-</html>
+   </html>
