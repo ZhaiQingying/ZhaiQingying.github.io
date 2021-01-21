@@ -141,6 +141,40 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2018/05/29/STM32工程模板建立笔记/" >STM32工程模板建立笔记</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2018-05-29  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h1 id="基于固件库的模板"><a href="#基于固件库的模板" class="headerlink" title="基于固件库的模板"></a>基于固件库的模板</h1><h2 id="新建的三个文件夹的解读"><a href="#新建的三个文件夹的解读" class="headerlink" title="新建的三个文件夹的解读"></a>新建的三个文件夹的解读</h2><ul>
+<li>CORE 用来存放核心文件和启动文件</li>
+<li>OBJ 是用来存放编译过程文件以及hex文件</li>
+<li>STM32F10x_FWLib 文件夹顾名思义用来存放 ST 官方提供的库函数源码文件</li>
+<li>USER目录除了用来放工程文件外，还用来存放主函数文件 main.c,包括system_stm32f10x.c等等<h1 id="基于寄存器的模板"><a href="#基于寄存器的模板" class="headerlink" title="基于寄存器的模板"></a>基于寄存器的模板</h1></li>
+<li>有空整理</li>
+</ul>
+
+	
+	</div>
+  <a type="button" href="/2018/05/29/STM32工程模板建立笔记/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2018/05/13/mathematica的注册机使用方式/" >mathematica的注册机打开方式</a>
 		</h3>
 		</div>
@@ -210,45 +244,6 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2018/04/15/线性规划中matlab中linprog函数的运用/" >线性规划中matlab中linprog函数的运用</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-04-15  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="求最小值"><a href="#求最小值" class="headerlink" title="求最小值"></a>求最小值</h2><h3 id="只求x1，x2……xN"><a href="#只求x1，x2……xN" class="headerlink" title="只求x1，x2……xN"></a>只求x1，x2……xN</h3><ul>
-<li>几种可以的形式<br>  x=linprog(c,a,b)<br>  x=linprog(c,a,b,Aeq,beq)<br>  x=linprog(c,a,b,Aeq,beq,lb,ub)<br>  x=linprog(c,a,b,Aeq,beq,lb,ub,x0)<br>  x=linprog(c,a,b,Aeq,beq,lb,ub,x0,options)</li>
-</ul>
-<ol>
-<li>c为min表达式里的参数</li>
-<li>a是不等式小于号左边的系数矩阵</li>
-<li>b是不等式小于号右面的常量矩阵</li>
-<li>aeq是等号左边的系数矩阵</li>
-<li>beq是等号右面的常量矩阵</li>
-<li>lb是x区间左极限</li>
-<li>ub是x区间右极限<h3 id="求x和y"><a href="#求x和y" class="headerlink" title="求x和y"></a>求x和y</h3>等式左边换成[x,y]<h2 id="求最大值"><a href="#求最大值" class="headerlink" title="求最大值"></a>求最大值</h2>c取负</li>
-</ol>
-
-	
-	</div>
-  <a type="button" href="/2018/04/15/线性规划中matlab中linprog函数的运用/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
 			<a href="/2018/04/15/非线性规划一些函数的运用/" >非线性规划fmincon函数的运用</a>
 		</h3>
 		</div>
@@ -280,6 +275,45 @@ var _hmt = _hmt || [];
 	
 	</div>
   <a type="button" href="/2018/04/15/非线性规划一些函数的运用/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
+			<a href="/2018/04/15/线性规划中matlab中linprog函数的运用/" >线性规划中matlab中linprog函数的运用</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2018-04-15  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="求最小值"><a href="#求最小值" class="headerlink" title="求最小值"></a>求最小值</h2><h3 id="只求x1，x2……xN"><a href="#只求x1，x2……xN" class="headerlink" title="只求x1，x2……xN"></a>只求x1，x2……xN</h3><ul>
+<li>几种可以的形式<br>  x=linprog(c,a,b)<br>  x=linprog(c,a,b,Aeq,beq)<br>  x=linprog(c,a,b,Aeq,beq,lb,ub)<br>  x=linprog(c,a,b,Aeq,beq,lb,ub,x0)<br>  x=linprog(c,a,b,Aeq,beq,lb,ub,x0,options)</li>
+</ul>
+<ol>
+<li>c为min表达式里的参数</li>
+<li>a是不等式小于号左边的系数矩阵</li>
+<li>b是不等式小于号右面的常量矩阵</li>
+<li>aeq是等号左边的系数矩阵</li>
+<li>beq是等号右面的常量矩阵</li>
+<li>lb是x区间左极限</li>
+<li>ub是x区间右极限<h3 id="求x和y"><a href="#求x和y" class="headerlink" title="求x和y"></a>求x和y</h3>等式左边换成[x,y]<h2 id="求最大值"><a href="#求最大值" class="headerlink" title="求最大值"></a>求最大值</h2>c取负</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/2018/04/15/线性规划中matlab中linprog函数的运用/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -606,51 +640,6 @@ grid on/off
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2018/04/06/获取图片外链/" >获取图片外链</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2018-04-06  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="利用查看元素的方式获取图片外链"><a href="#利用查看元素的方式获取图片外链" class="headerlink" title="利用查看元素的方式获取图片外链"></a>利用查看元素的方式获取图片外链</h2><p>有的贴图站图片有<strong> 时限 </strong>，有的要<strong> 付费 </strong>，其实没必要利用贴图站去获取图片外链</p>
-<ul>
-<li>win10 Microsoft Edge中右击检查元素</li>
-</ul>
-<p><img src="http://a3.qpic.cn/psb?/V11V3soz2JNi4c/LSTN60rLWHhZNSfNoWesjTVAxRnfEzbZtCTRAlf7hCU!/c/dB4BAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=ewDqAAAAAAARF7E!&amp;vuin=3033668267&amp;tm=1522998000&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<ul>
-<li><p>再点击选择元素，或快捷键ctrl+b</p>
-</li>
-<li><p>将鼠标移到图片上</p>
-</li>
-<li><p>复制下面标记里看起来像图片外链的东西</p>
-</li>
-</ul>
-<p><img src="http://a2.qpic.cn/psb?/V11V3soz2JNi4c/cYeQWhUDGXc7YpNT5LYiRaziLN2SPR2Nh3NzAqWNZvA!/c/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=kgGDAAAAAAARFzA!&amp;vuin=3033668267&amp;tm=1523001600&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<p><strong> 如果是本地图片 </strong>上传到小号的qq空间再如上操作</p>
-<p>刚刚发现好像太大的图会出现下面的情况。。^_~</p>
-<p><img src="http://a2.qpic.cn/psb?/V11V3soz2JNi4c/j8udyIa0wq1cg7NqteXj.*gL4FFenqnKWBbkq37wU08!/c/dCEBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=JgHyAAAAAAARF*U!&amp;vuin=3033668267&amp;tm=1523001600&amp;sce=60-2-2&amp;rf=0-0" alt=""></p>
-<p>有空我会找更适合的免费贴图网</p>
-
-	
-	</div>
-  <a type="button" href="/2018/04/06/获取图片外链/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -726,7 +715,7 @@ grid on/off
 		
 			<li><a href="/categories/物联网/">物联网<span>3</span></a></li>
 		
-			<li><a href="/categories/网络安全/">网络安全<span>3</span></a></li>
+			<li><a href="/categories/网络安全/">网络安全<span>4</span></a></li>
 		
 			<li><a href="/categories/英语/">英语<span>1</span></a></li>
 		
@@ -747,45 +736,45 @@ grid on/off
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/ACCESS/">ACCESS<span>2</span></a></li>
+			<li><a href="/tags/ACCESS/">ACCESS<span>3</span></a></li>
+		
+			<li><a href="/tags/c/">c#<span>1</span></a></li>
+		
+			<li><a href="/tags/matlab/">matlab<span>5</span></a></li>
+		
+			<li><a href="/tags/esp8266/">esp8266<span>2</span></a></li>
+		
+			<li><a href="/tags/SQL注入/">SQL注入<span>4</span></a></li>
+		
+			<li><a href="/tags/动态库/">动态库<span>1</span></a></li>
+		
+			<li><a href="/tags/指令/">指令<span>1</span></a></li>
 		
 			<li><a href="/tags/html/">html<span>1</span></a></li>
 		
-			<li><a href="/tags/树莓派/">树莓派<span>3</span></a></li>
-		
-			<li><a href="/tags/makefile/">makefile<span>1</span></a></li>
-		
-			<li><a href="/tags/顶会/">顶会<span>1</span></a></li>
-		
-			<li><a href="/tags/基于模型的设计/">基于模型的设计<span>1</span></a></li>
-		
-			<li><a href="/tags/蓝牙/">蓝牙<span>1</span></a></li>
-		
-			<li><a href="/tags/上位机/">上位机<span>1</span></a></li>
-		
-			<li><a href="/tags/预处理/">预处理<span>1</span></a></li>
-		
-			<li><a href="/tags/云服务器/">云服务器<span>1</span></a></li>
-		
-			<li><a href="/tags/生产线/">生产线<span>1</span></a></li>
-		
-			<li><a href="/tags/linux/">linux<span>4</span></a></li>
-		
-			<li><a href="/tags/引脚复用/">引脚复用<span>1</span></a></li>
-		
-			<li><a href="/tags/wifi/">wifi<span>2</span></a></li>
-		
 			<li><a href="/tags/陀螺仪/">陀螺仪<span>2</span></a></li>
 		
-			<li><a href="/tags/动态库/">动态库<span>1</span></a></li>
+			<li><a href="/tags/数学/">数学<span>1</span></a></li>
 		
 			<li><a href="/tags/数据处理/">数据处理<span>1</span></a></li>
 		
 			<li><a href="/tags/计算机网络/">计算机网络<span>1</span></a></li>
 		
-			<li><a href="/tags/GPIO/">GPIO<span>1</span></a></li>
+			<li><a href="/tags/生产线/">生产线<span>1</span></a></li>
 		
-			<li><a href="/tags/SQL注入/">SQL注入<span>3</span></a></li>
+			<li><a href="/tags/技术外语文档/">技术外语文档<span>1</span></a></li>
+		
+			<li><a href="/tags/引脚复用/">引脚复用<span>1</span></a></li>
+		
+			<li><a href="/tags/外刊阅读/">外刊阅读<span>1</span></a></li>
+		
+			<li><a href="/tags/外部中断/">外部中断<span>1</span></a></li>
+		
+			<li><a href="/tags/单片机/">单片机<span>1</span></a></li>
+		
+			<li><a href="/tags/编译流程/">编译流程<span>1</span></a></li>
+		
+			<li><a href="/tags/工程模板/">工程模板<span>1</span></a></li>
 		
 		
 		   <li><a href="/tags">...<span>53</span></a></li>
@@ -801,6 +790,10 @@ grid on/off
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2021/01/21/ACCESS偏移注入/" ><i class="fa fa-file-o"></i>ACCESS偏移注入</a>
+      </li>
+    
+      <li>
         <a href="/2021/01/20/MySQL注入学习记录/" ><i class="fa fa-file-o"></i>MySQL注入的学习记录</a>
       </li>
     
@@ -814,10 +807,6 @@ grid on/off
     
       <li>
         <a href="/2019/07/03/matlab开发stm32初学笔记/" ><i class="fa fa-file-o"></i>matlab开发stm32初学笔记</a>
-      </li>
-    
-      <li>
-        <a href="/2019/05/18/外刊阅读和技术文档翻译/" ><i class="fa fa-file-o"></i>外刊阅读和技术文档翻译</a>
       </li>
     
   </ul>
