@@ -1,265 +1,745 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="pragma" content="no-cache">
-  <meta http-equiv="cache-control" content="no-cache">
-  <meta http-equiv="expires" content="0">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="量子物理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一般特征与辐射场的定量描述辐射能的分布函数f(v,k,r,t)k表示传播方向的单位矢量，r是空间场点的位矢，t是时间这个函数的意义是：在t时刻、空间r点附近单位体积内的辐射场中，(1)分布在以v为中心的频段dv内，(2)以k方向为轴的立体角元dΩ(能量是分布在空间上的物理量，显然能量值大小与辐射方向与空间范围有关)内的能量为    f(v,k,r,t)（1.1） 辐射场的能量密度U(单位体积内的辐">
+<meta name="keywords" content="量子物理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="热辐射与普朗克的量子假说">
+<meta property="og:url" content="http://yoursite.com/2018/10/01/热辐射与普朗克的量子假说/index.html">
+<meta property="og:site_name" content="estrella">
+<meta property="og:description" content="一般特征与辐射场的定量描述辐射能的分布函数f(v,k,r,t)k表示传播方向的单位矢量，r是空间场点的位矢，t是时间这个函数的意义是：在t时刻、空间r点附近单位体积内的辐射场中，(1)分布在以v为中心的频段dv内，(2)以k方向为轴的立体角元dΩ(能量是分布在空间上的物理量，显然能量值大小与辐射方向与空间范围有关)内的能量为    f(v,k,r,t)（1.1） 辐射场的能量密度U(单位体积内的辐">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-19T09:42:05.143Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="热辐射与普朗克的量子假说">
+<meta name="twitter:description" content="一般特征与辐射场的定量描述辐射能的分布函数f(v,k,r,t)k表示传播方向的单位矢量，r是空间场点的位矢，t是时间这个函数的意义是：在t时刻、空间r点附近单位体积内的辐射场中，(1)分布在以v为中心的频段dv内，(2)以k方向为轴的立体角元dΩ(能量是分布在空间上的物理量，显然能量值大小与辐射方向与空间范围有关)内的能量为    f(v,k,r,t)（1.1） 辐射场的能量密度U(单位体积内的辐">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/01/热辐射与普朗克的量子假说/"/>
+
+
+
+
+
   <title>热辐射与普朗克的量子假说 | estrella</title>
-  <meta name="author" content="estrella">
-  
-  <meta name="description" content="一般特征与辐射场的定量描述辐射能的分布函数f(v,k,r,t)k表示传播方向的单位矢量，r是空间场点的位矢，t是时间这个函数的意义是：在t时刻、空间r点附近单位体积内的辐射场中，(1)分布在以v为中心的频段dv内，(2)以k方向为轴的立体角元dΩ(能量是分布在空间上的物理量，显然能量值大小与辐射方向">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="热辐射与普朗克的量子假说"/>
-  <meta property="og:site_name" content="estrella"/>
-
-  
-    <meta property="og:image" content=""/>
   
 
-  
-  
-    <link href="/favicon.png" rel="icon">
-  
-  
-  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-  <script src="/js/jquery-2.0.3.min.js"></script>
-
-  <!-- analytics -->
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-70812759-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8dbeab8043ac95c74425ba3f8175d020";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
 
 
 </head>
 
- <body>  
-  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-	  <a class="navbar-brand" href="/">estrella</a>
-      <div class="collapse navbar-collapse nav-menu">
-		<ul class="nav navbar-nav">
-		  
-		  <li>
-			<a href="/archives" title="All the articles.">
-			  <i class=""></i>Archives
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/categories" title="All the categories.">
-			  <i class=""></i>Categories
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/tags" title="All the tags.">
-			  <i class=""></i>Tags
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/about" title="About me.">
-			  <i class=""></i>About
-			</a>
-		  </li>
-		  
-		  <li>
-			<a href="/atom.xml" title="Subscribe me.">
-			  <i class=""></i>RSS
-			</a>
-		  </li>
-		  
-		</ul>
-      </div>
-    </div> <!-- container -->
-</nav>
-<div class="clearfix"></div>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <div class="container">
-  	<div class="content">
-    	 
-
-
-	
-		<div class="page-header">
-			<h1> 热辐射与普朗克的量子假说</h1>
-		</div>
-	
-
-
-
-<div class="row post">
-	<!-- cols -->
-	
-	<div id="top_meta"></div>
-	<div class="col-md-9">
-	
-
-	<!-- content -->
-	<div class="mypage">		
-	  		
-
-	  <h1 id="一般特征与辐射场的定量描述"><a href="#一般特征与辐射场的定量描述" class="headerlink" title="一般特征与辐射场的定量描述"></a>一般特征与辐射场的定量描述</h1><h2 id="辐射能的分布函数f-v-k-r-t"><a href="#辐射能的分布函数f-v-k-r-t" class="headerlink" title="辐射能的分布函数f(v,k,r,t)"></a>辐射能的分布函数f(v,k,r,t)</h2><p>k表示传播方向的单位矢量，r是空间场点的位矢，t是时间<br>这个函数的意义是：在t时刻、空间r点附近单位体积内的辐射场中，(1)分布在以v为中心的频段dv内，(2)以k方向为轴的立体角元dΩ(<strong>能量是分布在空间上的物理量，显然能量值大小与辐射方向与空间范围有关</strong>)内的能量为<br>    f(v,k,r,t)（1.1）</p>
-<h2 id="辐射场的能量密度U-单位体积内的辐射能-及其谱密度u-v"><a href="#辐射场的能量密度U-单位体积内的辐射能-及其谱密度u-v" class="headerlink" title="辐射场的能量密度U(单位体积内的辐射能)及其谱密度u(v)"></a>辐射场的能量密度U(单位体积内的辐射能)及其谱密度u(v)</h2><h2 id="通过面元"><a href="#通过面元" class="headerlink" title="通过面元"></a>通过面元</h2><h1 id="基尔霍夫热辐射定律"><a href="#基尔霍夫热辐射定律" class="headerlink" title="基尔霍夫热辐射定律"></a>基尔霍夫热辐射定律</h1><h2 id="表述"><a href="#表述" class="headerlink" title="表述"></a>表述</h2><h2 id="推导（思想实验）"><a href="#推导（思想实验）" class="headerlink" title="推导（思想实验）"></a>推导（思想实验）</h2><h1 id="绝对黑体和黑体辐射"><a href="#绝对黑体和黑体辐射" class="headerlink" title="绝对黑体和黑体辐射"></a>绝对黑体和黑体辐射</h1><h2 id="绝对黑体的概念"><a href="#绝对黑体的概念" class="headerlink" title="绝对黑体的概念"></a>绝对黑体的概念</h2><h1 id="斯特藩-玻尔兹曼定律和维恩位移定律"><a href="#斯特藩-玻尔兹曼定律和维恩位移定律" class="headerlink" title="斯特藩-玻尔兹曼定律和维恩位移定律"></a>斯特藩-玻尔兹曼定律和维恩位移定律</h1><h1 id="维恩公式和瑞利-金斯公式"><a href="#维恩公式和瑞利-金斯公式" class="headerlink" title="维恩公式和瑞利-金斯公式"></a>维恩公式和瑞利-金斯公式</h1><h1 id="辐射场的态分布和能均分布"><a href="#辐射场的态分布和能均分布" class="headerlink" title="辐射场的态分布和能均分布"></a>辐射场的态分布和能均分布</h1><h2 id="态密度g-v-的计算"><a href="#态密度g-v-的计算" class="headerlink" title="态密度g(v)的计算"></a>态密度g(v)的计算</h2><h2 id="平均能量ε-v-t-的计算"><a href="#平均能量ε-v-t-的计算" class="headerlink" title="平均能量ε(v,t)的计算"></a>平均能量ε(v,t)的计算</h2><h1 id="普朗克公式和能量子假说"><a href="#普朗克公式和能量子假说" class="headerlink" title="普朗克公式和能量子假说"></a>普朗克公式和能量子假说</h1>	  
-	</div>
-
-	<div>
-  	<center>
-	<div class="pagination">
-
+  
+  
     
-    
-    <a href="/2018/10/01/GPIO的概念/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
 
-    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
-    
-    <a href="/2018/10/01/存放希腊字母/" type="button" class="btn btn-default ">Next<i
-                class="fa fa-arrow-circle-o-right"></i></a>
-    
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">estrella</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I can always be what I want to be.</p>
+      
+  </div>
 
-    
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-    </center>
-	</div>
-	
-	<!-- comment -->
-	
-<section id="comment">
-    <h2 class="title">Comments</h2>
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/热辐射与普朗克的量子假说/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="estrella">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="estrella">
+    </span>
 
     
-</section>
+      <header class="post-header">
 
+        
+        
+          <h1 class="post-title" itemprop="name headline">热辐射与普朗克的量子假说</h1>
+        
 
-	</div> <!-- col-md-9/col-md-12 -->
-		
-	
-	<div id="side_meta">
-		<div class="col-md-3" id="post_meta"> 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T00:00:00+08:00">
+                2018-10-01
+              </time>
+            
 
-	<!-- date -->
-	
-	<div class="meta-widget">
-	<i class="fa fa-clock-o"></i>
-	2018-10-01 
-	</div>
-	
+            
 
-	<!-- categories -->
-    
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
-    <ul id="categorys" class="tag_box list-unstyled collapse in">
+            
+          </span>
+
           
-  <li>
-    <li><a href="/categories/物理/">物理<span>2</span></a></li>
-  </li>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/物理/" itemprop="url" rel="index">
+                    <span itemprop="name">物理</span>
+                  </a>
+                </span>
 
-    </ul>
-	</div>
-	
+                
+                
+              
+            </span>
+          
 
-	<!-- tags -->
-	
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
-    <ul id="tags" class="tag_box list-unstyled collapse in">	  
-	    
-  <li><a href="/tags/量子物理/">量子物理<span>1</span></a></li>
-    </ul>
-	</div>
-		
+          
+            
+          
 
-	<!-- toc -->
-	<div class="meta-widget">
-	
-	</div>
-	
-    <hr>
-	
-</div><!-- col-md-3 -->
+          
+          
 
-	</div>
-		
+          
 
-</div><!-- row -->
+          
 
+          
 
+        </div>
+      </header>
+    
 
-	</div>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一般特征与辐射场的定量描述"><a href="#一般特征与辐射场的定量描述" class="headerlink" title="一般特征与辐射场的定量描述"></a>一般特征与辐射场的定量描述</h1><h2 id="辐射能的分布函数f-v-k-r-t"><a href="#辐射能的分布函数f-v-k-r-t" class="headerlink" title="辐射能的分布函数f(v,k,r,t)"></a>辐射能的分布函数f(v,k,r,t)</h2><p>k表示传播方向的单位矢量，r是空间场点的位矢，t是时间<br>这个函数的意义是：在t时刻、空间r点附近单位体积内的辐射场中，(1)分布在以v为中心的频段dv内，(2)以k方向为轴的立体角元dΩ(<strong>能量是分布在空间上的物理量，显然能量值大小与辐射方向与空间范围有关</strong>)内的能量为<br>    f(v,k,r,t)（1.1）</p>
+<h2 id="辐射场的能量密度U-单位体积内的辐射能-及其谱密度u-v"><a href="#辐射场的能量密度U-单位体积内的辐射能-及其谱密度u-v" class="headerlink" title="辐射场的能量密度U(单位体积内的辐射能)及其谱密度u(v)"></a>辐射场的能量密度U(单位体积内的辐射能)及其谱密度u(v)</h2><h2 id="通过面元"><a href="#通过面元" class="headerlink" title="通过面元"></a>通过面元</h2><h1 id="基尔霍夫热辐射定律"><a href="#基尔霍夫热辐射定律" class="headerlink" title="基尔霍夫热辐射定律"></a>基尔霍夫热辐射定律</h1><h2 id="表述"><a href="#表述" class="headerlink" title="表述"></a>表述</h2><h2 id="推导（思想实验）"><a href="#推导（思想实验）" class="headerlink" title="推导（思想实验）"></a>推导（思想实验）</h2><h1 id="绝对黑体和黑体辐射"><a href="#绝对黑体和黑体辐射" class="headerlink" title="绝对黑体和黑体辐射"></a>绝对黑体和黑体辐射</h1><h2 id="绝对黑体的概念"><a href="#绝对黑体的概念" class="headerlink" title="绝对黑体的概念"></a>绝对黑体的概念</h2><h1 id="斯特藩-玻尔兹曼定律和维恩位移定律"><a href="#斯特藩-玻尔兹曼定律和维恩位移定律" class="headerlink" title="斯特藩-玻尔兹曼定律和维恩位移定律"></a>斯特藩-玻尔兹曼定律和维恩位移定律</h1><h1 id="维恩公式和瑞利-金斯公式"><a href="#维恩公式和瑞利-金斯公式" class="headerlink" title="维恩公式和瑞利-金斯公式"></a>维恩公式和瑞利-金斯公式</h1><h1 id="辐射场的态分布和能均分布"><a href="#辐射场的态分布和能均分布" class="headerlink" title="辐射场的态分布和能均分布"></a>辐射场的态分布和能均分布</h1><h2 id="态密度g-v-的计算"><a href="#态密度g-v-的计算" class="headerlink" title="态密度g(v)的计算"></a>态密度g(v)的计算</h2><h2 id="平均能量ε-v-t-的计算"><a href="#平均能量ε-v-t-的计算" class="headerlink" title="平均能量ε(v,t)的计算"></a>平均能量ε(v,t)的计算</h2><h1 id="普朗克公式和能量子假说"><a href="#普朗克公式和能量子假说" class="headerlink" title="普朗克公式和能量子假说"></a>普朗克公式和能量子假说</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/量子物理/" rel="tag"># 量子物理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/01/串口相关函数/" rel="next" title="串口相关函数">
+                <i class="fa fa-chevron-left"></i> 串口相关函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/03/定时器中断控制串口发送的理解/" rel="prev" title="定时器中断控制串口发送的理解">
+                定时器中断控制串口发送的理解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
-  <div class="container-narrow">
-  <footer> <p>
-  &copy; 2021 estrella
   
-      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
-     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
-</p>
- </footer>
-</div> <!-- container-narrow -->
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
   
 
 
+
+        </div>
+        
+          
   
-<a id="gotop" href="#">   
-  <span>⬆︎TOP</span>
-</a>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
 
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/search.js"></script> 
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">estrella</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一般特征与辐射场的定量描述"><span class="nav-number">1.</span> <span class="nav-text">一般特征与辐射场的定量描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#辐射能的分布函数f-v-k-r-t"><span class="nav-number">1.1.</span> <span class="nav-text">辐射能的分布函数f(v,k,r,t)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辐射场的能量密度U-单位体积内的辐射能-及其谱密度u-v"><span class="nav-number">1.2.</span> <span class="nav-text">辐射场的能量密度U(单位体积内的辐射能)及其谱密度u(v)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过面元"><span class="nav-number">1.3.</span> <span class="nav-text">通过面元</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基尔霍夫热辐射定律"><span class="nav-number">2.</span> <span class="nav-text">基尔霍夫热辐射定律</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表述"><span class="nav-number">2.1.</span> <span class="nav-text">表述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推导（思想实验）"><span class="nav-number">2.2.</span> <span class="nav-text">推导（思想实验）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绝对黑体和黑体辐射"><span class="nav-number">3.</span> <span class="nav-text">绝对黑体和黑体辐射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#绝对黑体的概念"><span class="nav-number">3.1.</span> <span class="nav-text">绝对黑体的概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#斯特藩-玻尔兹曼定律和维恩位移定律"><span class="nav-number">4.</span> <span class="nav-text">斯特藩-玻尔兹曼定律和维恩位移定律</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#维恩公式和瑞利-金斯公式"><span class="nav-number">5.</span> <span class="nav-text">维恩公式和瑞利-金斯公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#辐射场的态分布和能均分布"><span class="nav-number">6.</span> <span class="nav-text">辐射场的态分布和能均分布</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#态密度g-v-的计算"><span class="nav-number">6.1.</span> <span class="nav-text">态密度g(v)的计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平均能量ε-v-t-的计算"><span class="nav-number">6.2.</span> <span class="nav-text">平均能量ε(v,t)的计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普朗克公式和能量子假说"><span class="nav-number">7.</span> <span class="nav-text">普朗克公式和能量子假说</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">estrella</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
 <script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
 </body>
-   </html>
+</html>
