@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ACCESS,SQL注入," />
 
 
 
@@ -79,17 +79,30 @@
 
 
 
-<meta name="description" content="测量的不确定度的概念测量的不确定度 不确定度U：由于测量误差存在而对被测量值不能确定的程度。表明该结果的可信赖程度。 测量的不确定度分为A、B两类 A类不确定度UA用对观测进行统计的方法分析评定 A类评定必须有重复条件下的测量列 B类不确定度UB用非统计方法分析评定 不确定度的合成原则U=√(UA^2+UB^2 )表示由于测量误差的存在而对被测量值不能确定的程度，所有的A类评定和B类评定分量都需要">
+<meta name="description" content="什么是ASP注入页面文件是.asp的网站存在的注入漏洞    http://192.168.0.128:8003/news_detail.asp?id=109 order by 14 网站错误代码80040e14表示语法错误 二、    两种常见的网站配置现在用联合查询推断存在哪种表   根据国情，国内的网站用ASP+Access或SQLServer的占70%以上，PHP+MySQL占20%，其他">
+<meta name="keywords" content="ACCESS,SQL注入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测量的不确定度">
-<meta property="og:url" content="http://yoursite.com/2018/10/26/不确定度/index.html">
+<meta property="og:title" content="ASP注入学习记录">
+<meta property="og:url" content="http://yoursite.com/2021/01/21/ASP注入学习记录/index.html">
 <meta property="og:site_name" content="estrella">
-<meta property="og:description" content="测量的不确定度的概念测量的不确定度 不确定度U：由于测量误差存在而对被测量值不能确定的程度。表明该结果的可信赖程度。 测量的不确定度分为A、B两类 A类不确定度UA用对观测进行统计的方法分析评定 A类评定必须有重复条件下的测量列 B类不确定度UB用非统计方法分析评定 不确定度的合成原则U=√(UA^2+UB^2 )表示由于测量误差的存在而对被测量值不能确定的程度，所有的A类评定和B类评定分量都需要">
+<meta property="og:description" content="什么是ASP注入页面文件是.asp的网站存在的注入漏洞    http://192.168.0.128:8003/news_detail.asp?id=109 order by 14 网站错误代码80040e14表示语法错误 二、    两种常见的网站配置现在用联合查询推断存在哪种表   根据国情，国内的网站用ASP+Access或SQLServer的占70%以上，PHP+MySQL占20%，其他">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-29T07:11:42.729Z">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcRq9V*GU1gCaKDm.d7ioaVOEAKs3Z9UJlj1l1bXovFzFgDy5MZTAKnVzIuAVm73K0r95yKrrFlIxZO4hHf3xlSk!/b&bo=ugWpAQAAAAABFyc!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mccVa13BARfXhTWEovhO7ir6YY2OxU7xY.u8JE7CC9rw1G0jFEJxc72xFEKtWB4xTytqUuNQ6P8WNdsiELKmRY5U!/b&bo=NwMzAQAAAAABFzY!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mccVa13BARfXhTWEovhO7ir5i45kq2nGHpddCkk.HHzfHStPXAE2QmwU4o7AJh8FVEL4kKTFVBlkh5ijo5TAvDaA!/b&bo=WAMqAQAAAAABF0A!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mccVa13BARfXhTWEovhO7ir6AemFx1InBzeduCU1.6IbwIoHogHL4yp.lls2yYv9tzKynrvRHMyJ3QI6l15Y1sa0!/b&bo=cwMNAQAAAAABF0w!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mccVa13BARfXhTWEovhO7ir6nRTFTPOkfqyXHiOTzePBpGXKASuEkMX2RIvQj19WPLFCMz0ivSsCmyJwG*kcnmSA!/b&bo=bwMuAQAAAAABF3M!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcZcJNzkONLeHyTueibERoWhvILEwDOr5oSjTzawv*KrOJYtUp2*iUb*7fyusX7dI4jdJBm..FS1qAuasfjvemOM!/b&bo=xwWHAgAAAAABF3c!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcZcJNzkONLeHyTueibERoWiyS706p0cfG3rBFhakTCi2ftmLb7zwMfeyY.j20LY9ex5Vefet1JYDNG7TZ3rWEY0!/b&bo=DQUHAgAAAAABFz0!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcZcJNzkONLeHyTueibERoWjndDfyY2doNPnkHYg0OEP47v0hfHYQYf8DkRxLmj0VkkpUEtiga8vSmsIWXEArQEE!/b&bo=UQRPAQAAAAABFys!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcSJksgRx4aoJqSfC7k6Rv0sKSDnd1RA5QcM0UiIow7nBQ*6cunAFLT0jVGGUi2uLOYRBo4GiMaqkCu*BI2m0a2M!/b&bo=1QVcAgAAAAABF74!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcSJksgRx4aoJqSfC7k6Rv0sOpWfNnSTklZg3f0cq4O2OnIDr6MQfhWmvoGbRQZHAgFJqGygbTSn6j4o7F3KE*8A!/b&bo=3AWNAQAAAAABF2U!&rf=viewer_4&t=5">
+<meta property="og:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcSJksgRx4aoJqSfC7k6Rv0t1THJnBrj.drcK6iY2E2QYbK1CTkJaLnVygx4mfdjZg4BtG06Scfoa60eDDYGM9VY!/b&bo=TwUvAgAAAAABF1c!&rf=viewer_4&t=5">
+<meta property="og:updated_time" content="2021-01-21T08:38:27.485Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测量的不确定度">
-<meta name="twitter:description" content="测量的不确定度的概念测量的不确定度 不确定度U：由于测量误差存在而对被测量值不能确定的程度。表明该结果的可信赖程度。 测量的不确定度分为A、B两类 A类不确定度UA用对观测进行统计的方法分析评定 A类评定必须有重复条件下的测量列 B类不确定度UB用非统计方法分析评定 不确定度的合成原则U=√(UA^2+UB^2 )表示由于测量误差的存在而对被测量值不能确定的程度，所有的A类评定和B类评定分量都需要">
+<meta name="twitter:title" content="ASP注入学习记录">
+<meta name="twitter:description" content="什么是ASP注入页面文件是.asp的网站存在的注入漏洞    http://192.168.0.128:8003/news_detail.asp?id=109 order by 14 网站错误代码80040e14表示语法错误 二、    两种常见的网站配置现在用联合查询推断存在哪种表   根据国情，国内的网站用ASP+Access或SQLServer的占70%以上，PHP+MySQL占20%，其他">
+<meta name="twitter:image" content="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcRq9V*GU1gCaKDm.d7ioaVOEAKs3Z9UJlj1l1bXovFzFgDy5MZTAKnVzIuAVm73K0r95yKrrFlIxZO4hHf3xlSk!/b&bo=ugWpAQAAAAABFyc!&rf=viewer_4&t=5">
 
 
 
@@ -119,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/26/不确定度/"/>
+  <link rel="canonical" href="http://yoursite.com/2021/01/21/ASP注入学习记录/"/>
 
 
 
 
 
-  <title>测量的不确定度 | estrella</title>
+  <title>ASP注入学习记录 | estrella</title>
   
 
 
@@ -262,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/不确定度/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/21/ASP注入学习记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="estrella">
@@ -279,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">测量的不确定度</h1>
+          <h1 class="post-title" itemprop="name headline">ASP注入学习记录</h1>
         
 
         <div class="post-meta">
@@ -291,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-26T00:00:00+08:00">
-                2018-10-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-21T00:00:00+08:00">
+                2021-01-21
               </time>
             
 
@@ -314,8 +327,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/物理/" itemprop="url" rel="index">
-                    <span itemprop="name">物理</span>
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
                   </a>
                 </span>
 
@@ -351,47 +364,24 @@
       
 
       
-        <h2 id="测量的不确定度的概念"><a href="#测量的不确定度的概念" class="headerlink" title="测量的不确定度的概念"></a>测量的不确定度的概念</h2><h3 id="测量的不确定度"><a href="#测量的不确定度" class="headerlink" title="测量的不确定度"></a>测量的不确定度</h3><ul>
-<li>不确定度U：由于测量误差存在而对被测量值不能确定的程度。表明该结果的可信赖程度。</li>
-<li>测量的不确定度分为A、B两类</li>
-<li>A类不确定度UA用对观测进行统计的方法分析评定</li>
-<li>A类评定必须有重复条件下的测量列</li>
-<li>B类不确定度UB用非统计方法分析评定</li>
-<li>不确定度的合成原则U=√(UA^2+UB^2 )表示由于测量误差的存在而对被测量值不能确定的程度，所有的A类评定和B类评定分量都需要统一到相同的置信区间<h3 id="测量量的表示"><a href="#测量量的表示" class="headerlink" title="测量量的表示"></a>测量量的表示</h3></li>
-<li>y=y ̅±U</li>
-<li>测量不确定度是说明测量结果的参数。在测量结果的完整表示中，应有被测量值的估计值y ̅（最佳值）和测量不确定度U</li>
-<li>±U表示被测量值的可能分散区间<h2 id="测量的A类不确定度"><a href="#测量的A类不确定度" class="headerlink" title="测量的A类不确定度"></a>测量的A类不确定度</h2><h3 id="测量的A类标准不确定度ΔA"><a href="#测量的A类标准不确定度ΔA" class="headerlink" title="测量的A类标准不确定度ΔA"></a>测量的A类标准不确定度ΔA</h3></li>
-<li>标准不确定度：用标准偏差表示时的测量不确定度。</li>
-<li>t分布时，Δ_A=Sx=t_0.683 σ_x ̅ =t_0.683√((∑_(i=1)n(x_i-x ̅ )^2 )/n(n-1) )</li>
-<li>用测量列算术平均值作为最佳测量值</li>
-<li>真值落在区间[x ̅ -Δ_A，x ̅ +Δ_A]的概率为68.3%<h3 id="测量的A类拓展不确定度UA"><a href="#测量的A类拓展不确定度UA" class="headerlink" title="测量的A类拓展不确定度UA"></a>测量的A类拓展不确定度UA</h3></li>
-<li>拓展不确定度：用标准不确定度的倍数表示。ua=kp*Δ_A</li>
-<li>kp分别取2或3时，对应95.5%或99.7%的置信概率<br>+大学物理实验约定kp=2<h2 id="测量的B类不确定度"><a href="#测量的B类不确定度" class="headerlink" title="测量的B类不确定度"></a>测量的B类不确定度</h2><h3 id="B类不确定度"><a href="#B类不确定度" class="headerlink" title="B类不确定度"></a>B类不确定度</h3></li>
-<li>Ub是由不同于观测列统计分析所确定的不确定度，又称非统计不确定度。<h3 id="仪器的示值误差和最大允许误差"><a href="#仪器的示值误差和最大允许误差" class="headerlink" title="仪器的示值误差和最大允许误差"></a>仪器的示值误差和最大允许误差</h3></li>
-<li>示值误差：测量仪器示值减去被测量真值之差。最大示值误差也称仪器误差限。</li>
-<li>最大允许误差（允差）：国家技术规范、规程等技术文件对给定计量器具在标准条件下极限误差的允许值</li>
-<li>预先提出计量要求</li>
-<li>判定测量设备合格的依据</li>
-<li>一般取仪器的最大（极限）误差作仪器误差限Δ仪</li>
-<li>Δ仪=量程*级别/100</li>
-<li>由仪器说明书或由仪器准确度级别、量程确定</li>
-<li>否则可由仪器分度值来判定</li>
-<li>对任何测量仪器和仪表，其准确度或仪器误差限应与分度值保持同一数位级</li>
-<li>仪器标准差与仪器极限误差关系：S仪=Δ仪/C</li>
-<li>正态分布c=3 p=0.683</li>
-<li>均匀分布c=√3 p=0.58</li>
-<li>三角分布c=√6 p=0.65</li>
-<li>大学物理实验合理取u仪=Δ仪（p&gt;=0.95）<h3 id="测量者估算产生的误差"><a href="#测量者估算产生的误差" class="headerlink" title="测量者估算产生的误差"></a>测量者估算产生的误差</h3></li>
-<li>估算误差限Δ估：由使用者读数不准或估读引起的。</li>
-<li>通常取仪器分度值的0.1至0.5倍，甚至更大。</li>
-<li>u估=Δ估（p&gt;=0.95）<h3 id="测量的B类不确定度-1"><a href="#测量的B类不确定度-1" class="headerlink" title="测量的B类不确定度"></a>测量的B类不确定度</h3></li>
-<li>B类分量的误差限为ΔB=√(Δ仪^2+Δ估^2）</li>
-<li>结果报道要求有较高的置信概率（p&gt;=0.95）<h2 id="不确定度与误差的区别"><a href="#不确定度与误差的区别" class="headerlink" title="不确定度与误差的区别"></a>不确定度与误差的区别</h2><ul>
-<li>误差：理想概念/科学描述、不易分类与计算</li>
-<li>不确定度：定量评价、便于评定与计算<h2 id="不确定度的传递"><a href="#不确定度的传递" class="headerlink" title="不确定度的传递"></a>不确定度的传递</h2></li>
-</ul>
-</li>
-</ul>
+        <h1 id="什么是ASP注入"><a href="#什么是ASP注入" class="headerlink" title="什么是ASP注入"></a>什么是ASP注入</h1><p>页面文件是.asp的网站存在的注入漏洞<br>    <a href="http://192.168.0.128:8003/news_detail.asp?id=109" target="_blank" rel="noopener">http://192.168.0.128:8003/news_detail.asp?id=109</a> order by 14</p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcRq9V*GU1gCaKDm.d7ioaVOEAKs3Z9UJlj1l1bXovFzFgDy5MZTAKnVzIuAVm73K0r95yKrrFlIxZO4hHf3xlSk!/b&amp;bo=ugWpAQAAAAABFyc!&amp;rf=viewer_4&amp;t=5" alt="1"><br>网站错误代码<br>80040e14表示语法错误</p>
+<p>二、    两种常见的网站配置<br>现在用联合查询推断存在哪种表</p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mccVa13BARfXhTWEovhO7ir6YY2OxU7xY.u8JE7CC9rw1G0jFEJxc72xFEKtWB4xTytqUuNQ6P8WNdsiELKmRY5U!/b&amp;bo=NwMzAQAAAAABFzY!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mccVa13BARfXhTWEovhO7ir5i45kq2nGHpddCkk.HHzfHStPXAE2QmwU4o7AJh8FVEL4kKTFVBlkh5ijo5TAvDaA!/b&amp;bo=WAMqAQAAAAABF0A!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p>根据国情，国内的网站用ASP+Access或SQLServer的占70%以上，PHP+MySQL占20%，其他的不足10%。<br>现在是要判断数据库是Access还是SQL Server<br>判断方法：我们可以从Access和SQLServer和 区别入手，Access和SQLServer都有自己的系统表，比如存放数据库中所有对象的表，Access是在系统表[msysobjects]中，但 在Web环境下读该表会提示“没有权限”，SQLServer是在表[sysobjects]中，在Web环境下可正常读取。</p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mccVa13BARfXhTWEovhO7ir6AemFx1InBzeduCU1.6IbwIoHogHL4yp.lls2yYv9tzKynrvRHMyJ3QI6l15Y1sa0!/b&amp;bo=cwMNAQAAAAABF0w!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mccVa13BARfXhTWEovhO7ir6nRTFTPOkfqyXHiOTzePBpGXKASuEkMX2RIvQj19WPLFCMz0ivSsCmyJwG*kcnmSA!/b&amp;bo=bwMuAQAAAAABF3M!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p>语句中某一单词为Access中的关键字。如：select * from user。其中user就是一关键字。</p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcZcJNzkONLeHyTueibERoWhvILEwDOr5oSjTzawv*KrOJYtUp2*iUb*7fyusX7dI4jdJBm..FS1qAuasfjvemOM!/b&amp;bo=xwWHAgAAAAABF3c!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p>现在试出来了，可是手敲是不是真的太难了一点，能不能用什么burp suite暴力猜解，说了暴力嘛，我一点也不暴力啊</p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcZcJNzkONLeHyTueibERoWiyS706p0cfG3rBFhakTCi2ftmLb7zwMfeyY.j20LY9ex5Vefet1JYDNG7TZ3rWEY0!/b&amp;bo=DQUHAgAAAAABFz0!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p>表示有5个字段<br>Inner join出错了？压根没这个问号<br>    <a href="http://192.168.0.128:8003/news_detail.asp?id=109" target="_blank" rel="noopener">http://192.168.0.128:8003/news_detail.asp?id=109</a> UNION SELECT 1,2,3,4,5,* from (admin_user as a inner join admin_user as b on?a.id=b.id)</p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcZcJNzkONLeHyTueibERoWjndDfyY2doNPnkHYg0OEP47v0hfHYQYf8DkRxLmj0VkkpUEtiga8vSmsIWXEArQEE!/b&amp;bo=UQRPAQAAAAABFys!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcSJksgRx4aoJqSfC7k6Rv0sKSDnd1RA5QcM0UiIow7nBQ*6cunAFLT0jVGGUi2uLOYRBo4GiMaqkCu*BI2m0a2M!/b&amp;bo=1QVcAgAAAAABF74!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p>这时候就要学会判断加密方式了<br><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcSJksgRx4aoJqSfC7k6Rv0sOpWfNnSTklZg3f0cq4O2OnIDr6MQfhWmvoGbRQZHAgFJqGygbTSn6j4o7F3KE*8A!/b&amp;bo=3AWNAQAAAAABF2U!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
+<p>位置不够了嘤嘤嘤</p>
+<p><img src="http://m.qpic.cn/psc?/V11V3soz2JNi4c/45NBuzDIW489QBoVep5mcSJksgRx4aoJqSfC7k6Rv0t1THJnBrj.drcK6iY2E2QYbK1CTkJaLnVygx4mfdjZg4BtG06Scfoa60eDDYGM9VY!/b&amp;bo=TwUvAgAAAAABF1c!&amp;rf=viewer_4&amp;t=5" alt="1"></p>
 
       
     </div>
@@ -407,6 +397,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ACCESS/" rel="tag"># ACCESS</a>
+          
+            <a href="/tags/SQL注入/" rel="tag"># SQL注入</a>
+          
+        </div>
+      
 
       
       
@@ -416,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/03/定时器中断控制串口发送的理解/" rel="next" title="定时器中断控制串口发送的理解">
-                <i class="fa fa-chevron-left"></i> 定时器中断控制串口发送的理解
+              <a href="/2021/01/20/MySQL注入学习记录/" rel="next" title="MySQL注入的学习记录">
+                <i class="fa fa-chevron-left"></i> MySQL注入的学习记录
               </a>
             
           </div>
@@ -426,8 +424,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/02/微信dat文件查看/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/01/21/ACCESS偏移注入/" rel="prev" title="ACCESS偏移注入">
+                ACCESS偏移注入 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#测量的不确定度的概念"><span class="nav-number">1.</span> <span class="nav-text">测量的不确定度的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测量的不确定度"><span class="nav-number">1.1.</span> <span class="nav-text">测量的不确定度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测量量的表示"><span class="nav-number">1.2.</span> <span class="nav-text">测量量的表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测量的A类不确定度"><span class="nav-number">2.</span> <span class="nav-text">测量的A类不确定度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测量的A类标准不确定度ΔA"><span class="nav-number">2.1.</span> <span class="nav-text">测量的A类标准不确定度ΔA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测量的A类拓展不确定度UA"><span class="nav-number">2.2.</span> <span class="nav-text">测量的A类拓展不确定度UA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测量的B类不确定度"><span class="nav-number">3.</span> <span class="nav-text">测量的B类不确定度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B类不确定度"><span class="nav-number">3.1.</span> <span class="nav-text">B类不确定度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仪器的示值误差和最大允许误差"><span class="nav-number">3.2.</span> <span class="nav-text">仪器的示值误差和最大允许误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测量者估算产生的误差"><span class="nav-number">3.3.</span> <span class="nav-text">测量者估算产生的误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测量的B类不确定度-1"><span class="nav-number">3.4.</span> <span class="nav-text">测量的B类不确定度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不确定度与误差的区别"><span class="nav-number">4.</span> <span class="nav-text">不确定度与误差的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不确定度的传递"><span class="nav-number">5.</span> <span class="nav-text">不确定度的传递</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是ASP注入"><span class="nav-number">1.</span> <span class="nav-text">什么是ASP注入</span></a></li></ol></div>
             
 
           </div>
