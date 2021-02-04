@@ -1639,7 +1639,7 @@ DMA由来DMA(Direct Memory Access,直接存储器访问)。在ＤＭＡ出现之
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/15/非线性规划一些函数的运用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/15/线性规划中matlab中linprog函数的运用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="estrella">
@@ -1658,7 +1658,7 @@ DMA由来DMA(Direct Memory Access,直接存储器访问)。在ＤＭＡ出现之
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/15/非线性规划一些函数的运用/" itemprop="url">非线性规划fmincon函数的运用</a></h1>
+                <a class="post-title-link" href="/2018/04/15/线性规划中matlab中linprog函数的运用/" itemprop="url">线性规划中matlab中linprog函数的运用</a></h1>
         
 
         <div class="post-meta">
@@ -1732,17 +1732,12 @@ DMA由来DMA(Direct Memory Access,直接存储器访问)。在ＤＭＡ出现之
       
         
           
-          [x,y]=fmincon(fun,x0,a,b,aeq,beq,lb,ub,nonlcon,options)
-
-fun为目标函数
-x0为函数初始值
-nonlcon为非线性函数构成的函数组fun和nonlcon里的方程组用m文件定义
-options定义了优化参数
-min F(x)  subject 
+          求最小值只求x1，x2……xN
+几种可以的形式  x=linprog(c,a,b)  x=linprog(c,a,b,Aeq,beq)  x=linprog(c,a,b,Aeq,beq,lb,ub)  x=linprog(c,a,b,Aeq,beq,lb,ub,x0)  x=linprog(c,a,
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/15/非线性规划一些函数的运用/#more" rel="contents">
+            <a class="btn" href="/2018/04/15/线性规划中matlab中linprog函数的运用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
