@@ -83,7 +83,7 @@
 <meta name="keywords" content="stm32,串口,定时器中断">
 <meta property="og:type" content="article">
 <meta property="og:title" content="串口接收中断">
-<meta property="og:url" content="http://yoursite.com/2018/09/15/串口接收中断/index.html">
+<meta property="og:url" content="http://estrellacode.com/2018/09/15/串口接收中断/index.html">
 <meta property="og:site_name" content="estrella">
 <meta property="og:description" content="问题分析 在改写esp8266模块驱动文件，将串口3换成串口2，遇到问题如图 第一部分将usart2TX接上usb转串口的RX，串口接收AT，表示串口发送正常 第二部分是将usart2接收的再通过串口1发送给电脑，看到只发了一个字母T 第三部分是直接将esp8266的TX接到usb转串口的RX，这表示第二部分也应该是这个，但是不知道为什么收到的是单个字节代码对比 这是普通串口通信的接收中断  vo">
 <meta property="og:locale" content="zh-Hans">
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/15/串口接收中断/"/>
+  <link rel="canonical" href="http://estrellacode.com/2018/09/15/串口接收中断/"/>
 
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/15/串口接收中断/">
+    <link itemprop="mainEntityOfPage" href="http://estrellacode.com/2018/09/15/串口接收中断/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="estrella">
@@ -443,8 +443,8 @@ if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/15/关于USART_RX_STA&0X8000与USART_RX_EN/" rel="next" title="关于USART2_RX_STA&0X8000与USART_RX_EN">
-                <i class="fa fa-chevron-left"></i> 关于USART2_RX_STA&0X8000与USART_RX_EN
+              <a href="/2018/09/12/stm32的半主机模式/" rel="next" title="printf和stm32的半主机模式">
+                <i class="fa fa-chevron-left"></i> printf和stm32的半主机模式
               </a>
             
           </div>
@@ -453,8 +453,8 @@ if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/18/sigcomm2018阅读笔记/" rel="prev" title="sigcomm2018阅读笔记">
-                sigcomm2018阅读笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/15/关于USART_RX_STA&0X8000与USART_RX_EN/" rel="prev" title="关于USART2_RX_STA&0X8000与USART_RX_EN">
+                关于USART2_RX_STA&0X8000与USART_RX_EN <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
